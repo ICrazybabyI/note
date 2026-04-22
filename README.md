@@ -1,1 +1,1 @@
-linux学习部分--[README_linux](linux_note/README_linux) 
+linux学习部分[-->linux<--](linux_note/README_linux.md) 
