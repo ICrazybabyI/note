@@ -10,21 +10,19 @@
 ## 做题准备:
 先配置ip  
 `nmtui`  
-![](images/Pasted%20image%2020260424111527.png)  
-回车选择第一项  
-![](images/Pasted%20image%2020260424111552.png)  
-回车选择网卡编辑  
-![](images/Pasted%20image%2020260424111758.png)   
-配置完成后用pagedown快速去到OK回车保存  
+![222](images/Pasted%20image%2020260424111527.png)回车选择第一项  
+![](images/Pasted%20image%2020260424111552.png)回车选择网卡编辑  
+![406](images/Pasted%20image%2020260424111758.png)配置完成后用pagedown快速去到OK回车保存    
+
 esc退出到主菜单  
-![](images/Pasted%20image%2020260424111921.png)  
-选择第二项  
-![](images/Pasted%20image%2020260424112007.png)  
-回车两次刷新配置  
-![](images/Pasted%20image%2020260424112032.png)  
-选择第三项设置系统名称  
-![](images/Pasted%20image%2020260424112118.png)
-回车确认  
+![](images/Pasted%20image%2020260424111921.png)选择第二项  
+
+![](images/Pasted%20image%2020260424112007.png)回车两次刷新配置  
+
+![](images/Pasted%20image%2020260424112032.png)选择第三项设置系统名称  
+
+![406](images/Pasted%20image%2020260424112118.png)回车确认  
+
 以上步骤都使用该方法配置主机名与ip   
 配置完ip后编辑本地仓库源    
 `win + x  a`              //使用windows的ssh工具连接6台主机  
