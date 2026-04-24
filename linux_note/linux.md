@@ -30,6 +30,19 @@ esc退出到主菜单
 `win + x  a`              //使用windows的ssh工具连接6台主机
 ssh: `ssh -p 22 root@192.168.31.221`
 `rm -rf  /etc/yum.repos.d/*.repo`    //删除默认的网络源
+`vi /etc/yum.repos.d/1.repo`      //编写本地仓的配置vim使用语法移步到[vim语法](vim语法)
+```bash
+[1]
+name=1
+enable=1
+baseurl=file://mnt/1/BaseOS
+gpgcheck=0
+[2]
+name=2
+enable=1
+baseurl=file://mnt/1/AppStream
+gpgcheck=0
+```
 
 ## 2.dns服务
 ## （1）所有linux主机启用防火墙，防火墙区域为public，在防火墙中放行对应服务端口。
