@@ -14,11 +14,11 @@
 回车选择第一项  
 ![](images/Pasted%20image%2020260424111552.png)  
 回车选择网卡编辑  
-![](images/Pasted%20image%2020260424111758.png|409)  
+![](images/Pasted%20image%2020260424111758.png)   
 配置完成后用pagedown快速去到OK回车保存  
 esc退出到主菜单  
 ![](images/Pasted%20image%2020260424111921.png)  
-选择第二项
+选择第二项  
 ![](images/Pasted%20image%2020260424112007.png)  
 回车两次刷新配置  
 ![](images/Pasted%20image%2020260424112032.png)  
