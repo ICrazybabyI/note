@@ -9,7 +9,7 @@
 这里更加推荐使用戴尔服务器的[IDRC](https://192.168.31.246/)在里面使用kvm管理器  
 新建虚拟机和编辑虚拟机的参数,因为这样可以更改更具体的配置    
 IDRC使用教程:   
-<video src="images/bandicam%202026-04-20%2021-39-21-641.mp4" width="1000"></video>
+<video src="images/bandicam%202026-04-20%2021-39-21-641.mp4" width="1000" controls></video>
 ![](images/bandicam%202026-04-20%2021-39-21-641.mp4)  
 cockpit使用教程:  
 ![](images/bandicam%202026-04-20%2021-42-21-893.mp4)  
