@@ -4,5 +4,6 @@
   "useMarkdownLinks": true,
   "readableLineLength": false,
   "showLineNumber": true,
-  "showIndentGuide": true
+  "showIndentGuide": true,
+  "vimMode": true
 }
