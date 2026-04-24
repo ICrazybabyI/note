@@ -1,9 +1,9 @@
 首次学习linux,推荐先阅读[菜鸟教程](https://www.runoob.com/linux/linux-tutorial.html),了解linux的作用 用法 为什么要用linux的原因.  
 然后看一看[linux的目录结构](https://www.runoob.com/linux/linux-system-contents.html)linux是由哪几个文件夹组成的,和linux一切皆文件的道理,  
 最后看[文件权限](https://www.runoob.com/linux/linux-file-attr-permission.html)和[目录相关](https://www.runoob.com/linux/linux-file-content-manage.html)的.  
-熟悉相关知识后开始学习如何在linux中做各种操作,这里要边看边练,不懂的问ai直接贴个报错和问题  
+熟悉相关知识后,开始学习如何在linux中做各种操作,这里要边看边练,不懂的问ai直接贴个报错和问题  
 例:  
-![389](images/Pasted%20image%2020260420210613.png)  
+![389](images/Pasted%20image%2020260420210613.png){=300xauto}  
 问了之后要在虚拟机里实验加深记忆.  
 提到虚拟机,这里可以使用cockpit自带的[web虚拟机控制台](https://192.168.31.245:9090),  
 这里更加推荐使用戴尔服务器的[IDRC](https://192.168.31.246/)在里面使用kvm管理器  
