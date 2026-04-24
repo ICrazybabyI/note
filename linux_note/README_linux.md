@@ -15,3 +15,5 @@ cockpit使用教程:
 打好基础后,看[linux](linux.md)这篇教程,跟着做  
 掌握做题的方法,试着自己解决各种报错,可以使用`systemctl status 服务名`或者  
 `journalctl -u 服务名 --no-pager -n 50` 看服务报错. 实在不行就贴报错给ai看  
+[做题准备](linux #做题准备:)   
+[chrony服务](linux #（2）利用chrony，配置linux1为其他linux主机提供NTP服务。)   

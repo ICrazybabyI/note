@@ -7,7 +7,7 @@
 | linux4  |  linux4  | 192.168.31.224/24 | linux4.skills.lan |
 | linux5  |  linux5  | 192.168.31.225/24 | linux5.skills.lan |
 | linux6  |  linux6  | 192.168.31.226/24 | linux6.skills.lan |
-做题准备:
+## 做题准备:
 先配置ip  
 `nmtui`  
 ![[Pasted image 20260424111527.png]]  
