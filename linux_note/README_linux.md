@@ -3,7 +3,7 @@
 最后看[文件权限](https://www.runoob.com/linux/linux-file-attr-permission.html)和[目录相关](https://www.runoob.com/linux/linux-file-content-manage.html)的.  
 熟悉相关知识后,开始学习如何在linux中做各种操作,这里要边看边练,不懂的问ai直接贴个报错和问题  
 例:  
-![389](images/Pasted%20image%2020260420210613.png){=30xauto}  
+![389](images/Pasted%20image%2020260420210613.png){=30x20x}  
 问了之后要在虚拟机里实验加深记忆.  
 提到虚拟机,这里可以使用cockpit自带的[web虚拟机控制台](https://192.168.31.245:9090),  
 这里更加推荐使用戴尔服务器的[IDRC](https://192.168.31.246/)在里面使用kvm管理器  
