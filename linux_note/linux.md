@@ -21,9 +21,9 @@ esc退出到主菜单
 
 ![](images/Pasted%20image%2020260424112032.png)选择第三项设置系统名称  
 
-![406](images/Pasted%20image%2020260424112118.png)回车确认  
+![374](images/Pasted%20image%2020260424112118.png)回车确认  
 
-以上步骤都使用该方法配置主机名与ip   
+以上步骤都使用该方法配置其他的主机名与ip   
 配置完ip后编辑本地仓库源    
 `win + x  a`              //使用windows的ssh工具连接6台主机  
 ssh: `ssh -p 22 root@192.168.31.221`  
@@ -58,7 +58,7 @@ linux1-6:
 ## **默认开启，只需在做服务时放行其端口**
 
 ## （2）利用chrony，配置linux1为其他linux主机提供NTP服务。
-``--123/tcp/udp``	
+``--123/tcp/udp``	{#chrony}
 
 **<u>先做ssh 再做这个</u>**
 
