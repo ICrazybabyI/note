@@ -57,8 +57,8 @@ linux1-6:
 ## （1）所有linux主机启用防火墙，防火墙区域为public，在防火墙中放行对应服务端口。
 ## **默认开启，只需在做服务时放行其端口**
 
-## （2）利用chrony，配置linux1为其他linux主机提供NTP服务。
-``--123/tcp/udp``	{#chrony}
+## （2）利用chrony，配置linux1为其他linux主机提供NTP服务。{#chrony}  
+``--123/tcp/udp``	
 
 **<u>先做ssh 再做这个</u>**
 
