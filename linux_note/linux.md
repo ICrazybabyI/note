@@ -25,25 +25,36 @@ esc退出到主菜单
 选择第三项设置系统名称  
 ![[Pasted image 20260424112118.png]]  
 回车确认  
-以上步骤都使用该方法配置主机名与ip  
-配置完ip后编辑本地仓库源  
-`win + x  a`              //使用windows的ssh工具连接6台主机
-ssh: `ssh -p 22 root@192.168.31.221`
-`rm -rf  /etc/yum.repos.d/*.repo`    //删除默认的网络源
-`vi /etc/yum.repos.d/1.repo`      //编写本地仓的配置vim使用语法移步到[vim语法](vim语法)
+以上步骤都使用该方法配置主机名与ip   
+配置完ip后编辑本地仓库源    
+`win + x  a`              //使用windows的ssh工具连接6台主机  
+ssh: `ssh -p 22 root@192.168.31.221`  
+linux1-6:  
+`rm -rf  /etc/yum.repos.d/*.repo`    //删除默认的网络源  
+linux1:  
+`vi /etc/yum.repos.d/1.repo`      //编写本地仓的配置__vim使用语法移步到[vim语法](vim语法)  
 ```bash
 [1]
 name=1
 enable=1
-baseurl=file://mnt/1/BaseOS
+baseurl=file:///mnt/1/BaseOS
 gpgcheck=0
 [2]
 name=2
 enable=1
-baseurl=file://mnt/1/AppStream
+baseurl=file:///mnt/1/AppStream
 gpgcheck=0
 ```
-
+:wq      //退出保存  
+`cat /etc/yum.repos.d/1.repo`      //把输出的选中复制到linux2-6  
+linux2-6:  
+`vi /etc/yum.repos.d/1.repo`  
+ctrl + v  
+:wq  
+linux1-6:  
+`mkdir /mnt/1`  
+`mount Rocky-9.2-x86_64-dvd.iso /mnt/1/`  
+`dnf install bash* vim -y`
 ## 2.dns服务
 ## （1）所有linux主机启用防火墙，防火墙区域为public，在防火墙中放行对应服务端口。
 ## **默认开启，只需在做服务时放行其端口**
