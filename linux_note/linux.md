@@ -27,6 +27,9 @@ esc退出到主菜单
 回车确认  
 以上步骤都使用该方法配置主机名与ip  
 配置完ip后编辑本地仓库源  
+`win + x  a`              //使用windows的ssh工具连接6台主机
+ssh: `ssh -p 22 root@192.168.31.221`
+`rm -rf  /etc/yum.repos.d/*.repo`    //删除默认的网络源
 
 ## 2.dns服务
 ## （1）所有linux主机启用防火墙，防火墙区域为public，在防火墙中放行对应服务端口。
