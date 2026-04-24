@@ -104,12 +104,12 @@ local stratum 10										#取消注释
 ## linux2-9:
 **vi /etc/chrony.conf**
 
-```plain
+```bash
 3	 server 192.168.31.231 iburst
 ```
 
 #### 编写脚本chrony.sh
-```plain
+```bash
 for i in {3..9}
 do
   scp /etc/chrony.conf 192.168.31.23$i:/etc/
@@ -121,7 +121,7 @@ done
 ## （3）所有linux主机之间（包含本主机）root用户实现密钥ssh认证，禁用密码认证。  
 
 ### linux1-9生成并发送ssh密钥：
-```plain
+```bash
 ssh-keygen
 ssh-copy-id **.**.**.**9              #密钥全部发送给一台主机，这台主机也要发给自己
 scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
@@ -131,7 +131,7 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
 
 vi /etc/ssh/sshd_config
 
-```plain
+```ssh
 42 PermitRootLogin yes
 45 PubkeyAuthentication yes
 #允许公钥登录
