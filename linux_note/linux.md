@@ -64,11 +64,12 @@ done
 
 ---
 
-## （3）所有linux主机之间（包含本主机）root用户实现密钥ssh认证，禁用密码认证。
+## （3）所有linux主机之间（包含本主机）root用户实现密钥ssh认证，禁用密码认证。  
+
 ### linux1-9生成并发送ssh密钥：
 ```plain
 ssh-keygen
-ssh-copy-id **.**.**.**9                       #密钥全部发送给一台主机，这台主机也要发给自己
+ssh-copy-id **.**.**.**9              #密钥全部发送给一台主机，这台主机也要发给自己
 scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
 ```
 
