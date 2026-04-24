@@ -1,5 +1,8 @@
 {
   "promptDelete": false,
   "attachmentFolderPath": "./images",
-  "useMarkdownLinks": true
+  "useMarkdownLinks": true,
+  "readableLineLength": false,
+  "showLineNumber": true,
+  "showIndentGuide": true
 }
