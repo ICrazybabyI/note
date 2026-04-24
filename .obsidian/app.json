@@ -5,5 +5,7 @@
   "readableLineLength": false,
   "showLineNumber": true,
   "showIndentGuide": true,
-  "vimMode": true
+  "vimMode": true,
+  "smartIndentList": false,
+  "useTab": false
 }
