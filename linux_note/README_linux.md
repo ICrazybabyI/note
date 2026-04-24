@@ -14,7 +14,8 @@ cockpit使用教程:
 [cockpit创建虚拟机](images/bandicam%202026-04-20%2021-42-21-893.mp4)  
 打好基础后,看[linux](linux.md)这篇教程,跟着做  
 掌握做题的方法,试着自己解决各种报错,可以使用`systemctl status 服务名`
-或者`journalctl -u 服务名 --no-pager -n 50` 看服务报错. 实在不行就贴报错给ai看  
+或者`journalctl -u 服务名 --no-pager -n 50` 看服务报错  
+实在不行就贴报错给ai看  
 ### 关于服务的笔记:
-[做题准备](linux.md#做题准备)   --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/%E5%81%9A%E9%A2%98%E5%87%86%E5%A4%87.mp4?ref_type=heads)  
-[chrony服务](linux.md#2利用chrony配置linux1为其他linux主机提供ntp服务)   
+										[做题准备](linux.md#做题准备)             --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/%E5%81%9A%E9%A2%98%E5%87%86%E5%A4%87.mp4?ref_type=heads)  
+[chrony服务](linux.md#2利用chrony配置linux1为其他linux主机提供ntp服务)       
