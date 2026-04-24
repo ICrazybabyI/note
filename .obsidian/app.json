@@ -2,10 +2,11 @@
   "promptDelete": false,
   "attachmentFolderPath": "./images",
   "useMarkdownLinks": true,
-  "readableLineLength": false,
+  "readableLineLength": true,
   "showLineNumber": true,
   "showIndentGuide": true,
   "vimMode": true,
   "smartIndentList": false,
-  "useTab": false
+  "useTab": false,
+  "strictLineBreaks": true
 }
