@@ -1,3 +1,12 @@
+
+| **云主机** | **环境名称** |    **IPv4地址**     |    **完全合格域名**     |
+| :-----: | :------: | :---------------: | :---------------: |
+| linux1  |  linux1  | 192.168.31.221/24 | linux1.skills.lan |
+| linux2  |  linux2  | 192.168.31.222/24 | linux2.skills.lan |
+| linux3  |  linux3  | 192.168.31.223/24 | linux3.skills.lan |
+| linux4  |  linux4  | 192.168.31.224/24 | linux4.skills.lan |
+| linux5  |  linux5  | 192.168.31.225/24 | linux5.skills.lan |
+| linux6  |  linux6  | 192.168.31.226/24 | linux6.skills.lan |
 做题准备:
 先配置ip  
 `nmtui`  
@@ -17,15 +26,7 @@ esc退出到主菜单
 ![[Pasted image 20260424112118.png]]  
 回车确认  
 以上步骤都使用该方法配置主机名与ip  
-
-| **云主机** | **环境名称** |    **IPv4地址**     |    **完全合格域名**     |
-| :-----: | :------: | :---------------: | :---------------: |
-| linux1  |  linux1  | 192.168.31.221/24 | linux1.skills.lan |
-| linux2  |  linux2  | 192.168.31.222/24 | linux2.skills.lan |
-| linux3  |  linux3  | 192.168.31.223/24 | linux3.skills.lan |
-| linux4  |  linux4  | 192.168.31.224/24 | linux4.skills.lan |
-| linux5  |  linux5  | 192.168.31.225/24 | linux5.skills.lan |
-| linux6  |  linux6  | 192.168.31.226/24 | linux6.skills.lan |
+配置完ip后编辑本地仓库源  
 
 ## 2.dns服务
 ## （1）所有linux主机启用防火墙，防火墙区域为public，在防火墙中放行对应服务端口。
