@@ -1,3 +1,15 @@
+> [!TIP]  
+> 学习过程:  
+```mermaid
+graph TD;
+  A["了解linux的作用"] --> B["理解linux的工作逻辑"];
+  B --> C["学习linux的文件权限"];
+  C --> D["学习通过2种方法新建虚拟机"];
+  C --> E["学习linux基础命令"];
+  E --> F["过23年国赛题"][^1];
+  C --> F["过23年国赛题"];
+```
+
 首次学习linux,推荐先阅读[菜鸟教程](https://www.runoob.com/linux/linux-tutorial.html),了解linux的作用 用法 为什么要用linux的原因.  
 然后看一看[linux的目录结构](https://www.runoob.com/linux/linux-system-contents.html)linux是由哪几个结构组成的,明白linux一切皆文件的道理,  
 最后看[文件权限](https://www.runoob.com/linux/linux-file-attr-permission.html)和[目录相关](https://www.runoob.com/linux/linux-file-content-manage.html)的.  
@@ -14,16 +26,7 @@
 使用cockpit创建虚拟机教程: [cockpit创建虚拟机](images/bandicam%202026-04-20%2021-42-21-893.mp4)  
 > [!IMPORTANT]
 > 打好基础后,跟着[linux](linux.md)这篇教程做赛题熟悉做题流程  
-学习过程:  
-```mermaid
-graph TD;
-  A["了解linux的作用"] --> B["理解linux的工作逻辑"];
-  B --> C["学习linux的文件权限"];
-  C --> D["学习通过2种方法新建虚拟机"];
-  C --> E["学习linux基础命令"];
-  E --> F["过[23年国赛题](linux.md)"];
-  C --> F["过[23年国赛题](linux.md)"];
-```
+
 > [!NOTE]
 > 掌握做题的方法,试着自己解决各种报错,可以使用`systemctl status 服务名`
 > 或者`journalctl -u 服务名 --no-pager -n 50` 看服务报错  
