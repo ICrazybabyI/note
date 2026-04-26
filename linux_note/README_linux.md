@@ -1,4 +1,4 @@
-学习过程:  
+# 学习过程:  
 ```mermaid
 graph LR;
   A["了解linux的作用"] --> B["理解linux的工作逻辑"];
