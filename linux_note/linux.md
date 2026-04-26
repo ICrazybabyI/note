@@ -65,7 +65,7 @@ linux1-6:
 ## linux1:
 [root@linux1 ~]#`vi /etc/chrony.conf`
 
-```plain
+```bash
 # Use public servers from the pool.ntp.org project.
 # Please consider joining the pool (https://www.pool.ntp.org/join.html).
 #pool 2.rocky.pool.ntp.org iburst			#注释掉
@@ -127,9 +127,9 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
 
 
 
-vi /etc/ssh/sshd_config
+`vi /etc/ssh/sshd_config`
 
-```ssh
+```bash
 42 PermitRootLogin yes
 45 PubkeyAuthentication yes
 #允许公钥登录
@@ -146,14 +146,14 @@ vi /etc/ssh/sshd_config
 ``dnf install bind -y``  
 ``vi /etc/named.conf``
 
-```plain
+```c
 11         listen-on port 53 { any; };
 19         allow-query     { any; };
 ```
 
 ``vi /etc/named.rfc1912.zones``
 
-```plain
+```c
  17 zone "skills.lan" IN {
  18         type master;
  19         file "named.localhost";
@@ -170,7 +170,7 @@ vi /etc/ssh/sshd_config
 cd /var/named/  
 ``vi dns.sh``
 
-```plain
+```bash
  for i in {1..9}
   do
 echo "linux$i A 192.168.31.23$i" >> named.localhost 
