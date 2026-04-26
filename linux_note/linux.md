@@ -137,8 +137,6 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
 #允许密码登录
 ```
 
-
-<a name="123">123</a>
 ## （4）利用bind，配置linux1为主DNS服务器，linux2为备用DNS服务器。为所有linux主机提供冗余DNS正反向解析服务。
 ``--53/tcp/udp``
 
