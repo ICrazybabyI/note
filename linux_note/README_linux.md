@@ -14,9 +14,10 @@
 使用cockpit创建虚拟机教程: [cockpit创建虚拟机](images/bandicam%202026-04-20%2021-42-21-893.mp4)  
 > [!IMPORTANT]
 > 打好基础后,跟着[linux](linux.md)这篇教程做赛题熟悉做题流程  
+学习过程:
 ```mermaid
 graph TD;
-  a --> 
+  a --> b;
 ```
 > [!NOTE]
 > 掌握做题的方法,试着自己解决各种报错,可以使用`systemctl status 服务名`
