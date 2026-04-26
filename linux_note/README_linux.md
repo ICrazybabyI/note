@@ -3,12 +3,12 @@
 graph TD;
   A["了解linux的作用"] --> B["理解linux的工作逻辑"];
   B --> C["学习linux的文件权限"];
-  C --> D["学习通过2种方法新建虚拟机"];
+  C --> D["学习2种方法新建虚拟机"];
   C --> E["学习linux基础命令"];
   E --> F["过23年国赛题[^1]"];
   C --> F["过23年国赛题"];
 ```
-
+[^1]:[23年国赛](linux.md)
 首次学习linux,推荐先阅读[菜鸟教程](https://www.runoob.com/linux/linux-tutorial.html),了解linux的作用 用法 为什么要用linux的原因.  
 然后看一看[linux的目录结构](https://www.runoob.com/linux/linux-system-contents.html)linux是由哪几个结构组成的,明白linux一切皆文件的道理,  
 最后看[文件权限](https://www.runoob.com/linux/linux-file-attr-permission.html)和[目录相关](https://www.runoob.com/linux/linux-file-content-manage.html)的.  
