@@ -19,4 +19,4 @@ cockpit使用教程:
 ### 关于服务的笔记:
 [做题准备](linux.md#做题准备)             --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/%E5%81%9A%E9%A2%98%E5%87%86%E5%A4%87.mp4?ref_type=heads)    
 [chrony服务](linux.md#2利用chrony配置linux1为其他linux主机提供ntp服务)       
-[ssh服务](linux.md#所有linux主机之间包含本主机root用户实现密钥ssh认证禁用密码认证) 
+[ssh服务](linux.md#3所有linux主机之间包含本主机root用户实现密钥ssh认证禁用密码认证) 
