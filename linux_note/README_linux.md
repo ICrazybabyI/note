@@ -15,7 +15,7 @@ graph TD;
 例:  
 <img src="images/Pasted%20image%2020260420210613.png" width="500">  
 
-> [!NOTE]
+> [!TIP]
 > 问了之后要在虚拟机里做实验加深记忆.  
 
 提到虚拟机,这里可以使用cockpit自带的[web虚拟机控制台](https://192.168.31.245:9090);   
