@@ -14,7 +14,9 @@
 使用cockpit创建虚拟机教程: [cockpit创建虚拟机](images/bandicam%202026-04-20%2021-42-21-893.mp4)  
 > [!IMPORTANT]
 > 打好基础后,跟着[linux](linux.md)这篇教程做赛题熟悉做题流程  
+```mermaid
 
+```
 > [!NOTE]
 > 掌握做题的方法,试着自己解决各种报错,可以使用`systemctl status 服务名`
 > 或者`journalctl -u 服务名 --no-pager -n 50` 看服务报错  
@@ -25,6 +27,3 @@
 [NTP服务](linux.md#2利用chrony配置linux1为其他linux主机提供ntp服务)       
 [ssh服务](linux.md#3所有linux主机之间包含本主机root用户实现密钥ssh认证禁用密码认证)   
 [DNS服务](linux.md#4利用bind配置linux1为主dns服务器linux2为备用dns服务器为所有linux主机提供冗余dns正反向解析服务)  
-```mermaid
-  info
-```
