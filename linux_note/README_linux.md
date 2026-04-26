@@ -14,6 +14,7 @@ cockpit使用教程:
 [cockpit创建虚拟机](images/bandicam%202026-04-20%2021-42-21-893.mp4)  
 > [!IMPORTANT]
 > 打好基础后,跟着[linux](linux.md)这篇教程做赛题熟悉做题流程  
+
 > [!NOTE]
 > 掌握做题的方法,试着自己解决各种报错,可以使用`systemctl status 服务名`
 > 或者`journalctl -u 服务名 --no-pager -n 50` 看服务报错 ,实在不行就贴报错给ai看  
