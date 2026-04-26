@@ -15,7 +15,8 @@
 > [!IMPORTANT]
 > 打好基础后,跟着[linux](linux.md)这篇教程做赛题熟悉做题流程  
 ```mermaid
-
+graph TD;
+  a --> 
 ```
 > [!NOTE]
 > 掌握做题的方法,试着自己解决各种报错,可以使用`systemctl status 服务名`
