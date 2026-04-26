@@ -1,4 +1,3 @@
-<a name="123">123</a>
 首次学习linux,推荐先阅读[菜鸟教程](https://www.runoob.com/linux/linux-tutorial.html),了解linux的作用 用法 为什么要用linux的原因.  
 然后看一看[linux的目录结构](https://www.runoob.com/linux/linux-system-contents.html)linux是由哪几个文件夹组成的,和linux一切皆文件的道理,  
 最后看[文件权限](https://www.runoob.com/linux/linux-file-attr-permission.html)和[目录相关](https://www.runoob.com/linux/linux-file-content-manage.html)的.  
@@ -22,5 +21,3 @@ cockpit使用教程:
 [NTP服务](linux.md#2利用chrony配置linux1为其他linux主机提供ntp服务)       
 [ssh服务](linux.md#3所有linux主机之间包含本主机root用户实现密钥ssh认证禁用密码认证)   
 [DNS服务](linux.md#4利用bind配置linux1为主dns服务器linux2为备用dns服务器为所有linux主机提供冗余dns正反向解析服务)  
-
-[123](linux.md#123)
