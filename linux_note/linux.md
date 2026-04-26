@@ -179,14 +179,14 @@ echo "23$i PTR linux$i.skills.lan" >> named.loopback
 ``dnf install bind -y``  
 ``vi /etc/named.conf``
 
-```plain
+```shell
 11         listen-on port 53 { any; };
 19         allow-query     { any; };
 ```
 
 ``vi /etc/named.rfc1912.zones`
 
-`rndc retransfer skills.lan`  #重新同步指针
+`rndc retransfer skills.lan` 
 
 `systemctl restart named && systemctl enable named`
 
