@@ -1,4 +1,3 @@
-
 | **云主机** | **环境名称** |    **IPv4地址**     |    **完全合格域名**     |
 | :-----: | :------: | :---------------: | :---------------: |
 | linux1  |  linux1  | 192.168.31.221/24 | linux1.skills.lan |
@@ -53,6 +52,9 @@ linux1-6:
 `mkdir /mnt/1`  
 `mount Rocky-9.2-x86_64-dvd.iso /mnt/1/`  
 `dnf install bash* vim -y`
+> [!NOTE]  
+> --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/%E5%81%9A%E9%A2%98%E5%87%86%E5%A4%87.mp4?ref_type=heads)  
+
 ## 2.dns服务
 ## （1）所有linux主机启用防火墙，防火墙区域为public，在防火墙中放行对应服务端口。
 ## **默认开启，只需在做服务时放行其端口**
