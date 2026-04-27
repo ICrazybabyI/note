@@ -41,7 +41,7 @@ graph LR;
 
 [SSH服务](linux.md#3所有linux主机之间包含本主机root用户实现密钥ssh认证禁用密码认证) --[视频]()  
 [DNS服务](linux.md#4利用bind配置linux1为主dns服务器linux2为备用dns服务器为所有linux主机提供冗余dns正反向解析服务) --[视频]()   
-[CA服务](linux.md#做法二)
+[CA服务](linux.md#做法二) --
 
 
 [^1]:比赛中的ip会自动获取,要把ip转化成主机名给dns解析
