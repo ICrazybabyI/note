@@ -182,7 +182,7 @@ linux4 A        192.168.31.224
 linux5 A        192.168.31.225
 linux6 A        192.168.31.226
 ```
-`vi named.31`
+`vi named.31`  
 ```bash
 $TTL 1D
 @       IN SOA  @ rname.invalid. (
@@ -202,15 +202,15 @@ $TTL 1D
 226     PTR     linux6.skills.lan.
 ```
 ## 从服务器：  
-`dnf install bind -y`  
-`vi /etc/named.conf`  
+`dnf install bind -y`   
+`vi /etc/named.conf`   
 
 ```shell
 11         listen-on port 53 { any; };
 19         allow-query     { any; };
 ```
 
-`vi /etc/named.rfc1912.zones`  
+`vi /etc/named.rfc1912.zones`    
 ```bash
  17 zone "skills.lan" IN {
  18         type slave;
@@ -224,13 +224,11 @@ $TTL 1D
  38         masters { 192.168.31.221; };
  39 };
 ```
-`systemctl restart named && systemctl enable named`  
-
+`systemctl enable named --now`    
 
 
 ## （5）配置linux1为CA服务器,为linux主机颁发证书。证书颁发机构有效期10年，公用名为linux1.skills.lan。申请并颁发一张供linux服务器使用的证书，证书信息：有效期=5年，公用名=skills.lan，国家=CN，省=Beijing，城市=Beijing，组织=skills，组织单位=system，使用者可选名称=*.skills.lan和skills.lan。将证书skills.crt和私钥skills.key复制到需要证书的linux服务器/etc/ssl目录。浏览器访问https网站时，不出现证书警告信息。
 ## 做法一：
-
 
 `dnf install openssl* -y`  
 `cd /etc/pki/CA`  
