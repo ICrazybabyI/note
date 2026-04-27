@@ -108,12 +108,8 @@ local stratum 10										#取消注释
 3	 server 192.168.31.231 iburst
 ```
 
-#### 编写脚本chrony.sh
-```bash
-for i in {3..9}
-do
-  scp /etc/chrony.conf 192.168.31.23$i:/etc/
-done
+#### 发送chrony.conf到其余主机
+`for i  in {3..9};do scp /etc/chrony.conf 192.168.31.23$i:/etc/ ;done`  
 ```
 
 ---
