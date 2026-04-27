@@ -113,6 +113,9 @@ local stratum 10										#取消注释
 #### 发送chrony.conf到其余主机
 `for i  in {3..9};do scp /etc/chrony.conf 192.168.31.23$i:/etc/ ;done`  
 
+> [!NOTE]
+> [视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/chrony%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)
+
 ---
 
 ## （3）所有linux主机之间（包含本主机）root用户实现密钥ssh认证，禁用密码认证。  
