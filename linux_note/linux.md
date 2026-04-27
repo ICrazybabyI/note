@@ -126,11 +126,7 @@ ssh-keygen
 ssh-copy-id **.**.**.**9              #密钥全部发送给一台主机，这台主机也要发给自己
 scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
 ```
-
-
-
-`vi /etc/ssh/sshd_config`
-
+`vi /etc/ssh/sshd_config`    
 ```bash
 42 PermitRootLogin yes
 45 PubkeyAuthentication yes
@@ -139,18 +135,17 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
 #允许密码登录
 ```
 
-## （4）利用bind，配置linux1为主DNS服务器，linux2为备用DNS服务器。为所有linux主机提供冗余DNS正反向解析服务。
-``--53/tcp/udp``
-## 主服务器：
-``dnf install bind -y``  
-``vi /etc/named.conf``
-
+## （4）利用bind，配置linux1为主DNS服务器，linux2为备用DNS服务器。为所有linux主机提供冗余DNS正反向解析服务。  
+``--53/tcp/udp``  
+## 主服务器： 
+`dnf install bind -y`  
+`vi /etc/named.conf`  
 ```c
 11         listen-on port 53 { any; };
 19         allow-query     { any; };
 ```
 
-``vi /etc/named.rfc1912.zones``
+`vi /etc/named.rfc1912.zones`
 
 ```c
  17 zone "skills.lan" IN {
@@ -166,31 +161,70 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
  27 };
 ```
 
-cd /var/named/  
-``vi dns.sh``
-
+`cd /var/named/`   
+`cp -p named.localhost named.skills`  
+`cp -p named.loopback named.31`  
+`vi named.skills`  
 ```bash
- for i in {1..9}
-  do
-echo "linux$i A 192.168.31.23$i" >> named.localhost 
-echo "23$i PTR linux$i.skills.lan" >> named.loopback
-  done
+$TTL 1D
+@       IN SOA  @ rname.invalid. (
+                                        0       ; serial
+                                        1D      ; refresh
+                                        1H      ; retry
+                                        1W      ; expire
+                                        3H )    ; minimum
+        NS      @
+        A       127.0.0.1
+linux1 A        192.168.31.221
+linux2 A        192.168.31.222
+linux3 A        192.168.31.223
+linux4 A        192.168.31.224
+linux5 A        192.168.31.225
+linux6 A        192.168.31.226
 ```
-
-## 从服务器：
-``dnf install bind -y``  
-``vi /etc/named.conf``
+`vi named.31`
+```bash
+$TTL 1D
+@       IN SOA  @ rname.invalid. (
+                                        0       ; serial
+                                        1D      ; refresh
+                                        1H      ; retry
+                                        1W      ; expire
+                                        3H )    ; minimum
+        NS      @
+        A       127.0.0.1
+        PTR     localhost.
+221     PTR     linux1.skills.lan.
+222     PTR     linux2.skills.lan.
+223     PTR     linux3.skills.lan.
+224     PTR     linux4.skills.lan.
+225     PTR     linux5.skills.lan.
+226     PTR     linux6.skills.lan.
+```
+## 从服务器：  
+`dnf install bind -y`  
+`vi /etc/named.conf`  
 
 ```shell
 11         listen-on port 53 { any; };
 19         allow-query     { any; };
 ```
 
-``vi /etc/named.rfc1912.zones`
-
-`rndc retransfer skills.lan` 
-
-`systemctl restart named && systemctl enable named`
+`vi /etc/named.rfc1912.zones`  
+```bash
+ 17 zone "skills.lan" IN {
+ 18         type slave;
+ 19         file "slaves/named.skills";
+ 20         masters { 192.168.31.221; };
+ 21 };
+ 
+ 35 zone "31.168.192.in-addr.arpa" IN {
+ 36         type slave;
+ 37         file "slaves/named.31";
+ 38         masters { 192.168.31.221; };
+ 39 };
+```
+`systemctl restart named && systemctl enable named`  
 
 
 
