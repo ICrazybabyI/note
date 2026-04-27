@@ -58,8 +58,9 @@ linux1-6:
 ---
 
 ## 2.dns服务
-## （1）所有linux主机启用防火墙，防火墙区域为public，在防火墙中放行对应服务端口。
-## **默认开启，只需在做服务时放行其端口**
+## （1）所有linux主机启用防火墙，防火墙区域为public，在防火墙中放行对应服务端口。  
+
+## <u>**默认开启，只需在做服务时放行其端口**</u>
 
 ## （2）利用chrony，配置linux1为其他linux主机提供NTP服务。  
 `--123/tcp/udp`	
@@ -101,11 +102,10 @@ allow 192.168.31.0/24								#写所在的网段
 local stratum 10										#取消注释
 ```
 
-[root@ls1 ~]#`systemctl restart chronyd`重启服务,应用配置
+[root@ls1 ~]#`systemctl restart chronyd` //重启服务,应用配置
 
-## linux2-9:
-**vi /etc/chrony.conf**
-
+## linux2-9:  
+`vi /etc/chrony.conf`  
 ```bash
 3	 server 192.168.31.231 iburst
 ```
@@ -138,7 +138,7 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
 ## （4）利用bind，配置linux1为主DNS服务器，linux2为备用DNS服务器。为所有linux主机提供冗余DNS正反向解析服务。  
 ``--53/tcp/udp``  
 ## 主服务器： 
-`dnf install bind -y`  
+`dnf install bind* -y`  
 `vi /etc/named.conf`  
 ```c
 11         listen-on port 53 { any; };
@@ -202,7 +202,7 @@ $TTL 1D
 226     PTR     linux6.skills.lan.
 ```
 ## 从服务器：  
-`dnf install bind -y`   
+`dnf install bind* -y`   
 `vi /etc/named.conf`   
 
 ```shell
