@@ -1,28 +1,6 @@
 # 学习过程:  
 ```mermaid
-graph TB 
-subgraph 阶段1：前期准备 
-A["了解linux的作用"] --> B["理解linux的工作逻辑"] 
-B --> C["学习linux的文件权限"] 
-end 
-
-subgraph 阶段2：可选前置 
-C --> D["学习2种方法新建虚拟机"] 
-C -.->|基础差,刚接触linux| 
-E["学习linux基础命令"] 
-end 
-
-subgraph 阶段3：刷题入门 
-E --> F["过23年国赛题(linux.md)"] 
-C -.->|可以在做题中学习| F 
-D -.->|新建虚拟机可不学先| F 
-D -.->|新建虚拟机可不学先| E 
-end 
-
-subgraph 阶段4：进阶练习 
-F --> G["做26省赛linux原题"] 
-G --> H["拓展题量与熟悉做题"] 
-end
+graph TB subgraph 阶段1：前期准备 A["了解linux的作用"] --> B["理解linux的工作逻辑"] B --> C["学习linux的文件权限"] end subgraph 阶段2：可选前置 C --> D["学习2种方法新建虚拟机"] C -.->|基础差,刚接触linux| E["学习linux基础命令"] end subgraph 阶段3：刷题入门 E --> F["过23年国赛题(linux.md)"] C -.->|可以在做题中学习| F D -.->|新建虚拟机可不学先| F D -.->|新建虚拟机可不学先| E end subgraph 阶段4：进阶练习 F --> G["做26省赛linux原题"] G --> H["拓展题量与熟悉做题"] end
 ```
 首次学习linux,推荐先阅读[菜鸟教程](https://www.runoob.com/linux/linux-tutorial.html),了解linux的作用 用法 要用linux的原因.  
 然后看一看[linux的目录结构](https://www.runoob.com/linux/linux-system-contents.html)linux是由哪几个结构组成的,明白linux一切皆文件的道理,  
