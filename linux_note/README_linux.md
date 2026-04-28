@@ -1,26 +1,26 @@
 # 学习过程:  
 ```mermaid
 graph TB
-    subgraph 阶段1-前期准备
-        A["了解linux的作用"] --> B["理解linux的工作逻辑"]
-        B --> C["学习linux的文件权限"]
+    subgraph 阶段1-环境与基础
+        A["了解Linux在运维中的作用"] --> B["理解Linux系统架构与工作逻辑"]
+        B --> C["掌握文件权限与用户组管理"]
+        C --> Env["搭建实验环境：安装虚拟机/WSL"]
     end
 
-    subgraph 阶段2-可选前置
-        C -->|新建虚拟机可不学先| D["学习2种方法新建虚拟机"] 
-        C -.->|基础差,刚接触linux| E["学习linux基础命令"]
+    subgraph 阶段2-核心命令训练
+        Env --> E["熟练使用Linux基础命令<br/>（ls/cd/grep/find/ps/systemctl等）"]
+        E --> P["完成基础运维小任务<br/>（用户创建、服务启停、日志分析等）"]
     end
 
-    subgraph 阶段3-刷题入门
-        E --> F["过23年国赛题(linux.md)"]
-        C -.->|可以在做题中学习| F
-        D --> F
-        D --> E
+    subgraph 阶段3-真题实战入门
+        P --> F["精做过23年国赛Linux真题<br/>（含linux.md解析）"]
+        C -.->|已有基础可跳过命令训练| F
+        Env -.->|直接使用现成环境| F
     end
 
-    subgraph 阶段4-进阶练习
-        F --> G["做26省赛linux原题"]
-        G --> H["拓展题量与熟悉做题"]
+    subgraph 阶段4-进阶强化
+        F --> G["攻克26年省赛Linux原题"]
+        G --> H["拓展题库 + 模拟实战 + 查漏补缺"]
     end
 ```
 首次学习linux,推荐先阅读[菜鸟教程](https://www.runoob.com/linux/linux-tutorial.html),了解linux的作用 用法 要用linux的原因.  
