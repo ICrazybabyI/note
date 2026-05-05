@@ -13,7 +13,7 @@ graph TB
     end
 
     subgraph 阶段3-真题实战入门
-        P --> F["精做过23年国赛Linux真题<br/>（含linux.md解析）"]
+        P --> F["做过23年国赛Linux真题<br/>（含linux.md解析）"]
         C -.->|已有基础可跳过命令训练| F
         Env -.->|直接使用现成环境| F
     end
