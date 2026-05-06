@@ -43,7 +43,7 @@ baseurl=file:///mnt/1/AppStream
 gpgcheck=0
 ```
 :wq      //退出保存  
-`cat /etc/yum.repos.d/1.repo`      //把输出的选中复制到linux2-6  
+`cat /etc/yum.repos.d/1.repo`      //把输出的结果选中后复制到linux2-6  
 linux2-6:  
 `vi /etc/yum.repos.d/1.repo`  
 ctrl + v  
