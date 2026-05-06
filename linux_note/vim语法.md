@@ -1,4 +1,4 @@
-> [!important]  
+> [!NOTE]  
 > [vim语法视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/vim%E4%BD%BF%E7%94%A8.mp4?ref_type=heads)  
 
 在**输入模式**下，可以使用_Esc_键返回命令模式。
