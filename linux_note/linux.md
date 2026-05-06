@@ -260,7 +260,7 @@ subjectAltName=DNS.1:*.skills.lan,DNS.2:skills.lan
 `vi openssl.cnf` ----正常模式下   冒号 + 行号   跳转  
 
 ```plain
-取消注释167 # req_extensions = v3_req # The extensions to add to a certificate request
+       167 req_extensions = v3_req (取消注释)
        213 basicConstraints= CA:TRUE
        236 subjectAltName=@alt_names
        239 basicConstraints = CA:TRUE
