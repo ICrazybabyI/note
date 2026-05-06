@@ -337,6 +337,7 @@ y
 
 y
 
+`cp skills.crt skills.key /etc/ssl/`
 
 
 ## 3.ansible服务  
