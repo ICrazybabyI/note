@@ -310,7 +310,7 @@ subjectAltName=DNS.1:*.skills.lan,DNS.2:skills.lan
 
 `openssl genrsa -out skills.key 2048`
 
-`openssl req -new -key skills.key -out skills.csr -config /etc/pki/tls/openssl.cnf -extensions v3_req`  
+`openssl req -new -key skills.key -out skills.csr`  
 依次输入：
 
 国家：`CN`
@@ -331,7 +331,7 @@ subjectAltName=DNS.1:*.skills.lan,DNS.2:skills.lan
 
 回车
 
-`openssl ca -in skills.csr -out skills.crt -cert ca.crt -keyfile ca.key -extensions v3_req -days 1825 -config /etc/pki/tls/openssl.cnf`
+`openssl ca -in skills.csr -out skills.crt -cert ca.crt -keyfile ca.key -extensions v3_req -days 1825 -config openssl.cnf`
 
 y
 
