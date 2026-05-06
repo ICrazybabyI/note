@@ -247,8 +247,6 @@ subjectAltName=DNS.1:*.skills.lan,DNS.2:skills.lan
 
 `openssl ca -in skills.csr -out skills.crt -days 1825 -extfile file.txt`
 
-
-
 ## 做法二：  
 `dnf install openssl* -y`
 
