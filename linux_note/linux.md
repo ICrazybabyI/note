@@ -249,7 +249,7 @@ subjectAltName=DNS.1:*.skills.lan,DNS.2:skills.lan
 
 
 
-## 做法二：
+## 做法二：  
 `dnf install openssl* -y`
 
 `cd /etc/pki/CA/`
