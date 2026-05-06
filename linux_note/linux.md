@@ -256,6 +256,19 @@ subjectAltName=DNS.1:*.skills.lan,DNS.2:skills.lan
 
 `echo 00 > serial`
 
+`cp ../tls/openssl.cnf .`   
+`vi openssl.cnf` ----正常模式下   冒号 + 行号   跳转  
+
+```plain
+取消注释167 # req_extensions = v3_req # The extensions to add to a certificate request
+       213 basicConstraints= CA:TRUE
+       236 subjectAltName=@alt_names
+       239 basicConstraints = CA:TRUE
+       242 [alt_names]
+       243 DNS.1=*.skills.lan
+       244 DNS.2=skills.lan
+```
+
 `openssl genrsa -out ca.key 2048`
 
 `openssl req -new -out ca.csr -key ca.key`
@@ -282,17 +295,6 @@ subjectAltName=DNS.1:*.skills.lan,DNS.2:skills.lan
 
 `openssl x509 -req -days 3650 -in ca.csr -signkey ca.key -out ca.crt`
 
-`vi /etc/pki/tls/openssl.cnf` ----正常模式下   冒号 + 行号   跳转
-
-```plain
-取消注释167 # req_extensions = v3_req # The extensions to add to a certificate request
-       213 basicConstraints= CA:TRUE
-       236 subjectAltName=@alt_names
-       239 basicConstraints = CA:TRUE
-       242 [alt_names]
-       243 DNS.1=*.skills.lan
-       244 DNS.2=skills.lan
-```
 
 <font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">index.txt 是 OpenSSL CA 的证书数据库文件，</font>**<font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">每颁发或吊销一个证书，都会在此文件中追加一条记录</font>**<font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">。</font>
 
