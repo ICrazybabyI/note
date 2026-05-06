@@ -296,14 +296,19 @@ subjectAltName=DNS.1:*.skills.lan,DNS.2:skills.lan
 `openssl x509 -req -days 3650 -in ca.csr -signkey ca.key -out ca.crt`
 
 
-<font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">index.txt 是 OpenSSL CA 的证书数据库文件，</font>**<font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">每颁发或吊销一个证书，都会在此文件中追加一条记录</font>**<font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">。</font>
+> [!note]
+> <font style="color:#FFF700">index.txt</font><font>是 OpenSSL CA 的证书数据库文件，</font>**<font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">每颁发或吊销一个证书，都会在此文件中追加一条记录</font>**<font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">。</font>  
+> <font style="color:#FFF700">signkey</font><font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">参数用于 </font>**<font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">直接指定私钥来签署证书请求（CSR）</font>
+> <font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);"> ，通常用于生成 </font>**<font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">自签名证书</font>
+> <font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">。</font>  
+> <font style="color:#FFF700">CA:TRUE</font><font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">：声明该证书为可信的证书颁发机构，允许其签发下级证书或吊销列表（CRL）</font><font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">。</font>  
+> <font style="color:#FFF700">CA:FALSE</font>
+> <font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">：限制证书仅作为终端实体（如Web服务器、客户端设备），禁止签发其他证书。</font>  
+> <font style="color:#FFF700">subjectAltName=@alt_names</font><font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);"> 是一个用于定义 </font>
+> <font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">主题备用名称（Subject Alternative Name, SAcatN）</font><font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);"> 的关键指令，它允许证书支持多个域名或 IP 地址，是现代化证书的必备扩展。</font>  
+> <font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">使用CA的证书和私钥签署服务器CSR</font>
 
-<font style="background-color:#FBDE28;">signkey</font><font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">参数用于 </font>**<font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">直接指定私钥来签署证书请求（CSR）</font>**<font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);"> ，通常用于生成 </font>**<font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">自签名证书</font>**<font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">。</font>
-
-+ `**<font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">CA:TRUE</font>**`<font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">：声明该证书为可信的证书颁发机构，允许其签发下级证书或吊销列表（CRL）</font><font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">。</font>
-+ `**<font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">CA:FALSE</font>**`<font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">：限制证书仅作为终端实体（如Web服务器、客户端设备），禁止签发其他证书。</font>
-+ `**<font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">subjectAltName=@alt_names</font>**`<font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);"> 是一个用于定义 </font>**<font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">主题备用名称（Subject Alternative Name, SAcatN）</font>**<font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);"> 的关键指令，它允许证书支持多个域名或 IP 地址，是现代化证书的必备扩展。</font>
-+ <font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">使用CA的证书和私钥签署服务器CSR</font>
+ 
 
 `openssl genrsa -out skills.key 2048`
 
