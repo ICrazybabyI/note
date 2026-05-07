@@ -11,7 +11,7 @@
 `nmtui`  
 ![222](images/Pasted%20image%2020260424111527.png)回车选择第一项  
 ![](images/Pasted%20image%2020260424111552.png)回车选择网卡编辑  
-![406](images/Pasted%20image%2020260424111758.png)配置完成后用pagedown快速去到OK回车保存    
+![406](images/Pasted%20image%2020260424111758.png)配置完成后用pagedown快速下降OK回车保存    
 
 esc退出到主菜单  
 ![](images/Pasted%20image%2020260424111921.png)选择第二项  
