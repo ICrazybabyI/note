@@ -5,6 +5,8 @@
 > `git commit -m "信息"` //将暂存区的提交到本地仓库  
 > `git commit push 定义的仓库名 分支` //将本地的仓库推送到远端仓库  
 
+> 第一次使用git看这个 -->[模拟使用git项目](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/%E6%A8%A1%E6%8B%9F%E4%BD%BF%E7%94%A8git%E9%A1%B9%E7%9B%AE.mp4?ref_type=heads)  
+> 学习日常使用git   ----->>[git使用](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/git%E4%BD%BF%E7%94%A8.mp4?ref_type=heads)
 
 ## Git 与 SVN 区别
 
@@ -38,7 +40,7 @@ Git 与 SVN 区别点：
 
 下面这个图展示了工作区、版本库中的暂存区和版本库之间的关系：
 
-![](https://www.runoob.com/wp-content/uploads/2015/02/1352126739_7909.jpg)
+![](Pasted%20image%2020260508150641.png)
 
 - 图中左侧为工作区，右侧为版本库。在版本库中标记为 "index" 的区域是暂存区（stage/index），标记为 "master" 的是 master 分支所代表的目录树。
     
