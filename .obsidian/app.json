@@ -1,5 +1,5 @@
 {
-  "promptDelete": false,
+  "promptDelete": true,
   "attachmentFolderPath": "./images/",
   "useMarkdownLinks": true,
   "readableLineLength": true,
@@ -8,5 +8,6 @@
   "vimMode": true,
   "smartIndentList": false,
   "useTab": false,
-  "strictLineBreaks": true
+  "strictLineBreaks": true,
+  "alwaysUpdateLinks": false
 }
