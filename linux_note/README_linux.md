@@ -57,7 +57,7 @@ graph TB
 [SSH服务](linux.md#3所有linux主机之间包含本主机root用户实现密钥ssh认证禁用密码认证) --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/SSH%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)_先做**DNS**服务,做的过程中生成公钥_  
 [DNS服务](linux.md#4利用bind配置linux1为主dns服务器linux2为备用dns服务器为所有linux主机提供冗余dns正反向解析服务) --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/DNS%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)   <-- (I first!!!)  
 [CA服务](linux.md#做法二) --[视频]()  
-
+[ddd](linux.md#ddd)
 
 --- 
 > [!拓展知识]

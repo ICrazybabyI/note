@@ -56,7 +56,7 @@ linux1-6:
 > --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/%E5%81%9A%E9%A2%98%E5%87%86%E5%A4%87.mp4?ref_type=heads)  
 
 ---
-
+<a id="ddd"></a>
 ## 2.dns服务
 
 ## （1）所有linux主机启用防火墙，防火墙区域为public，在防火墙中放行对应服务端口。  
