@@ -343,8 +343,9 @@ y
 
 y
 
-`cp skills.crt skills.key /etc/ssl/`
-    
+`cp skills.crt skills.key /etc/ssl/`  
+> [!NOTE]
+> [CA视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/CA%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)
 
 ## 3.ansible服务  
 任务描述：请采用ansible，实现自动化运维。  
