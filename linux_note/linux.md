@@ -344,7 +344,7 @@ y
 y
 
 `cp skills.crt skills.key /etc/ssl/`
-
+    
 
 ## 3.ansible服务  
 任务描述：请采用ansible，实现自动化运维。  
@@ -360,7 +360,8 @@ vi /etc/ansible/hosts
 
 ansible -m ping all 
 
-``有可能会遇到本地语言问题 ，需要再下载en语言包``  
+//有可能会遇到本地语言问题 ，需要再下载en语言包//  
+
 dnf install glibc-langpack-en -y  
 localectl set-locale LANG="en_US.UTF-8"
 
@@ -372,7 +373,7 @@ localectl set-locale LANG="en_US.UTF-8"
 ## --{80,443}/tcp
 `dnf install httpd* mod_ssl -y`  
 ``cd /etc/httpd/conf.d/``  
-``cp ssl.conf 1.conf``    --择善而从，不用背的多
+``cp ssl.conf 1.conf``    //择善而从，不用背的多
 
 `vim 1.conf`
 
@@ -416,7 +417,7 @@ deny from all
 
 
 
-`systemctl enable httpd --now`  		#开机自启动httpd服务,现在就启动
+`systemctl enable httpd --now`  		//开机自启动httpd服务,现在就启动
 
 
 
