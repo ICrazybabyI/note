@@ -110,18 +110,18 @@ git commit -m "Commit message"
 **3、版本库 -> 远程仓库**
 
 使用 git push 命令将本地版本库的提交推送到远程仓库。
-
+```bash
 git push origin branch-name
-
+```
 **4、远程仓库 -> 本地版本库**
 
 使用 git pull 或 git fetch 命令从远程仓库获取更新。
-
+```bash
 git pull origin branch-name
 # 或者
 git fetch origin branch-name
 git merge origin/branch-name
-
+```
 ### 实例
 
 假设你在工作目录中修改了 file.txt：
@@ -133,19 +133,19 @@ git merge origin/branch-name
 **2、暂存区**
 
 将修改添加到暂存区：
-
+```bash
 git add file.txt
-
+```
 **3、版本库**
 
 将暂存区的修改提交到本地版本库：
-
+```bash
 git commit -m "Update file.txt"
-
+```
 **4、远程仓库**
 
 将本地提交推送到远程仓库：
-
+```bash
 git push origin main
-
+```
 通过理解工作区、暂存区和版本库的作用及其相互关系，你可以更加高效地使用 Git 进行版本控制和协同开发。
