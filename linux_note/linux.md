@@ -53,7 +53,7 @@ linux1-6:
 `mount Rocky-9.2-x86_64-dvd.iso /mnt/1/`  
 `dnf install bash* vim -y`
 > [!NOTE]  
-> --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/%E5%81%9A%E9%A2%98%E5%87%86%E5%A4%87.mp4?ref_type=heads)  
+> --[做题准备视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/%E5%81%9A%E9%A2%98%E5%87%86%E5%A4%87.mp4?ref_type=heads)  
 
 ---
 
@@ -115,7 +115,7 @@ local stratum 10										#取消注释
 `for i  in {3..9};do scp /etc/chrony.conf 192.168.31.23$i:/etc/ ;done`  
 
 > [!NOTE]
-> --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/chrony%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
+> --[chrony视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/chrony%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
 
 ---
 
