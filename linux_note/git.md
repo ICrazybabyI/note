@@ -5,7 +5,7 @@
 > `git commit -m "信息"` //将暂存区的提交到本地仓库  
 > `git commit push 定义的仓库名 分支` //将本地的仓库推送到远端仓库  
 
-> 第一次使用git看这个 -->[模拟使用git项目](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/%E6%A8%A1%E6%8B%9F%E4%BD%BF%E7%94%A8git%E9%A1%B9%E7%9B%AE.mp4?ref_type=heads)  
+> 第一次使用git看这个 -->[模拟参加git项目](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/%E6%A8%A1%E6%8B%9F%E4%BD%BF%E7%94%A8git%E9%A1%B9%E7%9B%AE.mp4?ref_type=heads)  
 > 学习日常使用git   ----->>[git使用](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/git%E4%BD%BF%E7%94%A8.mp4?ref_type=heads)
 
 ## Git 与 SVN 区别
@@ -74,12 +74,12 @@ Git 与 SVN 区别点：
 
 暂存区是一个临时存储区域，它包含了即将被提交到版本库中的文件快照，在提交之前，你可以选择性地将工作区中的修改添加到暂存区。
 
-**特点：**
+** 特点：**
 
 - 暂存区保存了将被包括在下一个提交中的更改。
 - 你可以多次使用 `git add` 命令来将文件添加到暂存区，直到你准备好提交所有更改。
 
-**常用命令：**  
+** 常用命令：**  
 ```bash
 git add filename       # 将单个文件添加到暂存区
 git add .              # 将工作区中的所有修改添加到暂存区
