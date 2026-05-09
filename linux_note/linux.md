@@ -51,8 +51,7 @@ ctrl + v
 linux1-6:  
 `mkdir /mnt/1`  
 `mount Rocky-9.2-x86_64-dvd.iso /mnt/1/`  
-`dnf install bash* vim -y`
-> [!NOTE]  
+`dnf install bash* vim -y`  
 > --[做题准备视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/%E5%81%9A%E9%A2%98%E5%87%86%E5%A4%87.mp4?ref_type=heads)  
 
 ---
@@ -114,7 +113,6 @@ local stratum 10										#取消注释
 #### 发送chrony.conf到其余主机
 `for i  in {3..9};do scp /etc/chrony.conf 192.168.31.23$i:/etc/ ;done`  
 
-> [!NOTE]
 > --[chrony视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/chrony%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
 
 ---
@@ -136,101 +134,99 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
 #允许密码登录
 ```
 
-> [!NOTE]
-> [SSH视频]([http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/DNS%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/chrony%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads))  
-
-## （4）利用bind，配置linux1为主DNS服务器，linux2为备用DNS服务器。为所有linux主机提供冗余DNS正反向解析服务。  
-``--53/tcp/udp``  
-## 主服务器： 
-`dnf install bind* -y`  
-`vi /etc/named.conf`  
-```c
-11         listen-on port 53 { any; };
-19         allow-query     { any; };
-```
-
-`vi /etc/named.rfc1912.zones`
-
-```c
- 17 zone "skills.lan" IN {
- 18         type master;
- 19         file "named.localhost";
- 20         allow-update { 192.168.31.232; };
- 21 };
- 22 
- 23 zone "31.168.192.in-addr.arpa" IN {
- 24         type master;
- 25         file "named.loopback";
- 26         allow-update { 192.168.31.232; };
- 27 };
-```
-
-`cd /var/named/`   
-`cp -p named.localhost named.skills`  
-`cp -p named.loopback named.31`  
-`vi named.skills`  
-```bash
-$TTL 1D
-@       IN SOA  @ rname.invalid. (
-                                        0       ; serial
-                                        1D      ; refresh
-                                        1H      ; retry
-                                        1W      ; expire
-                                        3H )    ; minimum
-        NS      @
-        A       127.0.0.1
-linux1 A        192.168.31.221
-linux2 A        192.168.31.222
-linux3 A        192.168.31.223
-linux4 A        192.168.31.224
-linux5 A        192.168.31.225
-linux6 A        192.168.31.226
-```
-`vi named.31`  
-```bash
-$TTL 1D
-@       IN SOA  @ rname.invalid. (
-                                        0       ; serial
-                                        1D      ; refresh
-                                        1H      ; retry
-                                        1W      ; expire
-                                        3H )    ; minimum
-        NS      @
-        A       127.0.0.1
-        PTR     localhost.
-221     PTR     linux1.skills.lan.
-222     PTR     linux2.skills.lan.
-223     PTR     linux3.skills.lan.
-224     PTR     linux4.skills.lan.
-225     PTR     linux5.skills.lan.
-226     PTR     linux6.skills.lan.
-```
-## 从服务器：  
-`dnf install bind* -y`   
-`vi /etc/named.conf`   
-
-```shell
-11         listen-on port 53 { any; };
-19         allow-query     { any; };
-```
-
-`vi /etc/named.rfc1912.zones`    
-```bash
- 17 zone "skills.lan" IN {
- 18         type slave;
- 19         file "slaves/named.skills";
- 20         masters { 192.168.31.221; };
- 21 };
- 
- 35 zone "31.168.192.in-addr.arpa" IN {
- 36         type slave;
- 37         file "slaves/named.31";
- 38         masters { 192.168.31.221; };
- 39 };
-```
-`systemctl enable named --now`    
-
-> [!NOTE]
+    > [SSH视频]([http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/DNS%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/chrony%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads))  
+    
+    ## （4）利用bind，配置linux1为主DNS服务器，linux2为备用DNS服务器。为所有linux主机提供冗余DNS正反向解析服务。  
+    ``--53/tcp/udp``  
+    ## 主服务器： 
+    `dnf install bind* -y`  
+    `vi /etc/named.conf`  
+    ```c
+    11         listen-on port 53 { any; };
+    19         allow-query     { any; };
+    ```
+    
+    `vi /etc/named.rfc1912.zones`
+    
+    ```c
+     17 zone "skills.lan" IN {
+     18         type master;
+     19         file "named.localhost";
+     20         allow-update { 192.168.31.232; };
+     21 };
+     22 
+     23 zone "31.168.192.in-addr.arpa" IN {
+     24         type master;
+     25         file "named.loopback";
+     26         allow-update { 192.168.31.232; };
+     27 };
+    ```
+    
+    `cd /var/named/`   
+    `cp -p named.localhost named.skills`  
+    `cp -p named.loopback named.31`  
+    `vi named.skills`  
+    ```bash
+    $TTL 1D
+    @       IN SOA  @ rname.invalid. (
+                                            0       ; serial
+                                            1D      ; refresh
+                                            1H      ; retry
+                                            1W      ; expire
+                                            3H )    ; minimum
+            NS      @
+            A       127.0.0.1
+    linux1 A        192.168.31.221
+    linux2 A        192.168.31.222
+    linux3 A        192.168.31.223
+    linux4 A        192.168.31.224
+    linux5 A        192.168.31.225
+    linux6 A        192.168.31.226
+    ```
+    `vi named.31`  
+    ```bash
+    $TTL 1D
+    @       IN SOA  @ rname.invalid. (
+                                            0       ; serial
+                                            1D      ; refresh
+                                            1H      ; retry
+                                            1W      ; expire
+                                            3H )    ; minimum
+            NS      @
+            A       127.0.0.1
+            PTR     localhost.
+    221     PTR     linux1.skills.lan.
+    222     PTR     linux2.skills.lan.
+    223     PTR     linux3.skills.lan.
+    224     PTR     linux4.skills.lan.
+    225     PTR     linux5.skills.lan.
+    226     PTR     linux6.skills.lan.
+    ```
+    ## 从服务器：  
+    `dnf install bind* -y`   
+    `vi /etc/named.conf`   
+    
+    ```shell
+    11         listen-on port 53 { any; };
+    19         allow-query     { any; };
+    ```
+    
+    `vi /etc/named.rfc1912.zones`    
+    ```bash
+     17 zone "skills.lan" IN {
+     18         type slave;
+     19         file "slaves/named.skills";
+     20         masters { 192.168.31.221; };
+     21 };
+     
+     35 zone "31.168.192.in-addr.arpa" IN {
+     36         type slave;
+     37         file "slaves/named.31";
+     38         masters { 192.168.31.221; };
+     39 };
+    ```
+    `systemctl enable named --now`    
+    
 > [DNS视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/DNS%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)
 
 ## （5）配置linux1为CA服务器,为linux主机颁发证书。证书颁发机构有效期10年，公用名为linux1.skills.lan。申请并颁发一张供linux服务器使用的证书，证书信息：有效期=5年，公用名=skills.lan，国家=CN，省=Beijing，城市=Beijing，组织=skills，组织单位=system，使用者可选名称=*.skills.lan和skills.lan。将证书skills.crt和私钥skills.key复制到需要证书的linux服务器/etc/ssl目录。浏览器访问https网站时，不出现证书警告信息。
