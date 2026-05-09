@@ -9,5 +9,5 @@
   "smartIndentList": false,
   "useTab": false,
   "strictLineBreaks": true,
-  "alwaysUpdateLinks": false
+  "alwaysUpdateLinks": true
 }

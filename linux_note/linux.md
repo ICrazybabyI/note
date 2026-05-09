@@ -29,7 +29,7 @@ ssh: `ssh -p 22 root@192.168.31.221`
 linux1-6:  
 `rm -rf  /etc/yum.repos.d/*.repo`    //删除默认的网络源  
 linux1:  
-`vi /etc/yum.repos.d/1.repo`      //编写本地仓的配置 -- vim使用语法移步到[vim语法](vim语法.md)  
+`vi /etc/yum.repos.d/1.repo`      //编写本地仓的配置 -- vim使用语法移步到[vim](vim.md)  
 ```bash
 [1]
 name=1
