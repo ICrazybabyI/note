@@ -44,13 +44,21 @@ gpgcheck=0
 ```
 :wq      //退出保存  
 `cat /etc/yum.repos.d/1.repo`      //把输出的结果选中后复制到linux2-6  
+
 linux2-6:  
+
 `vi /etc/yum.repos.d/1.repo`  
+
 ctrl + v  
+
 :wq  
+
 linux1-6:  
+
 `mkdir /mnt/1`  
+
 `mount Rocky-9.2-x86_64-dvd.iso /mnt/1/`  
+
 `dnf install bash* vim -y`  
 > --[做题准备视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/%E5%81%9A%E9%A2%98%E5%87%86%E5%A4%87.mp4?ref_type=heads)  
 
@@ -139,7 +147,9 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
 ## （4）利用bind，配置linux1为主DNS服务器，linux2为备用DNS服务器。为所有linux主机提供冗余DNS正反向解析服务。 
    ``--53/tcp/udp``  
    ## 主服务器： 
+   
    `dnf install bind* -y`  
+   
    `vi /etc/named.conf`    
 
    ```c
