@@ -335,8 +335,8 @@ y
 ## 3.ansible服务  
 任务描述：请采用ansible，实现自动化运维。  
 （1）在linux1上安装ansible，作为ansible的控制节点。linux2-linux9作为ansible的受控节点。
-``dnf  install ansible* -y``  
-vi /etc/ansible/hosts
+`dnf  install ansible* -y`   
+`vi /etc/ansible/hosts`  
 
 ```plain
 #末尾加
@@ -344,7 +344,7 @@ vi /etc/ansible/hosts
 被控的ip
 ```
 
-ansible -m ping all 
+`ansible -m ping all`   
 
 //有可能会遇到本地语言问题 ，需要再下载en语言包//  
 
