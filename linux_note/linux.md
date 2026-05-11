@@ -615,15 +615,17 @@ usermod -aG dev user03
 ---
 
 ##   
-（2）配置linux3为samba服务器,建立共享目录/srv/sharesmb，共享名与目录名相同。manager组用户对sharesmb共享有读写权限，   dev组对sharesmb共享有只读权限；用户对自己新建的文件有完全权限，对其他用户的文件只有读权限，且不能删除别人的文件。在本机用smbclient命令测试。
-!!!
+（2）配置linux3为samba服务器,建立共享目录/srv/sharesmb，共享名与目录名相同。manager组用户对sharesmb共享有读写权限，   dev组对sharesmb共享有只读权限；用户对自己新建的文件有完全权限，对其他用户的文件只有读权限，且不能删除别人的文件。在本机用smbclient命令测试。  
 
-#### `<font style="color:#DF2A3F;">setsebool -P samba_enable_home_dirs on</font>`
-#### `<font style="color:#DF2A3F;">setsebool -P samba_export_all_rw on</font>`<font style="color:#DF2A3F;"> 	</font>
-!!!  
+ **`setsebool -P samba_enable_home_dirs on`**  
+ **`setsebool -P samba_export_all_rw on`**  
+ 
 `mkdir /srv/sharesmb`  
-`chmod 777 /srv/sharesmb`			//设置目录的u g o 均为777  
+
+`chmod 777 /srv/sharesmb`			//设置目录的u g o 均为777   
+
 `smbpasswd -a user00 – user03`	//新建user00到user03  
+
 `chmod o+t  /srv/sharesmb`		//再给o一个粘滞位
 
 `vi /etc/samba/smb.conf`
@@ -642,7 +644,7 @@ usermod -aG dev user03
 
 smbclient //10.93.123.33/sharesmb -U user00
 
-#随便put一个文件上去测试写入  
+//随便put一个文件上去测试写入  
 
 put .bash_history 			--失败
 
@@ -656,7 +658,7 @@ putting file .cshrc as \.cshrc (48.8 kb/s) (average 48.8 kb/s)
 
 exit
 
-#测试粘滞位有没有作用,登录别的用户删除刚put的文件
+//测试粘滞位有没有作用,登录别的用户删除刚put的文件
 
 smbclient //10.93.123.33/sharesmb -U user01
 
@@ -664,11 +666,6 @@ smb: \> rm .lesshst 		--起作用了
 
 NT_STATUS_ACCESS_DENIED deleting remote file \.lesshst
 
-
-
-  
-<!-- 这是一张图片，ocr 内容为： -->
-![](:storage\xc4u7inpfga54s4i.png)
 
 ---
 
