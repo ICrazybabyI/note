@@ -412,7 +412,7 @@ deny from all
 ## （2）把/etc/ssl/skills.crt证书文件和/etc/ssl/skills.key私钥文件转换成含有证书和私钥的/etc/ssl/skills.pfx文件；然后把/etc/ssl/skills.pfx转换为含有证书和私钥的/etc/ssl/skills.pem文件，再从/etc/ssl/skills.pem文件中提取证书和私钥分别到/etc/ssl/apache.crt和/etc/ssl/apache.key。
 cd  /etc/ssl/  
 `openssl pkcs12 -export -in skills.crt -inkey skills.key -out skills.pfx`  
-设置密码 Pass-1234     ``#后面要用``  
+设置密码 Pass-1234    # 后面要用  
 `openssl  pkcs12 -nodes  -in skills.pfx -out skills.pem`  
 无需密码  
 `openssl rsa -in skills.pem -out apache.key`  
@@ -427,12 +427,12 @@ cd  /etc/ssl/
 
 ## （2）把/etc/ssl/skills.crt证书文件和/etc/ssl/skills.key私钥文件转换成含有证书和私钥的/etc/ssl/skills.pfx文件；然后把/etc/ssl/skills.pfx转换为含有证书和私钥的/etc/ssl/skills.pem文件，再从/etc/ssl/skills.pem文件中提取证书和私钥分别到/etc/ssl/apache.crt和/etc/ssl/apache.key。
 cd  /etc/ssl/  
-``openssl pkcs12 -export -in skills.crt -inkey skills.key -out skills.pfx``  
-设置密码 Key-1122     ``#后面要用``  
-``openssl  pkcs12 -nodes  -in skills.pfx -out skills.pem``  
+`openssl pkcs12 -export -in skills.crt -inkey skills.key -out skills.pfx`  
+设置密码 Key-1122     # 后面要用  
+`openssl  pkcs12 -nodes  -in skills.pfx -out skills.pem`  
   
-``openssl rsa -in skills.pem -out apache.key``  
-``openssl x509 -in skills.pem -out apache.crt``
+`openssl rsa -in skills.pem -out apache.key`  
+`openssl x509 -in skills.pem -out apache.crt`
 
 ### 还需信任ca机构
 `cp /etc/ssl/skills.pem /etc/pki/ca-trust/source/anchors/`  
@@ -520,7 +520,7 @@ server {
 
 `setsebool -P httpd_can_network_connect on`
 
-``systemctl restart nginx && systemctl enable nginx``
+`systemctl restart nginx && systemctl enable nginx`
 
 ---
 
@@ -588,8 +588,9 @@ User=root									#改这里
 ## 6.samba服务  
 任务描述：请采用samba服务，实现资源共享。  
 （1）在linux3上创建user00-user19等20个用户；user00和user01添加到manager组，user02和user03添加到dev组。把用户user00-user03添加到samba用户。
-``--445/tcp,139/tcp``  
-``dnf install samba* -y``
+`--445/tcp,139/tcp`  
+
+`dnf install samba* -y`
 
 `vi user.sh`
 
@@ -672,15 +673,17 @@ NT_STATUS_ACCESS_DENIED deleting remote file \.lesshst
 ---
 
 ## （3）在linux4修改/etc/fstab,使用用户user00实现自动挂载linux3的sharesmb共享到/sharesmb。
-``dnf install samba-cl* cifs-utils-7.0-1.el9.x86_64 -y``  
-``vi /etc/fstab``
+
+`dnf install samba-cl* cifs-utils-7.0-1.el9.x86_64 -y`
+
+`vi /etc/fstab``
 
 ```plain
 //192.168.31.233/sharesmb /sharesmb cifs username=user00 ,password=Key-1122	0 0
 ```
 
-``systemctl daemon-reload``  
-``mount -a``
+`systemctl daemon-reload`
+`mount -a`
 
 ---
 
@@ -692,7 +695,7 @@ NT_STATUS_ACCESS_DENIED deleting remote file \.lesshst
 <u>linux2:</u>
 
 `dnf install krb5-* -y`		  
-``vi /etc/krb5.conf``
+`vi /etc/krb5.conf`
 
 ```plain
     default_realm = SKILLS.LAN
@@ -709,12 +712,12 @@ NT_STATUS_ACCESS_DENIED deleting remote file \.lesshst
  skills.lan = SKILLS.LAN
 ```
 
-`#删掉注释,把配置文件都改成自己的域,中间还有一段的，找仔细点,该大写的大写`  
-``scp /etc/krb5.conf linux3:/etc/``
+// 删掉注释,把配置文件都改成自己的域,中间还有一段的，找仔细点,该大写的大写
+`scp /etc/krb5.conf linux3:/etc/`
 
-``scp /etc/krb5.conf linux4:/etc/``
+`scp /etc/krb5.conf linux4:/etc/`
 
-``vi /var/kerberos/krb5kdc/kadm5.acl``
+`vi /var/kerberos/krb5kdc/kadm5.acl`
 
 ```plain
 */admin@SKILLS.LAN      *
@@ -729,15 +732,15 @@ SKILLS.LAN = {
      acl_file = /var/kerberos/krb5kdc/kadm5.acl
 ```
 
-``kdb5_util create -s`` #创建数据库并设置密码Key-1122
+`kdb5_util create -s`  //创建数据库并设置密码Key-1122
 
-#开机自启服务  
+//开机自启服务  
 `systemctl enable krb5kdc kadmin --now`  
-``kadmin.local``        #管理数据库  
-kadmin.local:``addprinc root/admin `` #输入密码 Key-1122  
-kadmin.local: ``addprinc -randkey	nfs/linux3.skills.lan`` #-randkey 随机创建密码  
-kadmin.local: ``addprinc -randkey	nfs/linux4.skills.lan``  
-kadmin.local: ``listprincs`` #列出创建的数据
+`kadmin.local`        //管理数据库  
+kadmin.local:addprinc `root/admin` //输入密码 Key-1122  
+kadmin.local: `addprinc -randkey	nfs/linux3.skills.lan` //-randkey 随机创建密码  
+kadmin.local: `addprinc -randkey	nfs/linux4.skills.lan`  
+kadmin.local: `listprincs` //列出创建的数据
 
 kadmin.local:  `exit`
 
@@ -748,16 +751,16 @@ kadmin.local:  `exit`
 
   
 `groupadd -g 222 xiao`  
-``useradd -u 222 -g 222 -d /home/xiaodir xiao``
+`useradd -u 222 -g 222 -d /home/xiaodir xiao`
 
 ---
 
 ## （3）配置linux3为nfs服务器，目录/srv/sharenfs的共享要求为：linux服务器所在网络用户有读写权限，所有用户映射为xiao，kdc加密方式为krb5p。
-``--{111,20048,2049}/tcp/udp``  
-    linux3:  
-``dnf install krb5-work* nfs-ut* -y``  
-``kadmin``  
-``ktadd nfs/linux3.skills.lan@SKILLS.LAN``
+`--{111,20048,2049}/tcp/udp`  
+ linux3:  
+`dnf install krb5-work* nfs-ut* -y`  
+`kadmin`  
+`ktadd nfs/linux3.skills.lan@SKILLS.LAN`
 
 `exit`
 
@@ -780,7 +783,7 @@ kadmin.local:  `exit`
 
 `kinit -kt /etc/krb5.keytab nfs/linux4.skills.lan@SKILLS.LAN`
 
-[root@linux4 sharenfs]# `kvno nfs/linux3.skills.lan@SKILLS.LAN` #测试是否打通<font style="background-color:rgba(255, 255, 255, 0);">Kerberos认证链路</font>
+[root@linux4 sharenfs]# `kvno nfs/linux3.skills.lan@SKILLS.LAN` //测试是否打通Kerberos认证链路
 
 nfs/linux3.skills.lan@SKILLS.LAN: kvno = 2
 
@@ -788,7 +791,7 @@ nfs/linux3.skills.lan@SKILLS.LAN: kvno = 2
 
 `vi /etc/auto.master`
 
-#添加
+//添加
 
 ```plain
 /-		/etc/auto.nfs
@@ -804,7 +807,7 @@ nfs/linux3.skills.lan@SKILLS.LAN: kvno = 2
 
 `df`
 
-mkdir test
+`mkdir test`
 
 ---
 
@@ -814,9 +817,9 @@ mkdir test
 ## （1）配置linux2为FTP服务器，安装vsftpd，新建本地用户test，本地用户登陆ftp后的目录为/var/ftp/pub，可以上传下载。
 [root@linux2 ~]# `yum install -y vsftpd libdb-utils ftp` 
 
-创建用户
-
+//创建用户
 [root@linux2 ~]# `useradd test`  
+
 [root@linux2 ~]# `passwd test`  
 Changing password for user test.  
 New password:   
@@ -827,12 +830,12 @@ passwd: all authentication tokens updated successfully.
 
 编辑配置文件
 
-[root@linux2 ~]#` vim /etc/vsftpd/vsftpd.conf` 
+[root@linux2 ~]# `vim /etc/vsftpd/vsftpd.conf` 
 
 追加以下内容
 
-`local_root=/var/ftp/pub`   	# 指定用户本地文件系统上的根目录  
-`allow_writeable_chroot=YES`	# 所有访问将被限制在该目录下，用 户将无法访问除该目录之外的任何内容。
+`local_root=/var/ftp/pub`   	// 指定用户本地文件系统上的根目录  
+`allow_writeable_chroot=YES`	// 所有访问将被限制在该目录下，用 户将无法访问除该目录之外的任何内容。
 
 ## （2）配置ftp虚拟用户认证模式，虚拟用户ftp1和ftp2映射为ftp，ftp1登录ftp后的目录为/var/ftp/vdir/ftp1，可以上传下载,禁止上传后缀名为.docx的文件；ftp2登录ftp后的目录为/var/ftp/vdir/ftp2，仅有下载权限。
 创建虚拟用户数据库文件
@@ -1158,16 +1161,15 @@ MariaDB [userdb]> `select * from studentinfo into outfile'/var/mariadb/userinfo.
 
 `setenforce 0`
 
-cronrab -e
+`cronrab -e`
 
 ```plain
 0 1 * * 6 mysqldump -u teacher -pKey-1122 studentdb > /var/mariadb/sdb_bak.sql
 ```
 
   
-<font style="color:#DF2A3F;">##这里不含create database的是这个,含create database的话</font>
-
-mysqldump -u teacher -pKey-1122 --databases studentdb > /var/mariadb/sdb_bak.sql
+//这里不含create database的是这个,含create database的话
+> mysqldump -u teacher -pKey-1122 --databases studentdb > /var/mariadb/sdb_bak.sql
 
 ---
 
