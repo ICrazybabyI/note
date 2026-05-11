@@ -622,9 +622,9 @@ usermod -aG dev user03
 #### `<font style="color:#DF2A3F;">setsebool -P samba_export_all_rw on</font>`<font style="color:#DF2A3F;"> 	</font>
 !!!  
 `mkdir /srv/sharesmb`  
-`chmod 777 /srv/sharesmb`			#设置目录的u g o 均为777  
-`smbpasswd -a user00 – user03`	#新建user00到user03  
-`chmod o+t  /srv/sharesmb`		#再给o一个粘滞位
+`chmod 777 /srv/sharesmb`			//设置目录的u g o 均为777  
+`smbpasswd -a user00 – user03`	//新建user00到user03  
+`chmod o+t  /srv/sharesmb`		//再给o一个粘滞位
 
 `vi /etc/samba/smb.conf`
 
