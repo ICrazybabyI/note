@@ -358,8 +358,8 @@ y
 （1）配置linux1为Apache2服务器，使用skills.lan或any.skills.lan（any代表任意网址前缀，用linux1.skills.lan和web.skills.lan测试）访问时，自动跳转到www.skills.lan。禁止使用IP地址访问，默认首页文档/var/www/html/index.html的内容为&quot;apache&quot;。
 ## --{80,443}/tcp
 `dnf install httpd* mod_ssl -y`  
-``cd /etc/httpd/conf.d/``  
-``cp ssl.conf 1.conf``    //择善而从，不用背的多
+`cd /etc/httpd/conf.d/`  
+`cp ssl.conf 1.conf`    //择善而从，不用背的多
 
 `vim 1.conf`
 
