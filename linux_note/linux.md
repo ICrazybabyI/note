@@ -140,7 +140,7 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
    ``--53/tcp/udp``  
    ## 主服务器： 
    `dnf install bind* -y`  
-   `vi /etc/named.conf`  
+   `vi /etc/named.conf`    
 
    ```c
    11         listen-on port 53 { any; };
@@ -164,9 +164,13 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
 ```
 
    `cd /var/named/`   
+   
    `cp -p named.localhost named.skills`   
+   
    `cp -p named.loopback named.31`   
+   
    `vi named.skills`    
+   
 ```bash
    $TTL 1D
    @       IN SOA  @ rname.invalid. (
@@ -184,7 +188,9 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
     linux5 A        192.168.31.225
     linux6 A        192.168.31.226
 ```
+
 `vi named.31`  
+
 ```bash
     $TTL 1D
     @       IN SOA  @ rname.invalid. (
@@ -206,13 +212,13 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
 
  ## 从服务器：  
  `dnf install bind* -y`   
+ 
  `vi /etc/named.conf`   
  
 ```shell
     11         listen-on port 53 { any; };
     19         allow-query     { any; };
-```
-    
+```  
  `vi /etc/named.rfc1912.zones`    
 ```bash
      17 zone "skills.lan" IN {
@@ -234,7 +240,9 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
 ## 做法一：
 
 `dnf install openssl* -y`  
+
 `cd /etc/pki/CA`  
+
 `vi file.txt`
 
 ```plain
@@ -242,6 +250,7 @@ subjectAltName=DNS.1:*.skills.lan,DNS.2:skills.lan
 ```
 
 `touch index.txt`  
+
 `echo 00 > serial`
 
 `openssl req -new -x509 -nodes -days 3650 -out cacert.pem -keyout private/cakey.pem -subj “/CN=linux1.skills.lan/C=CN/ST=Beijing/L=Beijing/O=skills/OU=system”`
@@ -252,10 +261,15 @@ subjectAltName=DNS.1:*.skills.lan,DNS.2:skills.lan
 
 ## 做法二：  
 `dnf install openssl* -y`  
+
 `cd /etc/pki/CA/`  
+
 `touch index.txt`  
+
 `echo 00 > serial`  
+
 `cp ../tls/openssl.cnf .`    
+
 `vi openssl.cnf` ----正常模式下   冒号 + 行号   跳转  
 ```plain
        167 req_extensions = v3_req (取消注释)
@@ -267,6 +281,7 @@ subjectAltName=DNS.1:*.skills.lan,DNS.2:skills.lan
        244 DNS.2=skills.lan
 ```
 `openssl genrsa -out ca.key 2048`   
+
 `openssl req -new -out ca.csr -key ca.key`  
 依次输入：  
 国家：`CN`  
