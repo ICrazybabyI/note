@@ -973,9 +973,9 @@ mysql>`create user xiao identified by 'Key-1122';`
 
 mysql>`grant all on *_.* _to xiao;`
 
-#查看是否创建成功  select user,host from mysql.user;
+//查看是否创建成功  select user,host from mysql.user;
 
-#删除用户  drop user 'username';
+//删除用户  drop user 'username';
 
 ## （2）创建数据库userdb；在库中创建表userinfo，表结构   b 如下：
 | ##### 字段名 | ##### 数据类型 | ##### 主键 | ##### 自增 |
@@ -989,18 +989,18 @@ mysql>`grant all on *_.* _to xiao;`
 
 mysql>`create database userdb;`
 
-#查看创建了的数据库 show databases;
+//查看创建了的数据库 show databases;
 
 mysql>`use userdb;`
 
 mysql>`create table userinfo(id int primary key auto_increment,name varchar(10),birthday datetime,sex varchar(5),password varchar(200));`
 
-#查看表结构，desc userinfo;
+//查看表结构，desc userinfo;
 
 ## （3）在表中插入2条记录，分别为(1,user1，1999-07-01，男)，(2,user2，1999-07-02，女)，password与name相同，password字段用password函数加密。
 mysql>`insert into userinfo values('1','user1','1999-07-01','男',MD5('user1')),('2','user2','1999-07-02','女',MD5('user2'));`
 
-#查看表记录 select * from userinfo;
+//查看表记录 select * from userinfo;
 
 ## （4）修改表userinfo的结构，在name字段后添加新字段height(数据类型为float)，更新user1和user2的height字段内容为1.61和1.62。
 `mysql> alter table userinfo add column height float after name;`
@@ -1009,9 +1009,9 @@ mysql>`insert into userinfo values('1','user1','1999-07-01','男',MD5('user1')),
 
 `update userinfo set height = 1.62 where name = 'user2';`
 
-#验证表结构 desc userinfo;
+//验证表结构 desc userinfo;
 
-#验证表记录 select * from userinfo;
+//验证表记录 select * from userinfo;
 
 ## （5）新建/var/mysqlbak/userinfo.txt文件，文件内容如下，然后将文件内容导入到userinfo表中，password字段用password函数加密。
 ##### 3,user3,1.63,1999-07-03,女,user3
@@ -1021,7 +1021,7 @@ mysql>`insert into userinfo values('1','user1','1999-07-01','男',MD5('user1')),
 ##### 7,user7,1.67,1999-07-07,女,user7
 ##### 8,user8,1.68,1999-07-08,男,user8
 ##### 9,user9,1.69,1999-07-09,女,user9
-#报错  ERROR 3948 (42000): Loading local data is disabled; this must be enabled on both the client and server sides
+//报错  ERROR 3948 (42000): Loading local data is disabled; this must be enabled on both the client and server sides
 
   `vi /etc/my.cnf`#添加字条
 
@@ -1051,9 +1051,9 @@ mysql>`select * from userinfo into outfile '/var/databak/mysql.sql' fields termi
 01 ** 5 mysqldump -u root -pKey-1122 --databases userdb > /var/mariadb/userdb.sql
 ```
 
-#这里要含创建数据的的命令是要加上 --databases的
+//这里要含创建数据的的命令是要加上 `--databases`的
 
-#验证是否有创建数据库的命令
+//验证是否有创建数据库的命令
 
 `cat /var/mysql/userdb.sql |grep "CREATE"`
 
@@ -1073,35 +1073,35 @@ MariaDB [(none)]> `create user teacher identified by 'Key-1122';`
 
 MariaDB [(none)]> `grant all on *_.* _to teacher;`
 
-#查看是否创建成功  select user,host from mysql.user;
+//查看是否创建成功  select user,host from mysql.user;
 
-#删除用户  drop user 'teacher';
+//删除用户  drop user 'teacher';
 
 ---
 
-##   
-(2).创建数据库studentdb;在库中创建表studentinfo，表结构如下  
-| ##### 字段名 | ##### 数据类型 | ##### 主键 | ##### 自增 | ##### 约束 |
+##   (2).创建数据库studentdb;在库中创建表studentinfo，表结构如下
+
+|  字段名 |  数据类型 |  主键 |  自增 |  约束 |
 | --- | --- | --- | --- | --- |
-| ##### sid | ##### int | ##### 是 | ##### 是 | ##### 非空 |
-| ##### sname | ##### varchar(10) | ##### 否 | ##### 否 | ##### 非空 |
-| ##### sheight | ##### float | ##### 否 | ##### 否 | #####  |
-| ##### sbirthday | ##### datetime | ##### 否 | ##### 否 | #####  |
-| ##### ssex | ##### varchar(5) | ##### 否 | ##### 否 | #####  |
-| ##### password | ##### varchar(200) | ##### 否 | ##### 否 | #####  |
+|  sid |  int |  是 |  是 |  非空 |
+|  sname |  varchar(10) |  否 | 否 |  非空 |
+|  sheight |  float |  否 |  否 |   |
+|  sbirthday |  datetime |  否 |  否 |   |
+|  ssex |  varchar(5) |  否 |  否 |   |
+|  password |  varchar(200) |  否 |  否 |   |
 
 
-MariaDB [(none)]>`create database studentdb;`	<font style="color:#DF2A3F;">##看存储数据库的数据是否有中文!!!,假如有中文</font>
+MariaDB [(none)]>`create database studentdb;`	//看存储数据库的数据是否有中文!!!,假如有中文
 
-#设置可以存储中文数据库的类型	<font style="color:#DF2A3F;background-color:#FBDE28;">create database studentdb character set utf8mb4; </font><font style="color:#DF2A3F;">    #这个也要记下来</font>
+//设置可以存储中文数据库的类型	`create database studentdb character set utf8mb4;` //这个也要记下来
 
-#查看创建了的数据库 show databases;
+//查看创建了的数据库 `show databases;`
 
 MariaDB [(none)]>`use studentdb;`
 
 MariaDB [(userdb)]>`create table studentinfo(sid int primary key auto_increment not null,sname varchar(10) not null,sheight float,sbirthday datetime,ssex varchar(5),password varchar(200));`
 
-#查看表结构，desc studentinfo;	
+//查看表结构，`desc studentinfo;`	
 
 ---
 
@@ -1115,7 +1115,7 @@ MariaDB [(userdb)]>`create table studentinfo(sid int primary key auto_increment 
 ##### 9,xmm,1.69,2000-07-09,F,xmm
 MariaDB [(userdb)]>`insert into studentinfo values ('1','xmy','1.65','2001-02-06'，'M',MD5('xmy')),('2','zhp','1.71','2001-10-21','M',MD5('zhp'));`
 
-#查看表记录 select * from studentinfo;
+//查看表记录 `select * from studentinfo;`
 
 MariaDB [(userdb)]> `exit`
 
