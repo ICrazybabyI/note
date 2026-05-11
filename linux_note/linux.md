@@ -228,8 +228,8 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
      39 };
 ```
 `systemctl enable named --now`     
-    
-> [DNS视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/DNS%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
+
+> --[DNS视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/DNS%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
 ## （5）配置linux1为CA服务器,为linux主机颁发证书。证书颁发机构有效期10年，公用名为linux1.skills.lan。申请并颁发一张供linux服务器使用的证书，证书信息：有效期=5年，公用名=skills.lan，国家=CN，省=Beijing，城市=Beijing，组织=skills，组织单位=system，使用者可选名称=*.skills.lan和skills.lan。将证书skills.crt和私钥skills.key复制到需要证书的linux服务器/etc/ssl目录。浏览器访问https网站时，不出现证书警告信息。
 ## 做法一：
 
