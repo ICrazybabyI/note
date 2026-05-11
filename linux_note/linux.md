@@ -136,55 +136,59 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
 
     > [SSH视频]([http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/DNS%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/chrony%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads))  
     
-    ## （4）利用bind，配置linux1为主DNS服务器，linux2为备用DNS服务器。为所有linux主机提供冗余DNS正反向解析服务。  
-    ``--53/tcp/udp``  
-    ## 主服务器： 
-    `dnf install bind* -y`  
-    `vi /etc/named.conf`  
-    ```c
-    11         listen-on port 53 { any; };
-    19         allow-query     { any; };
-    ```
-    
-    `vi /etc/named.rfc1912.zones`
-    
-    ```c
-     17 zone "skills.lan" IN {
-     18         type master;
-     19         file "named.localhost";
-     20         allow-update { 192.168.31.232; };
-     21 };
-     22 
-     23 zone "31.168.192.in-addr.arpa" IN {
-     24         type master;
-     25         file "named.loopback";
-     26         allow-update { 192.168.31.232; };
-     27 };
-    ```
-    
-    `cd /var/named/`   
-    `cp -p named.localhost named.skills`  
-    `cp -p named.loopback named.31`  
-    `vi named.skills`  
-    ```bash
-    $TTL 1D
-    @       IN SOA  @ rname.invalid. (
-                                            0       ; serial
-                                            1D      ; refresh
-                                            1H      ; retry
-                                            1W      ; expire
-                                            3H )    ; minimum
-            NS      @
-            A       127.0.0.1
+## （4）利用bind，配置linux1为主DNS服务器，linux2为备用DNS服务器。为所有linux主机提供冗余DNS正反向解析服务。 
+   ``--53/tcp/udp``  
+   ## 主服务器： 
+   `dnf install bind* -y`  
+   `vi /etc/named.conf`  
+
+   ```c
+   11         listen-on port 53 { any; };
+   19         allow-query     { any; };
+   ```
+   
+   `vi /etc/named.rfc1912.zones`
+   
+```c
+17 zone "skills.lan" IN {
+18         type master;
+19         file "named.localhost";
+20         allow-update { 192.168.31.232; };
+21 };
+22 
+23 zone "31.168.192.in-addr.arpa" IN {
+24         type master;
+25         file "named.loopback";
+26         allow-update { 192.168.31.232; };
+27 };
+```
+
+   `cd /var/named/`   
+   `cp -p named.localhost named.skills`  
+   `cp -p named.loopback named.31`  
+   `vi named.skills`   
+   
+```bash
+   $TTL 1D
+   @       IN SOA  @ rname.invalid. (
+                0       ; serial
+                1D      ; refresh
+                1H      ; retry
+                1W      ; expire
+                3H )    ; minimum
+           NS      @
+           A       127.0.0.1
     linux1 A        192.168.31.221
     linux2 A        192.168.31.222
     linux3 A        192.168.31.223
     linux4 A        192.168.31.224
     linux5 A        192.168.31.225
     linux6 A        192.168.31.226
-    ```
-    `vi named.31`  
-    ```bash
+```
+
+
+`vi named.31` 
+```bash
     $TTL 1D
     @       IN SOA  @ rname.invalid. (
                                             0       ; serial
@@ -201,18 +205,19 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
     224     PTR     linux4.skills.lan.
     225     PTR     linux5.skills.lan.
     226     PTR     linux6.skills.lan.
-    ```
-    ## 从服务器：  
-    `dnf install bind* -y`   
-    `vi /etc/named.conf`   
-    
-    ```shell
+```
+
+ ## 从服务器：  
+ `dnf install bind* -y`   
+ `vi /etc/named.conf`   
+ 
+```shell
     11         listen-on port 53 { any; };
     19         allow-query     { any; };
-    ```
+```
     
-    `vi /etc/named.rfc1912.zones`    
-    ```bash
+ `vi /etc/named.rfc1912.zones`    
+```bash
      17 zone "skills.lan" IN {
      18         type slave;
      19         file "slaves/named.skills";
@@ -224,8 +229,8 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
      37         file "slaves/named.31";
      38         masters { 192.168.31.221; };
      39 };
-    ```
-    `systemctl enable named --now`    
+```
+`systemctl enable named --now`    
     
 > [DNS视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/DNS%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)
 
