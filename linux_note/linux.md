@@ -305,14 +305,11 @@ subjectAltName=DNS.1:*.skills.lan,DNS.2:skills.lan
 回车  
 `openssl x509 -req -days 3650 -in ca.csr -signkey ca.key -out ca.crt`  
 > [!note]
-> <font style="color:#FFF700">`index.txt`</font><font>是 OpenSSL CA 的证书数据库文件，</font>**<font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">每颁发或吊销一个证书，都会在此文件中追加一条记录</font>**  
-> <font style="color:#FFF700">`signkey`</font><font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">参数用于 </font>**<font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">直接指定私钥来签署证书请求（CSR）</font>
-> <font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);"> ，通常用于生成 </font>**<font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">自签名证书</font>
-> <font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">。</font>  
-> <font style="color:#FFF700">`CA:TRUE`</font><font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">：声明该证书为可信的证书颁发机构，允许其签发下级证书或吊销列表（CRL）</font><font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">。</font>  
-> <font style="color:#FFF700">`subjectAltName=@alt_names`</font><font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);"> 是一个用于定义 </font>
-> <font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">主题备用名称（Subject Alternative Name, SAcatN）</font><font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);"> 的关键指令，它允许证书支持多个域名或 IP 地址，是现代化证书的必备扩展。</font>  
-> <font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">使用CA的证书和私钥签署服务器CSR</font>
+> `index.txt`是 OpenSSL CA 的证书数据库文件，**每颁发或吊销一个证书，都会在此文件中追加一条记录**  
+> `signkey`参数用于直接指定私钥来签署证书请求（CSR）通常用于生成 </font>**自签名证书
+> `CA:TRUE`：声明该证书为可信的证书颁发机构，允许其签发下级证书或吊销列表（CRL） 
+> `subjectAltName=@alt_names` 是一个用于定义主题备用名称（Subject Alternative Name, SAcatN）的关键指令，它允许证书支持多个域名或 IP 地址，是现代化证书的必备扩展。 
+> 使用CA的证书和私钥签署服务器CSR
 
 `openssl genrsa -out skills.key 2048`  
 
@@ -351,8 +348,8 @@ ansible -m ping all
 
 //有可能会遇到本地语言问题 ，需要再下载en语言包//  
 
-dnf install glibc-langpack-en -y  
-localectl set-locale LANG="en_US.UTF-8"
+`dnf install glibc-langpack-en -y`  
+`localectl set-locale LANG="en_US.UTF-8"`
 
 
 
