@@ -134,8 +134,8 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
 #允许密码登录
 ```
 
-    > [SSH视频]([http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/DNS%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/chrony%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads))  
-    
+> --[SSH视频]([http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/DNS%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/chrony%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads))  
+
 ## （4）利用bind，配置linux1为主DNS服务器，linux2为备用DNS服务器。为所有linux主机提供冗余DNS正反向解析服务。 
    ``--53/tcp/udp``  
    ## 主服务器： 
@@ -164,10 +164,9 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
 ```
 
    `cd /var/named/`   
-   `cp -p named.localhost named.skills`  
-   `cp -p named.loopback named.31`  
-   `vi named.skills`   
-   
+   `cp -p named.localhost named.skills`   
+   `cp -p named.loopback named.31`   
+   `vi named.skills`    
 ```bash
    $TTL 1D
    @       IN SOA  @ rname.invalid. (
@@ -185,9 +184,7 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
     linux5 A        192.168.31.225
     linux6 A        192.168.31.226
 ```
-
-
-`vi named.31` 
+`vi named.31`  
 ```bash
     $TTL 1D
     @       IN SOA  @ rname.invalid. (
@@ -230,10 +227,9 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
      38         masters { 192.168.31.221; };
      39 };
 ```
-`systemctl enable named --now`    
+`systemctl enable named --now`     
     
-> [DNS视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/DNS%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)
-
+> [DNS视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/DNS%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
 ## （5）配置linux1为CA服务器,为linux主机颁发证书。证书颁发机构有效期10年，公用名为linux1.skills.lan。申请并颁发一张供linux服务器使用的证书，证书信息：有效期=5年，公用名=skills.lan，国家=CN，省=Beijing，城市=Beijing，组织=skills，组织单位=system，使用者可选名称=*.skills.lan和skills.lan。将证书skills.crt和私钥skills.key复制到需要证书的linux服务器/etc/ssl目录。浏览器访问https网站时，不出现证书警告信息。
 ## 做法一：
 
@@ -255,17 +251,12 @@ subjectAltName=DNS.1:*.skills.lan,DNS.2:skills.lan
 `openssl ca -in skills.csr -out skills.crt -days 1825 -extfile file.txt`
 
 ## 做法二：  
-`dnf install openssl* -y`
-
-`cd /etc/pki/CA/`
-
-`touch index.txt`
-
-`echo 00 > serial`
-
-`cp ../tls/openssl.cnf .`   
+`dnf install openssl* -y`  
+`cd /etc/pki/CA/`  
+`touch index.txt`  
+`echo 00 > serial`  
+`cp ../tls/openssl.cnf .`    
 `vi openssl.cnf` ----正常模式下   冒号 + 行号   跳转  
-
 ```plain
        167 req_extensions = v3_req (取消注释)
        213 basicConstraints= CA:TRUE
@@ -275,34 +266,19 @@ subjectAltName=DNS.1:*.skills.lan,DNS.2:skills.lan
        243 DNS.1=*.skills.lan
        244 DNS.2=skills.lan
 ```
-
-`openssl genrsa -out ca.key 2048`
-
-`openssl req -new -out ca.csr -key ca.key`
-
-依次输入：
-
-国家：`CN`
-
-省份：`Beijing`
-
-城市：`Beijing`
-
-组织：`skills`
-
-组织单位：`system`
-
-主机名：`linux1.skills.lan`
-
-回车
-
-回车
-
-回车
-
-`openssl x509 -req -days 3650 -in ca.csr -signkey ca.key -out ca.crt`
-
-
+`openssl genrsa -out ca.key 2048`   
+`openssl req -new -out ca.csr -key ca.key`  
+依次输入：  
+国家：`CN`  
+省份：`Beijing`  
+城市：`Beijing`  
+组织：`skills`   
+组织单位：`system`  
+主机名：`linux1.skills.lan`  
+回车  
+回车  
+回车  
+`openssl x509 -req -days 3650 -in ca.csr -signkey ca.key -out ca.crt`  
 > [!note]
 > <font style="color:#FFF700">`index.txt`</font><font>是 OpenSSL CA 的证书数据库文件，</font>**<font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">每颁发或吊销一个证书，都会在此文件中追加一条记录</font>**  
 > <font style="color:#FFF700">`signkey`</font><font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">参数用于 </font>**<font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">直接指定私钥来签署证书请求（CSR）</font>
@@ -313,38 +289,24 @@ subjectAltName=DNS.1:*.skills.lan,DNS.2:skills.lan
 > <font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">主题备用名称（Subject Alternative Name, SAcatN）</font><font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);"> 的关键指令，它允许证书支持多个域名或 IP 地址，是现代化证书的必备扩展。</font>  
 > <font style="color:rgb(201, 209, 217);background-color:rgb(16, 24, 40);">使用CA的证书和私钥签署服务器CSR</font>
 
- 
+`openssl genrsa -out skills.key 2048`  
 
-`openssl genrsa -out skills.key 2048`
+`openssl req -new -key skills.key -out skills.csr`    
+依次输入：  
+国家：`CN`  
+省份：`Beijing`  
+城市：`Beijing`  
+组织：`skills`  
+组织单位：`system`  
+主机名：`skills.lan`  
+回车  
+回车  
+回车  
+`openssl ca -in skills.csr -out skills.crt -cert ca.crt -keyfile ca.key -extensions v3_req -days 1825 -config openssl.cnf`  
+y  
+y  
+`cp skills.crt skills.key /etc/ssl/`    
 
-`openssl req -new -key skills.key -out skills.csr`  
-依次输入：
-
-国家：`CN`
-
-省份：`Beijing`
-
-城市：`Beijing`
-
-组织：`skills`
-
-组织单位：`system`
-
-主机名：`skills.lan`
-
-回车
-
-回车
-
-回车
-
-`openssl ca -in skills.csr -out skills.crt -cert ca.crt -keyfile ca.key -extensions v3_req -days 1825 -config openssl.cnf`
-
-y
-
-y
-
-`cp skills.crt skills.key /etc/ssl/`  
 > [!NOTE]
 > [CA视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/CA%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)
 
