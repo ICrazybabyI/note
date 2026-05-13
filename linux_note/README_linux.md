@@ -1,29 +1,6 @@
-# 学习过程:  
-```mermaid
-graph TB
-    subgraph 阶段1-环境与基础
-        A["了解Linux在运维中的作用"] --> B["理解Linux系统架构与工作逻辑"]
-        B --> C["掌握文件权限与用户组管理"]
-        C --> Env["搭建实验环境：安装虚拟机/WSL"]
-    end
+> [! Tip]  
+> 首次阅读请浏览[学习过程表](#学习过程)清楚要学习的内容  
 
-    subgraph 阶段2-核心命令训练
-        Env --> E["熟练使用Linux基础命令<br/>（ls/cd/grep/find/ps/systemctl等）"]
-        E --> P["完成基础运维小任务<br/>（用户创建、服务启停、日志分析等）"]
-    end
-
-    subgraph 阶段3-真题实战入门
-        P --> F["做过23年国赛Linux真题<br/>（含linux.md解析）"]
-        C -.->|已有基础可跳过命令训练| F
-        Env -.->|直接使用现成环境| F
-    end
-
-    subgraph 阶段4-进阶强化
-        F --> G["攻克26年省赛Linux原题"]
-        G --> H["拓展题库 + 模拟实战 
-        + 查漏补缺"]
-    end
-```
 # 正式学习
 首次学习linux,推荐先阅读[菜鸟教程](https://www.runoob.com/linux/linux-tutorial.html),了解linux的作用 用法 要用linux的原因.  
 然后看一看[linux的目录结构](https://www.runoob.com/linux/linux-system-contents.html)linux是由哪几个结构组成的,明白linux一切皆文件的道理,  
@@ -58,8 +35,34 @@ graph TB
 [CA服务](linux.md#做法二) --[视频]()  
 
 --- 
-> [!拓展知识]  
+> [!NOTE]  
 > 如何使用[git](git.md)  
 > 如何使用[vim](vim.md)
+# 学习过程:  
+```mermaid
+graph TB
+    subgraph 阶段1-环境与基础
+        A["了解Linux在运维中的作用"] --> B["理解Linux系统架构与工作逻辑"]
+        B --> C["掌握文件权限与用户组管理"]
+        C --> Env["搭建实验环境：安装虚拟机/WSL"]
+    end
+
+    subgraph 阶段2-核心命令训练
+        Env --> E["熟练使用Linux基础命令<br/>（ls/cd/grep/find/ps/systemctl等）"]
+        E --> P["完成基础运维小任务<br/>（用户创建、服务启停、日志分析等）"]
+    end
+
+    subgraph 阶段3-真题实战入门
+        P --> F["做过23年国赛Linux真题<br/>（含linux.md解析）"]
+        C -.->|已有基础可跳过命令训练| F
+        Env -.->|直接使用现成环境| F
+    end
+
+    subgraph 阶段4-进阶强化
+        F --> G["攻克26年省赛Linux原题"]
+        G --> H["拓展题库 + 模拟实战 
+        + 查漏补缺"]
+    end
+```
 
 [^1]:比赛中的ip会自动获取,要把ip转化成主机名给dns解析
