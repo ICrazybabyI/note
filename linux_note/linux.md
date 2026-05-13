@@ -104,10 +104,10 @@ rtcsync
 #minsources 2
 
 # Allow NTP client access from local network.
-allow 192.168.31.0/24								#写所在的网段
+allow 192.168.31.0/24	#写所在的网段
 
 # Serve time even if not synchronized to a time source.
-local stratum 10										#取消注释
+local stratum 10		#取消注释
 ```
 
 [root@ls1 ~]#`systemctl restart chronyd` //重启服务,应用配置
