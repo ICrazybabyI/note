@@ -18,7 +18,7 @@
 使用cockpit创建虚拟机教程: [cockpit创建虚拟机](images/bandicam%202026-04-20%2021-42-21-893.mp4)  
 > [!important]
 > 打好基础后,跟着[linux](linux.md)这篇教程做赛题熟悉做题流程  
-
+![](linux_note/images/clipart214949%201.png)
 > [!TIP]
 > 掌握做题的方法,试着自己解决各种报错,可以使用`systemctl status 服务名`
 > 或者`journalctl -u 服务名 --no-pager -n 50`   
