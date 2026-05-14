@@ -8,5 +8,6 @@
   "vimMode": true,
   "smartIndentList": false,
   "useTab": false,
-  "strictLineBreaks": true
+  "strictLineBreaks": true,
+  "newLinkFormat": "absolute"
 }
