@@ -24,17 +24,18 @@
 > 或者`journalctl -u 服务名 --no-pager -n 50`   
 > 看服务报错 ,实在不行就贴报错给ai看  
 
-### 关于服务的笔记:
-> [!TIP]  
-> 视频最好下载下来看(视频都在内网的gitlab上,外网无法访问)    
+---
+### 服务的笔记:
 
 [做题准备](linux.md#做题准备)  --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/%E5%81%9A%E9%A2%98%E5%87%86%E5%A4%87.mp4?ref_type=heads)   
 [NTP服务](linux.md#2利用chrony配置linux1为其他linux主机提供ntp服务)  --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/chrony%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)_先做**DNS**服务和**SSH**服务再做该服务_ 1↩︎
 [SSH服务](linux.md#3所有linux主机之间包含本主机root用户实现密钥ssh认证禁用密码认证) --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/SSH%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)_先做**DNS**服务,做的过程中生成公钥_  
-[DNS服务](linux.md#4利用bind配置linux1为主dns服务器linux2为备用dns服务器为所有linux主机提供冗余dns正反向解析服务) --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/DNS%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)   <-- (first!!!)  
+[DNS服务](linux.md#4利用bind配置linux1为主dns服务器linux2为备用dns服务器为所有linux主机提供冗余dns正反向解析服务) --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/DNS%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)   <-- (The first!!!)  
 [CA服务](linux.md#做法二) --[视频]()  
 
 1: 比赛中的ip会自动获取,要把ip转化成主机名给dns解析
+> [!TIP]  
+> 视频最好下载下来看(视频都在内网的gitlab上,外网无法访问)    
 
 ---   
 > [!note]  
