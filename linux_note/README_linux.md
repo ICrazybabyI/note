@@ -7,7 +7,7 @@
 最后看[文件权限](https://www.runoob.com/linux/linux-file-attr-permission.html)和[目录相关](https://www.runoob.com/linux/linux-file-content-manage.html)的.  
 熟悉相关知识后,开始学习如何在linux中做各种操作,这里要边看边练,不懂的问ai直接贴个报错和问题  
 例:  
-<img src="images/Pasted%20image%2020260420210613.png" width="500">  
+<img src="images/Pasted%20image%2020260420210613.png" width="400">  
 
 > [!TIP]
 > 问了AI之后要在虚拟机里做实验加深记忆.  
