@@ -9,6 +9,6 @@
   "smartIndentList": false,
   "useTab": false,
   "strictLineBreaks": true,
-  "newLinkFormat": "absolute",
+  "newLinkFormat": "relative",
   "showUnsupportedFiles": true
 }
