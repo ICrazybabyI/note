@@ -16,7 +16,7 @@
 这里推荐使用戴尔服务器的[IDRC](https://192.168.31.246/)在里面使用kvm管理器  //新建虚拟机和编辑虚拟机的参数,因为这样可以更改更具体的配置    
 使用IDRC创建虚拟机教程: [KVM-manager创建虚拟机](images/bandicam%202026-04-20%2021-39-21-641.mp4)  
 使用cockpit创建虚拟机教程: [cockpit创建虚拟机](images/bandicam%202026-04-20%2021-42-21-893.mp4)  
-> [!important]
+> [!attention]
 > 打好基础后,跟着[linux](linux.md)这篇教程做赛题熟悉做题流程  
 
 > [!TIP]
@@ -37,7 +37,7 @@
 1: 比赛中的ip会自动获取,要把ip转化成主机名给dns解析
 
 ---   
-> [!e]  
+> [!note]  
 >    如何使用[git](git.md)  
 >    如何使用[vim](vim.md)
 # 学习过程:  
