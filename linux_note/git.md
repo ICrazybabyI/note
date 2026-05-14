@@ -5,7 +5,7 @@
 > `git commit -m "信息"` //将暂存区的提交到本地仓库  
 > `git commit push 定义的仓库名 分支` //将本地的仓库推送到远端仓库  
 
-> 第一次使用git看这个 -->[模拟参加git项目](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/%E6%A8%A1%E6%8B%9F%E4%BD%BF%E7%94%A8git%E9%A1%B9%E7%9B%AE.mp4?ref_type=heads)  //视频要拖动需要右下角下载  
+> 第一次使用git看这个 -->[模拟参加git项目](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/%E6%A8%A1%E6%8B%9F%E4%BD%BF%E7%94%A8git%E9%A1%B9%E7%9B%AE.mp4?ref_type=heads)  //右下角下载视频或使用火狐内核浏览器  
 > 学习日常使用git   ----->>[git使用](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/git%E4%BD%BF%E7%94%A8.mp4?ref_type=heads)
 
 ## Git 与 SVN 区别
