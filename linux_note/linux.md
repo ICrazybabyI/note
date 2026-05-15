@@ -1161,11 +1161,11 @@ MariaDB [(userdb)]> `exit`
 9,xmm,1.69,2000-07-09,F,xmm
 ```
 
-#报错  ERROR 3948 (42000): Loading local data is disabled; this must be enabled on both the client and server sides
+//报错  ERROR 3948 (42000): Loading local data is disabled; this must be enabled on both the client and server sides
 
   `SET GLOBAL local_infile = ON;`
 
-`setenforce 0`		#先关掉sel策略导出完再开
+`setenforce 0`		//先关掉sel策略导出完再开
 
 `mysql`
 
