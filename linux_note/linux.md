@@ -5,9 +5,9 @@
 > [DNS服务](linux.md#dns服务) --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/DNS%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)   <-- (The first!!!)  
 > [CA服务](linux.md#ca服务) --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/CA%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)
 
-
 ---
 
+# 做题准备:
 
 | **云主机** | **环境名称** |    **IPv4地址**     |    **完全合格域名**     |
 | :-----: | :------: | :---------------: | :---------------: |
@@ -17,7 +17,7 @@
 | linux4  |  linux4  | 192.168.31.224/24 | linux4.skills.lan |
 | linux5  |  linux5  | 192.168.31.225/24 | linux5.skills.lan |
 | linux6  |  linux6  | 192.168.31.226/24 | linux6.skills.lan |
-## 做题准备:
+
 先配置ip  
 `nmtui`  
 ![222](images/Pasted%20image%2020260424111527.png)回车选择第一项  
@@ -142,6 +142,7 @@ local stratum 10		#取消注释
 
 ---
 # ssh服务
+[top](#导航)
 ## （3）所有linux主机之间（包含本主机）root用户实现密钥ssh认证，禁用密码认证。  
 
 ### linux1-9生成并发送ssh密钥：
