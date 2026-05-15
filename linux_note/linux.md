@@ -86,7 +86,7 @@ linux1-6:
 #### <u style="color=:#FFFF00;">**默认开启，只需在做服务时放行其端口**</u>
 
 # ntp服务
-[top](#导航)
+[⬆️top⬆️](#导航)
 ## （2）利用chrony，配置linux1为其他linux主机提供NTP服务。  
 `--123/tcp/udp`	
 
@@ -142,7 +142,7 @@ local stratum 10		#取消注释
 
 ---
 # ssh服务
-[top](#导航)
+[⬆️top⬆️](#导航)
 ## （3）所有linux主机之间（包含本主机）root用户实现密钥ssh认证，禁用密码认证。  
 
 ### linux1-9生成并发送ssh密钥：
@@ -164,6 +164,7 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
 
 ---
 # dns服务
+[⬆️top⬆️](#导航)
 ## （4）利用bind，配置linux1为主DNS服务器，linux2为备用DNS服务器。为所有linux主机提供冗余DNS正反向解析服务。 
    ``--53/tcp/udp``  
    ## 主服务器： 
@@ -270,6 +271,7 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
 ---
 
 # ca服务
+[⬆️top⬆️](#导航)
 ## （5）配置linux1为CA服务器,为linux主机颁发证书。证书颁发机构有效期10年，公用名为linux1.skills.lan。申请并颁发一张供linux服务器使用的证书，证书信息：有效期=5年，公用名=skills.lan，国家=CN，省=Beijing，城市=Beijing，组织=skills，组织单位=system，使用者可选名称=*.skills.lan和skills.lan。将证书skills.crt和私钥skills.key复制到需要证书的linux服务器/etc/ssl目录。浏览器访问https网站时，不出现证书警告信息。
 
 ## 做法一：
