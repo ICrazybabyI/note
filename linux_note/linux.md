@@ -74,6 +74,7 @@ linux1-6:
 
 #### <u style="color=:#FFFF00;">**默认开启，只需在做服务时放行其端口**</u>
 
+# ntp服务
 ## （2）利用chrony，配置linux1为其他linux主机提供NTP服务。  
 `--123/tcp/udp`	
 
@@ -128,7 +129,7 @@ local stratum 10		#取消注释
 > --[chrony视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/chrony%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
 
 ---
-
+# ssh服务
 ## （3）所有linux主机之间（包含本主机）root用户实现密钥ssh认证，禁用密码认证。  
 
 ### linux1-9生成并发送ssh密钥：
@@ -148,6 +149,8 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
 
 > --[SSH视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/DNS%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)
 
+---
+# dns服务
 ## （4）利用bind，配置linux1为主DNS服务器，linux2为备用DNS服务器。为所有linux主机提供冗余DNS正反向解析服务。 
    ``--53/tcp/udp``  
    ## 主服务器： 
