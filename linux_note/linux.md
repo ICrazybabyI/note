@@ -5,6 +5,10 @@
 > [DNS服务](linux.md#dns服务) --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/DNS%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)   <-- (The first!!!)  
 > [CA服务](linux.md#ca服务) --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/CA%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)
 
+
+---
+
+
 | **云主机** | **环境名称** |    **IPv4地址**     |    **完全合格域名**     |
 | :-----: | :------: | :---------------: | :---------------: |
 | linux1  |  linux1  | 192.168.31.221/24 | linux1.skills.lan |
