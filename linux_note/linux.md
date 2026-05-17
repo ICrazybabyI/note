@@ -359,7 +359,8 @@ y
 > [!NOTE]
 > [CA视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/CA%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)
 
-# ansible服务
+# ansible服务  
+[⬆️top⬆️](#导航)  
 ## 3.ansible服务  
 任务描述：请采用ansible，实现自动化运维。  
 （1）在linux1上安装ansible，作为ansible的控制节点。linux2-linux9作为ansible的受控节点。
@@ -379,8 +380,11 @@ y
 `dnf install glibc-langpack-en -y`  
 `localectl set-locale LANG="en_US.UTF-8"`
 
-# apache服务
+> [!note]  
+> [视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/ansible%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
 
+# apache服务  
+[⬆️top⬆️](#导航)  
 ## 4.apache2服务  
 任务描述：请采用Apache搭建企业网站。  
 （1）配置linux1为Apache2服务器，使用skills.lan或any.skills.lan（any代表任意网址前缀，用linux1.skills.lan和web.skills.lan测试）访问时，自动跳转到www.skills.lan 。禁止使用IP地址访问，默认首页文档/var/www/html/index.html的内容为&quot;apache&quot;。
@@ -456,7 +460,11 @@ cd  /etc/ssl/
 `curl --cert /etc/ssl/apache.crt --key /etc/ssl/apache.key https://web.skills.lan`  
 `curl --cert /etc/ssl/apache.crt --key /etc/ssl/apache.key http://web.skills.lan -L`
 
+> [!note]  
+> [视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/apache%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
 
+# tomcat服务  
+[⬆️top⬆️](#导航)  
 ## 5.tomcat服务  
 任务描述：采用Tomcat搭建动态网站。  
 （1）配置linux2为nginx服务器，默认文档index.html的内容为“hellonginx”；仅允许使用域名访问，http访问自动跳转到https。
