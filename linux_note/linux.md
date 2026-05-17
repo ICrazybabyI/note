@@ -355,7 +355,8 @@ subjectAltName=DNS.1:*.skills.lan,DNS.2:skills.lan
 y  
 y  
 `cp skills.crt skills.key /etc/ssl/`    
-
+`cp /etc/pki/CA/ca.crt /etc/pki/ca-trust/source/anchors/`  
+//添加自签名的CA服务器到信任区
 > [!NOTE]
 > [CA视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/CA%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)
 
@@ -429,7 +430,7 @@ deny from all
 </virtualhost>
 ```
 
-
+`echo "apache" > /var/www/html/index.html`
 
 `systemctl enable httpd --now`  		//开机自启动httpd服务,现在就启动
 
