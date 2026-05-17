@@ -3,8 +3,8 @@
 > [NTP服务](linux.md#ntp服务)  --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/chrony%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)_先做**DNS**服务和**SSH**服务再做该服务_ 1↩︎  
 > [SSH服务](linux.md#ssh服务) --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/SSH%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)_先做**DNS**服务,做的过程中生成公钥_    
 > [DNS服务](linux.md#dns服务) --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/DNS%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)   <-- (The first!!!) 
-> [CA服务](linux.md#ca服务) --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/CA%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)
-
+> [CA服务](linux.md#ca服务) --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/CA%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
+> [ansible](linux.md#ansible服务) --[视频]()  
 ---
 
 # 做题准备:
@@ -359,6 +359,7 @@ y
 > [!NOTE]
 > [CA视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/CA%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)
 
+# ansible服务
 ## 3.ansible服务  
 任务描述：请采用ansible，实现自动化运维。  
 （1）在linux1上安装ansible，作为ansible的控制节点。linux2-linux9作为ansible的受控节点。
@@ -378,7 +379,7 @@ y
 `dnf install glibc-langpack-en -y`  
 `localectl set-locale LANG="en_US.UTF-8"`
 
-
+# apache服务
 
 ## 4.apache2服务  
 任务描述：请采用Apache搭建企业网站。  
