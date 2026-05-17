@@ -290,7 +290,7 @@ subjectAltName=DNS.1:*.skills.lan,DNS.2:skills.lan
 
 `echo 00 > serial`
 
-`openssl req -new -x509 -nodes -days 3650 -out cacert.pem -keyout private/cakey.pem -subj “/CN=linux1.skills.lan/C=CN/ST=Beijing/L=Beijing/O=skills/OU=system”`
+`openssl req -new -x509 -nodes -days 3650 -out cacert.pem -keyout private/ca.crt -subj “/CN=linux1.skills.lan/C=CN/ST=Beijing/L=Beijing/O=skills/OU=system”`
 
 `openssl req -new -days 1825 -out skills.csr -keyout skills.key -subj“/CN=skills.lan/C=CN/ST=Beijing/L=Beijing/O=skills/OU=system”`
 
@@ -355,8 +355,7 @@ subjectAltName=DNS.1:*.skills.lan,DNS.2:skills.lan
 y  
 y  
 `cp skills.crt skills.key /etc/ssl/`    
-`cp /etc/pki/CA/ca.crt /etc/pki/ca-trust/source/anchors/`  
-//添加自签名的CA服务器到信任区
+
 > [!NOTE]
 > [CA视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/CA%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)
 
@@ -414,7 +413,7 @@ DocumentRoot "/var/www/html"
 SSLEngine on
 SSLCertificateFile /etc/ssl/skills.crt
 SSLCertificateKeyFile /etc/ssl/skills.key
-SSLCACertificateFile /etc/pki/CA/cacert.pem
+SSLCACertificateFile /etc/pki/CA/cacert.crt
 SSLVerifyClient require
 SSLVerifyDepth  10
 </VirtualHost>
@@ -447,29 +446,16 @@ cd  /etc/ssl/
 `openssl rsa -in skills.pem -out apache.key`  
 `openssl x509 -in skills.pem -out apache.crt`
 
+<u>**还需信任ca机构**</u>  
+
+`cp /etc/ssl/skills.pem /etc/pki/ca-trust/source/anchors/`  
+`update-ca-trust`
+
 ### 
 ## （3）客户端访问Apache服务时，必需有ssl证书。
 `curl --cert /etc/ssl/apache.crt --key /etc/ssl/apache.key https://web.skills.lan`  
 `curl --cert /etc/ssl/apache.crt --key /etc/ssl/apache.key http://web.skills.lan -L`
 
-
-
-## （2）把/etc/ssl/skills.crt证书文件和/etc/ssl/skills.key私钥文件转换成含有证书和私钥的/etc/ssl/skills.pfx文件；然后把/etc/ssl/skills.pfx转换为含有证书和私钥的/etc/ssl/skills.pem文件，再从/etc/ssl/skills.pem文件中提取证书和私钥分别到/etc/ssl/apache.crt和/etc/ssl/apache.key。
-cd  /etc/ssl/  
-`openssl pkcs12 -export -in skills.crt -inkey skills.key -out skills.pfx`  
-设置密码 Key-1122     # 后面要用  
-`openssl  pkcs12 -nodes  -in skills.pfx -out skills.pem`  
-  
-`openssl rsa -in skills.pem -out apache.key`  
-`openssl x509 -in skills.pem -out apache.crt`
-
-### 还需信任ca机构
-`cp /etc/ssl/skills.pem /etc/pki/ca-trust/source/anchors/`  
-`update-ca-trust`
-
-## （3）客户端访问Apache服务时，必需有ssl证书。
-`Curl -E /etc/ssl/skills.pem https://web.skills.lan`  
-`Curl -E /etc/ssl/skills.pem http://web.skills.lan -L`
 
 ## 5.tomcat服务  
 任务描述：采用Tomcat搭建动态网站。  
