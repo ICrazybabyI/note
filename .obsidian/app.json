@@ -7,10 +7,11 @@
   "showIndentGuide": true,
   "vimMode": true,
   "smartIndentList": false,
-  "useTab": false,
+  "useTab": true,
   "strictLineBreaks": true,
   "newLinkFormat": "relative",
   "showUnsupportedFiles": true,
   "rightToLeft": false,
-  "foldIndent": false
+  "foldIndent": false,
+  "foldHeading": true
 }
