@@ -579,8 +579,7 @@ SuccessExitStatus=143
 User=root									#改这里
 ```
 
-<!-- 这是一张图片，ocr 内容为： -->
-![](:storage\f7wg4917w6k73nmi.png)`vi /etc/tomcat/server.xml`
+`vi /etc/tomcat/server.xml`
 
 ```plain
  69     <Connector port="80" protocol="HTTP/1.1"
