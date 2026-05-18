@@ -562,9 +562,9 @@ server {
 
 输入源密码:Pass-1234  
 > [!tip]
-> keytool -importkeystore (密钥库) -srckeystore 源密钥的路径-destkeystore 导出的密钥路径 -deststoretype 指定的类型`
+> `keytool` `-importkeystore` (密钥库) `-srckeystore` 源密钥的路径`-destkeystore` 导出的密钥路径 `-deststoretype` 指定的类型
 
-`<font style="background-color:rgba(255, 255, 255, 0);">dnf install tomcat* -y</font>`
+`dnf install tomcat* -y`
 
 `vi /usr/lib/systemd/system/tomcat.service `
 
