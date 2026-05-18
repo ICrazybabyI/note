@@ -13,5 +13,6 @@
   "showUnsupportedFiles": true,
   "rightToLeft": false,
   "foldIndent": false,
-  "foldHeading": true
+  "foldHeading": true,
+  "showInlineTitle": true
 }
