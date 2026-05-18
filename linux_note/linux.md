@@ -495,7 +495,7 @@ cd  /etc/ssl/
  54         }
  55     }
  56 
-    server {														#添加两个拒绝未定义的server_name进行连接
+    server {			#添加两个拒绝未定义的server_name
     listen 80 default_server;
     return 403;
 }
