@@ -461,7 +461,6 @@ cd  /etc/ssl/
 `cp /etc/ssl/skills.pem /etc/pki/ca-trust/source/anchors/`  
 `update-ca-trust`
 
-### 
 ## （3）客户端访问Apache服务时，必需有ssl证书。
 `curl --cert /etc/ssl/apache.crt --key /etc/ssl/apache.key https://web.skills.lan`  
 `curl --cert /etc/ssl/apache.crt --key /etc/ssl/apache.key http://web.skills.lan -L`
@@ -551,7 +550,6 @@ server {
 
 `systemctl restart nginx && systemctl enable nginx`
 
----
 
 ## （3）配置linux3和linux4为tomcat服务器，网站默认首页内容分别为“tomcatA”和“tomcatB”，仅使用域名访问80端口http和443端口https；证书路径均为/etc/ssl/skills.jks。
 `keytool -importkeystore -srckeystore /etc/pki/tls/skills.pfx -destkeystore /etc/pki/tls/skills.jks -deststoretype JKS`
@@ -614,6 +612,8 @@ User=root									#改这里
 
 ---
 
+# samba服务
+[⬆️top⬆️](#导航)  
 ## 6.samba服务  
 任务描述：请采用samba服务，实现资源共享。  
 （1）在linux3上创建user00-user19等20个用户；user00和user01添加到manager组，user02和user03添加到dev组。把用户user00-user03添加到samba用户。
@@ -639,12 +639,10 @@ usermod -aG dev user03
 
 `sh user.sh`
 
-`smbpasswd -a user00到user03`    #全部设置一遍密码
+`smbpasswd -a user00到user03`    //全部设置一遍密码
 
----
 
-##   
-（2）配置linux3为samba服务器,建立共享目录/srv/sharesmb，共享名与目录名相同。manager组用户对sharesmb共享有读写权限，   dev组对sharesmb共享有只读权限；用户对自己新建的文件有完全权限，对其他用户的文件只有读权限，且不能删除别人的文件。在本机用smbclient命令测试。  
+## （2）配置linux3为samba服务器,建立共享目录/srv/sharesmb，共享名与目录名相同。manager组用户对sharesmb共享有读写权限，   dev组对sharesmb共享有只读权限；用户对自己新建的文件有完全权限，对其他用户的文件只有读权限，且不能删除别人的文件。在本机用smbclient命令测试。  
 
  **`setsebool -P samba_enable_home_dirs on`**  
  **`setsebool -P samba_export_all_rw on`**  
@@ -695,9 +693,6 @@ smb: \> rm .lesshst 		--起作用了
 
 NT_STATUS_ACCESS_DENIED deleting remote file \.lesshst
 
-
----
-
 ## （3）在linux4修改/etc/fstab,使用用户user00实现自动挂载linux3的sharesmb共享到/sharesmb。
 
 `dnf install samba-cl* cifs-utils-7.0-1.el9.x86_64 -y`
@@ -713,6 +708,8 @@ NT_STATUS_ACCESS_DENIED deleting remote file \.lesshst
 
 ---
 
+# nfs服务端
+[⬆️top⬆️](#导航)  
 ## 7.nfs服务  
 任务描述：请采用nfs，实现共享资源的安全访问。  
 （1）配置linux2为kdc服务器，负责linux3和linux4的验证。
@@ -739,17 +736,17 @@ NT_STATUS_ACCESS_DENIED deleting remote file \.lesshst
 ```
 
 // 删掉注释,把配置文件都改成自己的域,中间还有一段的，找仔细点,该大写的大写
-`scp /etc/krb5.conf linux3:/etc/`
+`scp /etc/krb5.conf linux3:/etc/`  
 
-`scp /etc/krb5.conf linux4:/etc/`
+`scp /etc/krb5.conf linux4:/etc/`  
 
-`vi /var/kerberos/krb5kdc/kadm5.acl`
+`vi /var/kerberos/krb5kdc/kadm5.acl`  
 
 ```plain
 */admin@SKILLS.LAN      *
 ```
 
-`vi /var/kerberos/krb5kdc/kdc.conf`
+`vi /var/kerberos/krb5kdc/kdc.conf`  
 
 ```plain
 [realms]
@@ -758,19 +755,18 @@ SKILLS.LAN = {
      acl_file = /var/kerberos/krb5kdc/kadm5.acl
 ```
 
-`kdb5_util create -s`  //创建数据库并设置密码Key-1122
+`kdb5_util create -s`  //创建数据库并设置密码Key-1122  
 
 //开机自启服务  
 `systemctl enable krb5kdc kadmin --now`  
 `kadmin.local`        //管理数据库  
 kadmin.local:addprinc `root/admin` //输入密码 Key-1122  
-kadmin.local: `addprinc -randkey	nfs/linux3.skills.lan` //-randkey 随机创建密码  
+kadmin.local: `addprinc -randkey	nfs/linux3.skills.lan` //-randkey 随机创建密码   
 kadmin.local: `addprinc -randkey	nfs/linux4.skills.lan`  
 kadmin.local: `listprincs` //列出创建的数据
 
 kadmin.local:  `exit`
 
----
 
 ## （2）在linux3上，创建用户，用户名为xiao，uid=222，gid=222，家目录为/home/xiaodir。
 
@@ -779,7 +775,6 @@ kadmin.local:  `exit`
 `groupadd -g 222 xiao`  
 `useradd -u 222 -g 222 -d /home/xiaodir xiao`
 
----
 
 ## （3）配置linux3为nfs服务器，目录/srv/sharenfs的共享要求为：linux服务器所在网络用户有读写权限，所有用户映射为xiao，kdc加密方式为krb5p。
 `--{111,20048,2049}/tcp/udp`  
@@ -802,6 +797,10 @@ kadmin.local:  `exit`
 
 `exportfs -arv`
 
+---
+
+# nfs客户端
+[⬆️top⬆️](#导航)  
 ## （4）配置linux4为nfs客户端，利用autofs按需挂载linux3上的/srv/sharenfs到/sharenfs目录，挂载成功后在该目录创建test目录。
 ``--{111,20048,2049}/tcp/udp``
 
@@ -815,9 +814,7 @@ nfs/linux3.skills.lan@SKILLS.LAN: kvno = 2
 
 `systemctl enable autofs <font style="background-color:rgba(255, 255, 255, 0.05);">rpc-gssd</font> --now`!!!
 
-`vi /etc/auto.master`
-
-//添加
+`vi /etc/auto.master` //添加
 
 ```plain
 /-		/etc/auto.nfs
@@ -837,6 +834,8 @@ nfs/linux3.skills.lan@SKILLS.LAN: kvno = 2
 
 ---
 
+# ftp服务
+[⬆️top⬆️](#导航)  
 ## 8.ftp服务
 ## 任务描述：请采用FTP服务器，实现文件安全传输。
 ## --21/tcp --20/tcp
@@ -982,11 +981,20 @@ drwx------    2 14    50            6 Mar 05 10:03 新文件夹
 226 Directory send OK.
 
 
+---
 
+# iscsi服务
+[⬆️top⬆️](#导航)  
 ### 9.iscsi服务
 ### 任务描述：请采用iscsi，搭建存储服务。
 ### （1）为linux8添加4块硬盘，每块硬盘大小为5G，创建lvm卷，卷组名为vg1，逻辑卷名为lv1，容量为全部空间，格式化为ext4格式。使用/dev/vg1/lv1配置为iSCSI目标服务器，为linux9提供iSCSI服务。iSCSI目标端的wwn为iqn.2023-08.lan.skills:server, iSCSI发起端的wwn为iqn.2023-08.lan.skills:client。
+
 ### （2）配置linux9为iSCSI客户端，实现discovery chap和session chap双向认证，Target认证用户名为IncomingUser，密码为IncomingPass；Initiator认证用户名为OutgoingUser，密码为OutgoingPass。修改/etc/rc.d/rc.local文件开机自动挂载iscsi硬盘到/iscsi目录。
+
+---
+
+# mysql服务  
+[⬆️top⬆️](#导航)  
 ### 10.mysql服务
 ### -- 3360/tcp
 ## 任务描述：请安装mysql服务，建立数据表。
@@ -1083,6 +1091,10 @@ mysql>`select * from userinfo into outfile '/var/databak/mysql.sql' fields termi
 
 `cat /var/mysql/userdb.sql |grep "CREATE"`
 
+---
+
+# mariadb服务  
+
 ## 11.mariadb  
 (1).配置rocky5为mariadb服务器，创建数据库用户teacher，在任意机器上对所有数据库有完全控制权限，允许从任意地方登录数据库。
 --3306/tcp
@@ -1103,7 +1115,6 @@ MariaDB [(none)]> `grant all on *_.* _to teacher;`
 
 //删除用户  drop user 'teacher';
 
----
 
 ##   (2).创建数据库studentdb;在库中创建表studentinfo，表结构如下
 
@@ -1129,16 +1140,15 @@ MariaDB [(userdb)]>`create table studentinfo(sid int primary key auto_increment 
 
 //查看表结构，`desc studentinfo;`	
 
----
 
 ## (3).在表中插入2条记录，分别为(1,xmy,1.65,2001-02-06，M)，(2,zhp,1.71.2001-10-21,M)，password字段与name字段相同，password字段用md5函数加密。新建/var/mariadb/studentinfo.txt文件，文件内容如下，然后将文件内容导入到studentinfo表中，password字段用md5函数加密。
-##### 3,yxt,1.63,2004-05-05,F,yxt
-##### 4,yzm,1.64,2000-07-04,F,yzm
-##### 5,xxh,1.68,2003-09-21,M,xxh
-##### 6,zqf,1.86,2001-07-06,M,zqf
-##### 7,cmh,1.67,2009-01-18,M,cmh
-##### 8,xzh,1.78,2004-05-18,M,xzh
-##### 9,xmm,1.69,2000-07-09,F,xmm
+**3,yxt,1.63,2004-05-05,F,yxt**  
+**4,yzm,1.64,2000-07-04,F,yzm**  
+**5,xxh,1.68,2003-09-21,M,xxh**  
+**6,zqf,1.86,2001-07-06,M,zqf**  
+**7,cmh,1.67,2009-01-18,M,cmh**  
+**8,xzh,1.78,2004-05-18,M,xzh**  
+**9,xmm,1.69,2000-07-09,F,xmm**  
 MariaDB [(userdb)]>`insert into studentinfo values ('1','xmy','1.65','2001-02-06'，'M',MD5('xmy')),('2','zhp','1.71','2001-10-21','M',MD5('zhp'));`
 
 //查看表记录 `select * from studentinfo;`
@@ -1175,10 +1185,6 @@ MariaDB [(none)]> `use userdb;`
 
 MariaDB [(userdb)]> `load data local infile '/var/mariadb/studeninfo.txt' into table studentinfo fields terminated by ',' lines terminated by '\n' (sid,sname,sheight,sbirthday,ssex,@password)set password=MD5(@Password);`
 
-
-
-##### 
----
 
 ## (4).将表studentinfo中的记录导出，并存放到/var/mariadb/sinfo.sql，字段之间用',分隔。利用cron为root用户创建计划任务(day用数字表示)，每周六凌晨1:00备份数据库studentdb(不含创建数据库命令)到/var/mariadb/sdb_bak.sql。(为便于测试，手动备份一次。)
 
