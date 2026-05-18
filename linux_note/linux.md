@@ -288,7 +288,7 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
 
 `vi file.txt`
 
-```plain
+```bash
 subjectAltName=DNS.1:*.skills.lan,DNS.2:skills.lan
 ```
 
@@ -314,7 +314,7 @@ subjectAltName=DNS.1:*.skills.lan,DNS.2:skills.lan
 `cp ../tls/openssl.cnf .`    
 
 `vi openssl.cnf` ----正常模式下   冒号 + 行号   跳转  
-```plain
+```bash
        167 req_extensions = v3_req (取消注释)
        213 basicConstraints= CA:TRUE
        236 subjectAltName=@alt_names
@@ -373,7 +373,7 @@ y
 `dnf  install ansible* -y`   
 `vi /etc/ansible/hosts`  
 
-```plain
+```bash
 #末尾加
 [1]
 被控的ip
@@ -401,7 +401,7 @@ y
 
 `vim 1.conf`
 
-```plain
+```bash
 <virtualhost *:80>
 servername www.skills.lan
 serveralias *.skills.lan
@@ -478,7 +478,7 @@ cd  /etc/ssl/
 
 `vi /etc/nginx/nginx.conf`
 
-```plain
+```bash
  38     server {
  39         listen       80;
  40      #   listen       [::]:80;
@@ -525,7 +525,7 @@ cd  /etc/ssl/
 ## （2）利用nginx反向代理，实现linux3和linux4的tomcat负载均衡，通过https://tomcat.skills.lan 加密访问Tomcat，http访问通过301自动跳转到https。
 `vi /etc/nginx/conf.d/1.conf`
 
-```plain
+```bash
 upstream tomcat{
         server linux3.skills.lan:443;
         server linux4.skills.lan:443;
@@ -566,7 +566,7 @@ server {
 
 `vi /usr/lib/systemd/system/tomcat.service `
 
-```plain
+```bash
 [Service]
 Type=simple
 EnvironmentFile=/etc/tomcat/tomcat.conf
@@ -579,7 +579,7 @@ User=root									#改这里
 
 `vi /etc/tomcat/server.xml`
 
-```plain
+```bash
  69     <Connector port="80" protocol="HTTP/1.1"
  70                connectionTimeout="20000"
  71                redirectPort="443" />
@@ -606,7 +606,7 @@ User=root									#改这里
 
   
 `#改完直接scp /etc/tomcat/server.xml到linux4,再改对应主机名和IP`  
-`#ss -tunlup查看端口是否开启`  
+//`ss -tunlup`查看端口是否开启  
 `linux3/4:`  
 `systemctl restart tomcat && systemctl enable tomcat`
 
@@ -623,7 +623,7 @@ User=root									#改这里
 
 `vi user.sh`
 
-```plain
+```bash
 for i in {00..19}
 do
 useradd user$i
@@ -659,7 +659,7 @@ usermod -aG dev user03
 
 
 
-```plain
+```bash
 [sharesmb]
         comment = sharesmb
         path = /srv/sharesmb
@@ -699,7 +699,7 @@ NT_STATUS_ACCESS_DENIED deleting remote file \.lesshst
 
 `vi /etc/fstab``
 
-```plain
+```bash
 //192.168.31.233/sharesmb /sharesmb cifs username=user00 ,password=Key-1122	0 0
 ```
 
@@ -713,14 +713,14 @@ NT_STATUS_ACCESS_DENIED deleting remote file \.lesshst
 ## 7.nfs服务  
 任务描述：请采用nfs，实现共享资源的安全访问。  
 （1）配置linux2为kdc服务器，负责linux3和linux4的验证。
-``--{88,464,749}/tcp/udp``
+--{88,464,749}/tcp/udp
 
 <u>linux2:</u>
 
 `dnf install krb5-* -y`		  
 `vi /etc/krb5.conf`
 
-```plain
+```bash
     default_realm = SKILLS.LAN
     default_ccache_name = KEYRING:persistent:%{uid}
 
@@ -742,13 +742,13 @@ NT_STATUS_ACCESS_DENIED deleting remote file \.lesshst
 
 `vi /var/kerberos/krb5kdc/kadm5.acl`  
 
-```plain
+```bash
 */admin@SKILLS.LAN      *
 ```
 
 `vi /var/kerberos/krb5kdc/kdc.conf`  
 
-```plain
+```bash
 [realms]
 SKILLS.LAN = {
      master_key_type = aes256-cts-hmac-sha384-192
@@ -791,7 +791,7 @@ kadmin.local:  `exit`
 
 `vi /etc/exports`
 
-```plain
+```bash
 /srv/sharenfs   192.168.31.0/24(rw,anonuid=222,anongid=222,sec=krb5p)
 ```
 
@@ -816,13 +816,13 @@ nfs/linux3.skills.lan@SKILLS.LAN: kvno = 2
 
 `vi /etc/auto.master` //添加
 
-```plain
+```bash
 /-		/etc/auto.nfs
 ```
 
 `vi /etc/auto.nfs`
 
-```plain
+```bash
 /sharenfs 	-fstype=nfs,rw,sec=krb5p   linux3.skills.lan:/srv/sharenfs		#顺序不要错
 ```
 
@@ -838,12 +838,12 @@ nfs/linux3.skills.lan@SKILLS.LAN: kvno = 2
 [⬆️top⬆️](#导航)  
 ## 8.ftp服务
 ## 任务描述：请采用FTP服务器，实现文件安全传输。
-## --21/tcp --20/tcp
 ## （1）配置linux2为FTP服务器，安装vsftpd，新建本地用户test，本地用户登陆ftp后的目录为/var/ftp/pub，可以上传下载。
+--21/tcp --20/tcp
+
 [root@linux2 ~]# `yum install -y vsftpd libdb-utils ftp` 
 
-//创建用户
-[root@linux2 ~]# `useradd test`  
+[root@linux2 ~]# `useradd test`  //创建用户  
 
 [root@linux2 ~]# `passwd test`  
 Changing password for user test.  
@@ -853,14 +853,13 @@ Retype new password:
 passwd: all authentication tokens updated successfully.  
 [root@linux2 ~]# `chmod 777 /var/ftp/pub/ -R `
 
-编辑配置文件
-
-[root@linux2 ~]# `vim /etc/vsftpd/vsftpd.conf` 
+[root@linux2 ~]# `vim /etc/vsftpd/vsftpd.conf`  //编辑配置文件  
 
 追加以下内容
-
-`local_root=/var/ftp/pub`   	// 指定用户本地文件系统上的根目录  
-`allow_writeable_chroot=YES`	// 所有访问将被限制在该目录下，用 户将无法访问除该目录之外的任何内容。
+```bash
+local_root=/var/ftp/pub   	// 指定用户本地文件系统上的根目录  
+allow_writeable_chroot=YES	// 所有访问将被限制在该目录下，用 户将无法访问除该目录之外的任何内容。
+```
 
 ## （2）配置ftp虚拟用户认证模式，虚拟用户ftp1和ftp2映射为ftp，ftp1登录ftp后的目录为/var/ftp/vdir/ftp1，可以上传下载,禁止上传后缀名为.docx的文件；ftp2登录ftp后的目录为/var/ftp/vdir/ftp2，仅有下载权限。
 创建虚拟用户数据库文件
@@ -869,7 +868,7 @@ passwd: all authentication tokens updated successfully.
 
 [root@linux2 vsftpd]# `vim vuser`
 
-```plain
+```bash
 ftp1
 123
 ftp2
@@ -885,7 +884,7 @@ ftp2
 
 全都注释，只留这两行 ；sufficient 表示充分条件，可以让 vsftpd 同时支持虚拟用户和本地用户
 
-```plain
+```bash
 auth sufficient pam_userdb.so db=/etc/vsftpd/vuser
 account sufficient pam_userdb.so db=/etc/vsftpd/vuser
 ```
@@ -894,7 +893,7 @@ account sufficient pam_userdb.so db=/etc/vsftpd/vuser
 
 [root@linux2 ~]# `vim /etc/vsftpd/vsftpd.conf` 
 
-```plain
+```bash
 47 anon_upload_enable=YES	       # 解除注释
 32 anon_mkdir_write_enable=YES    # 解除注释
 # 添加一下内容
@@ -907,7 +906,7 @@ file_open_mode=0755
 [root@linux2 ~]# `mkdir /etc/vsftpd/vuser_profile`  
 [root@linux2 ~]# `vim /etc/vsftpd/vuser_profile/ftp1`
 
-```plain
+```bash
 guest_enable=YES
 guest_username=ftp
 anon_world_readable_only=NO
@@ -920,7 +919,7 @@ local_root=/var/ftp/vdir/ftp1
 
 [root@linux2 ~]# `vim /etc/vsftpd/vuser_profile/ftp2`
 
-```plain
+```bash
 guest_enable=YES
 guest_username=ftp
 anon_world_readable_only=NO
@@ -1059,7 +1058,7 @@ mysql>`insert into userinfo values('1','user1','1999-07-01','男',MD5('user1')),
 
   `vi /etc/my.cnf`#添加字条
 
-```plain
+```bash
 [mysqld]
 local-infile=1					#允许本地文件导入
 secure-file-priv="/var/mysqld/"				#允许导出到路径
@@ -1081,7 +1080,7 @@ mysql>`select * from userinfo into outfile '/var/databak/mysql.sql' fields termi
 ## （7）每周五凌晨1:00以root用户身份备份数据库userdb到/var/databak/userdb.sql(含创建数据库命令)。
 `cronrab -e`
 
-```plain
+```bash
 01 ** 5 mysqldump -u root -pKey-1122 --databases userdb > /var/mariadb/userdb.sql
 ```
 
@@ -1163,7 +1162,7 @@ MariaDB [(userdb)]> `exit`
 
 `vi studentinfo.txt`
 
-```plain
+```bash
 3,yxt,1.63,2004-05-05,F,yxt
 4,yzm,1.64,2000-07-04,F,yzm
 5,xxh,1.68,2003-09-21,M,xxh
@@ -1195,7 +1194,7 @@ MariaDB [userdb]> `select * from studentinfo into outfile'/var/mariadb/userinfo.
 
 `cronrab -e`
 
-```plain
+```bash
 0 1 * * 6 mysqldump -u teacher -pKey-1122 studentdb > /var/mariadb/sdb_bak.sql
 ```
 
