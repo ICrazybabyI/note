@@ -77,7 +77,8 @@ linux1-6:
 `mount Rocky-9.2-x86_64-dvd.iso /mnt/1/`  
 
 `dnf install bash* vim -y`  
-> --[做题准备视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/%E5%81%9A%E9%A2%98%E5%87%86%E5%A4%87.mp4?ref_type=heads)  
+> [!note]
+> [做题准备视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/%E5%81%9A%E9%A2%98%E5%87%86%E5%A4%87.mp4?ref_type=heads)  
 
 ---
 
@@ -140,7 +141,8 @@ local stratum 10		#取消注释
 #### 发送chrony.conf到其余主机
 `for i  in {3..9};do scp /etc/chrony.conf 192.168.31.23$i:/etc/ ;done`  
 
-> --[chrony视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/chrony%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
+> [!note]
+> [chrony视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/chrony%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
 
 ---
 # ssh服务
@@ -162,7 +164,8 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
 #允许密码登录
 ```
 
-> --[SSH视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/DNS%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)
+> [!note]
+> [SSH视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/DNS%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)
 
 ---
 # dns服务
@@ -268,7 +271,8 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
 ```
 `systemctl enable named --now`     
 
-> --[DNS视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/DNS%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
+> [!note]
+> [DNS视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/DNS%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
 
 ---
 
@@ -333,7 +337,7 @@ subjectAltName=DNS.1:*.skills.lan,DNS.2:skills.lan
 回车  
 回车  
 `openssl x509 -req -days 3650 -in ca.csr -signkey ca.key -out ca.crt`  
-> [!note]
+> [!tip]
 > `index.txt`是 OpenSSL CA 的证书数据库文件，**每颁发或吊销一个证书，都会在此文件中追加一条记录**  
 > `signkey`参数用于直接指定私钥来签署证书请求（CSR）通常用于生成 </font>**自签名证书
 > `CA:TRUE`：声明该证书为可信的证书颁发机构，允许其签发下级证书或吊销列表（CRL） 
@@ -383,7 +387,7 @@ y
 `localectl set-locale LANG="en_US.UTF-8"`
 
 > [!note]  
-> [视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/ansible%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
+> [ansible视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/ansible%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
 
 # apache服务  
 [⬆️top⬆️](#导航)  
@@ -463,7 +467,7 @@ cd  /etc/ssl/
 `curl --cert /etc/ssl/apache.crt --key /etc/ssl/apache.key http://web.skills.lan -L`
 
 > [!note]  
-> [视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/apache%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
+> [apache视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/apache%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
 
 # tomcat服务  
 [⬆️top⬆️](#导航)  
