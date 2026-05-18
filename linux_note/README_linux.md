@@ -34,7 +34,8 @@
 > [!TIP]
 > 掌握做题的方法,试着自己解决各种报错,可以使用`systemctl status 服务名`
 > 或者`journalctl -u 服务名 --no-pager -n 50` 查看服务的状态 知道哪里错误再去修改最后重启服务,实在不会就贴报错给ai看  
-> 例: ![](images/Pasted%20image%2020260518105703.png)
+> 例: ![](images/Pasted%20image%2020260518105703.png)  
+> 这里的错误是在
 
 ---
 ## 服务的笔记:
