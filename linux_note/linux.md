@@ -523,7 +523,7 @@ cd  /etc/ssl/
  68 #        ssl_session_timeout  10m;
 ```
 
-## （2）利用nginx反向代理，实现linux3和linux4的tomcat负载均衡，通过[https://tomcat.skills.lan加密访问Tomcat，http访问通过301自动跳转到https。](https://tomcat.skills.lan加密访问Tomcat，http访问通过301自动跳转到https。)
+## （2）利用nginx反向代理，实现linux3和linux4的tomcat负载均衡，通过https://tomcat.skills.lan 加密访问Tomcat，http访问通过301自动跳转到https。
 `vi /etc/nginx/conf.d/1.conf`
 
 ```plain
@@ -561,7 +561,8 @@ server {
 再次输入:Pass-1234
 
 输入源密码:Pass-1234  
-<font style="background-color:#FBF5CB;">`keytool -importkeystore (密钥库) -srckeystore 源密钥的路径-destkeystore 导出的密钥路径 -deststoretype 指定的类型`</font>
+> [!tip]
+> keytool -importkeystore (密钥库) -srckeystore 源密钥的路径-destkeystore 导出的密钥路径 -deststoretype 指定的类型`
 
 `<font style="background-color:rgba(255, 255, 255, 0);">dnf install tomcat* -y</font>`
 
