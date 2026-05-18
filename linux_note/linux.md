@@ -6,7 +6,15 @@
 > [CA服务](linux.md#ca服务) --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/CA%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
 > [ansible服务](linux.md#ansible服务) --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/ansible%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads) <-- 前提发了ssh密钥  
 > [apache服务](linux.md#apache服务) --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/apache%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
-> [tomcat服务](linux.md#tomcat服务) --[视频]()  
+> [tomcat服务](linux.md#tomcat服务) --[视频]()    
+> [samba服务](linux.md#samba服务) --[视频]()  
+> [nfs服务端](linux.md#nfs服务端) --[视频]()  
+> [nfs客户端](linux.md#nfs客户端) --[视频]()  
+> [ftp服务](linux.md#ftp服务) --[视频]()  
+> [iscsi服务](linux.md#iscsi服务) --[视频]()  
+> [mysql服务](linux.md#mysql服务) --[视频]()  
+> [mariadb服务](linux.md#mariadb服务) --[视频]()  
+> [shell脚本](linux.md#shell脚本) --[视频]()  
 ---
 
 # 做题准备:
@@ -1016,14 +1024,15 @@ mysql>`grant all on *_.* _to xiao;`
 
 //删除用户  drop user 'username';
 
-## （2）创建数据库userdb；在库中创建表userinfo，表结构   b 如下：
-| ##### 字段名 | ##### 数据类型 | ##### 主键 | ##### 自增 |
+## （2）创建数据库userdb；在库中创建表userinfo，表结构 如下：  
+
+|  字段名 |  数据类型 |  主键 |  自增 |
 | --- | --- | --- | --- |
-| ##### id | ##### int | ##### 是 | ##### 是 |
-| ##### name | ##### varchar(10) | ##### 否 | ##### 否 |
-| ##### birthday | ##### datetime | ##### 否 | ##### 否 |
-| ##### sex | ##### varchar(5) | ##### 否 | ##### 否 |
-| ##### password | ##### varchar(200) | ##### 否 | ##### 否 |
+|  id |  int |  是 |  是 |
+|  name | varchar(10) |  否 |  否 |
+|  birthday |  datetime |  否 |  否 |
+|  sex | varchar(5) |  否 |  否 |
+|  password | varchar(200) |  否 |  否 |
 
 
 mysql>`create database userdb;`
@@ -1062,7 +1071,7 @@ mysql>`insert into userinfo values('1','user1','1999-07-01','男',MD5('user1')),
 ##### 9,user9,1.69,1999-07-09,女,user9
 //报错  ERROR 3948 (42000): Loading local data is disabled; this must be enabled on both the client and server sides
 
-  `vi /etc/my.cnf`#添加字条
+  `vi /etc/my.cnf` //添加字条
 
 ```bash
 [mysqld]
@@ -1210,6 +1219,8 @@ MariaDB [userdb]> `select * from studentinfo into outfile'/var/mariadb/userinfo.
 
 ---
 
+# shell脚本
+[⬆️top⬆️](#导航)
 ## 12.shell脚本
 ## 任务描述：请采用shell脚本,实现快速批量的操作。
 ## （1）在linux4上编写/root/createfile.sh的shell脚本，创建20个文件/root/shell/file00至/root/shell/file19，如果文件存在，则删除再创建；每个文件的内容同文件名，如file00文件的内容为“file00”。用/root/createfile.sh命令测试。
