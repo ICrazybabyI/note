@@ -481,7 +481,7 @@ cd  /etc/ssl/
  40      #   listen       [::]:80;
  41         server_name  linux2.skills.lan;
  42         return 301 https://linux2.skills.lan;
- 43         root         /usr/share/nginx/html;
+ 43 #        root         /usr/share/nginx/html;
  44 
  45         # Load configuration files for the default server block.
  46     #    include /etc/nginx/default.d/*.conf;
@@ -511,7 +511,7 @@ cd  /etc/ssl/
  60         listen       443 ssl http2;
  61 #        listen       [::]:443 ssl http2;
  62         server_name  linux2.skills.lan;
- 63 #        root         /usr/share/nginx/html;
+ 63         root         /usr/share/nginx/html;
  64 #
  65         ssl_certificate "/etc/ssl/skills.crt";
  66         ssl_certificate_key "/etc/ssl/skills.key";
