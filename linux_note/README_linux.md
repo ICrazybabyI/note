@@ -32,11 +32,11 @@
 打好基础后,跟着[linux](linux.md)这篇笔记做赛题熟悉做题流程  
 
 > [!TIP]
-> 掌握做题的方法,试着自己解决各种报错,可以使用`systemctl status 服务名`
+> 掌握做题的方法,试着自己解决各种报错,可以使用`systemctl status 服务名`  
 > 或者`journalctl -u 服务名 --no-pager -n 50` 查看服务的状态 知道哪里错误再去修改最后重启服务,实在不会就贴报错给ai看  
 > 例: ![](images/Pasted%20image%2020260518105703.png)  
-> 这里19th line出现错误,在花括号结束前确实分号,我们需要编辑配置文件补充
-> 修改完毕使用 `systemctl restart named`重启服务
+> 这里19th line出现错误,在花括号结束前确实分号,我们需要编辑配置文件  
+> 修改完毕使用 `systemctl restart named`重启服务载入配置
 
 ---
 ## 服务的笔记:
