@@ -42,11 +42,17 @@ esc退出到主菜单
 以上步骤都使用该方法配置其他的主机名与ip   
 配置完ip后编辑本地仓库源    
 `win + x  a`              //使用windows的ssh工具连接6台主机  
+
 ssh: `ssh -p 22 root@192.168.31.221`  
+
 linux1-6:  
+
 `rm -rf  /etc/yum.repos.d/*.repo`    //删除默认的网络源  
+
 linux1:  
+
 `vi /etc/yum.repos.d/1.repo`      //编写本地仓的配置 -- vim使用语法移步到[vim](vim.md)  
+
 ```bash
 [1]
 name=1
