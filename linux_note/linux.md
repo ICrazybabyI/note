@@ -495,11 +495,11 @@ cd  /etc/ssl/
  54         }
  55     }
  56 
-    server {			#添加两个拒绝未定义的server_name
+    server {			#host头未匹配到server_name时定向到此处然后403拒绝
     listen 80 default_server;
     return 403;
 }
-        server{
+        server{         #host头未匹配到server_name时定向到此处然后403拒绝
         listen 443 http2 ssl default_server;
         ssl_certificate "/etc/ssl/skills.crt";
         ssl_certificate_key "/etc/ssl/skills.key";
