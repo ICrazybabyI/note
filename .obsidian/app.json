@@ -10,5 +10,7 @@
   "useTab": false,
   "strictLineBreaks": true,
   "newLinkFormat": "relative",
-  "showUnsupportedFiles": true
+  "showUnsupportedFiles": true,
+  "rightToLeft": false,
+  "foldIndent": false
 }

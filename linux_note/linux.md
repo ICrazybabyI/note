@@ -375,7 +375,7 @@ y
 [⬆️top⬆️](#导航)  
 ## 3.ansible服务  
 任务描述：请采用ansible，实现自动化运维。  
-（1）在linux1上安装ansible，作为ansible的控制节点。linux2-linux9作为ansible的受控节点。
+（1）在linux1上安装ansible，作为ansible的控制节点。linux2-linux9作为ansible的受控节点。  
 `dnf  install ansible* -y`   
 `vi /etc/ansible/hosts`  
 
