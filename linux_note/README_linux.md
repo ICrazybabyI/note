@@ -2,9 +2,9 @@
 > 首次阅读请浏览[学习过程表](#学习过程)清楚要学习的内容  
 
 # 初次学习
-首次学习linux,推荐先阅读[菜鸟教程(外网)](https://www.runoob.com/linux/linux-tutorial.html)(内网)[],了解linux的作用 用法 要用linux的原因.  
-然后看一看[linux的目录结构(外网)](https://www.runoob.com/linux/linux-system-contents.html)linux是由哪几个结构组成的,明白linux一切皆文件的道理,  
-最后看[文件权限(外网)](https://www.runoob.com/linux/linux-file-attr-permission.html)和[目录相关](https://www.runoob.com/linux/linux-file-content-manage.html)的.  
+首次学习linux,推荐先阅读[菜鸟教程(外网)](https://www.runoob.com/linux/linux-tutorial.html)[(内网)](http://192.168.31.245:8083/linux-tutorial.html),了解linux的作用 用法 要用linux的原因.  
+然后看一看[linux的目录结构(外网)](https://www.runoob.com/linux/linux-system-contents.html)[(内网)](http://192.168.31.245:8083/linux-system-contents.html)linux是由哪几个结构组成的,明白linux一切皆文件的道理,  
+最后看[文件权限(外网)](https://www.runoob.com/linux/linux-file-attr-permission.html)[(内网)](http://192.168.31.245:8083/linux-file-attr-permission.html)和[目录相关(外网)](https://www.runoob.com/linux/linux-file-content-manage.html)[(内网)](http://192.168.31.245:8083/linux-file-content-manage.html)的.  
 
 
 ---
