@@ -1,5 +1,7 @@
 > [!Tip]  
 > 首次阅读请浏览[学习过程表](#学习过程)清楚要学习的内容  
+> **导航:**
+> [服务的笔记](#服务的笔记)
 
 # 初次学习
 首次学习linux,推荐先阅读[菜鸟教程(外网)](https://www.runoob.com/linux/linux-tutorial.html)[(内网)](http://192.168.31.245:8083/linux-tutorial.html),了解linux的作用 用法 要用linux的原因.  
