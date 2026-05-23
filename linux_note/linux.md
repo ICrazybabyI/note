@@ -739,7 +739,7 @@ NT_STATUS_ACCESS_DENIED deleting remote file \.lesshst
 （1）配置linux2为kdc服务器，负责linux3和linux4的验证。
 --{88,464,749}/tcp/udp
 
-<u>linux2:</u>
+**linux2:**
 
 `dnf install krb5-* -y`		  
 `vi /etc/krb5.conf`
