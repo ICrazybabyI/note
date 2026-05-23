@@ -1012,6 +1012,8 @@ drwx------    2 14    50            6 Mar 05 10:03 新文件夹
 ### 任务描述：请采用iscsi，搭建存储服务。
 ### （1）为linux8添加4块硬盘，每块硬盘大小为5G，创建lvm卷，卷组名为vg1，逻辑卷名为lv1，容量为全部空间，格式化为ext4格式。使用/dev/vg1/lv1配置为iSCSI目标服务器，为linux9提供iSCSI服务。iSCSI目标端的wwn为iqn.2023-08.lan.skills:server, iSCSI发起端的wwn为iqn.2023-08.lan.skills:client。
 
+**linux8:**
+
  `dnf install lvm2 targetcli-2.1.53-7.el9.noarch -y`
 
  `lsblk`
@@ -1067,7 +1069,7 @@ drwx------    2 14    50            6 Mar 05 10:03 新文件夹
 
  `iscsiadm --mode discovery --portal 192.168.31.212 --type sendtargets`
 
- `iscsiadm -modenode --portal192.168.31.212:3260 --login`
+ `iscsiadm --modenode --portal192.168.31.212:3260 --login`
 
  `mkdir /shareiscsi`
 
