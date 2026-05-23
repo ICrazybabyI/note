@@ -969,7 +969,7 @@ local_root=/var/ftp/vdir/ftp2
 
 `touch 1.txt`
 
-`cd  /var/ftp/vdir/ftp2`
+`cd  ../ftp2`
 
 `touch 2.txt`
 
