@@ -1012,8 +1012,92 @@ drwx------    2 14    50            6 Mar 05 10:03 新文件夹
 ### 任务描述：请采用iscsi，搭建存储服务。
 ### （1）为linux8添加4块硬盘，每块硬盘大小为5G，创建lvm卷，卷组名为vg1，逻辑卷名为lv1，容量为全部空间，格式化为ext4格式。使用/dev/vg1/lv1配置为iSCSI目标服务器，为linux9提供iSCSI服务。iSCSI目标端的wwn为iqn.2023-08.lan.skills:server, iSCSI发起端的wwn为iqn.2023-08.lan.skills:client。
 
-`dnf install iscsi*`
+ `dnf install lvm2 targetcli-2.1.53-7.el9.noarch -y`
 
+ `lsblk`
+
+ `pvcreate /dev/vd{a..d}`
+
+ `vgcreate vg1 /dev/vd{a..e}`
+
+ `lvcreate -l 100%free -n lv1 vg1`
+
+ `mkfs.ext4 /dev/vg1/lv1`
+
+ `targetcli`
+
+/> `ls`
+
+/> `cd backstores/block`
+
+/backstores/block> `create lv1 /dev/vg1/lv1`
+
+/backstores/block> `cd /iscsi`
+
+/iscsi> `create iqn.2026-03.com.skills:server`
+
+/iscsi> `cd iqn.2026-03.com.skills:server/tpg1/acls`
+
+/iscsi/iqn.20...ver/tpg1/acls> `create iqn.2026-03.com.skills:client`
+
+/iscsi/iqn.20...ver/tpg1/acls> `cd ../luns`
+
+/iscsi/iqn.20...ver/tpg1/luns> `create /backstores/block/lv1`
+
+/iscsi/iqn.20...ver/tpg1/luns> `cd /iscsi/`
+
+/iscsi> `set discovery_auth enable=1 userid=IncomingUser password=IncomingPass mutual_userid=OutgoingUser mutual_password=OutgoingPass`
+
+/iscsi> `cd iqn.2026-03.com.skills:server/tpg1/acls/iqn.2026-03.com.skills:client/`
+
+/iscsi/iqn.20...skills:client> `set auth userid=IncomingUser password=IncomingPass mutual_userid=OutgoingUser mutual_password=OutgoingPass`
+
+ `firewall-cmd --add-port=3260/tcp --permanent`
+
+ `firewall-cmd --reload`
+
+
+ `dnf install iscsi* -y`
+
+ `vi /etc/iscsi/iscsid.conf`
+
+ `vi /etc/iscsi/initiatorname.iscsi`
+
+ `systemctl enable iscsid --now`
+
+ `iscsiadm --mode discovery --portal 192.168.31.212 --type sendtargets`
+
+ `iscsiadm -modenode --portal192.168.31.212:3260 --login`
+
+ `mkdir /shareiscsi`
+
+ `lsblk`
+
+NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
+
+loop0 7:0 0 8.8G 0 loop /mnt/1
+
+sda 8:0 0 20G 0 disk
+
+├─sda1 8:1 0 1G 0 part /boot
+
+└─sda2 8:2 0 19G 0 part
+
+├─rl-root 253:0 0 17G 0 lvm /
+
+└─rl-swap 253:1 0 2G 0 lvm [SWAP]
+
+**sdb 8:16 0 16G 0 disk**
+
+ `echo "mount /dev/sdb /shareiscsi" >> /etc/rc.d/rc.local`
+
+ `chmod +x /etc/rc.d/rc.local`
+
+ `systemctl daemon-reload`
+
+ `mount /dev/sdb /shareiscsi/`
+
+ `df`
 
 ### （2）配置linux9为iSCSI客户端，实现discovery chap和session chap双向认证，Target认证用户名为IncomingUser，密码为IncomingPass；Initiator认证用户名为OutgoingUser，密码为OutgoingPass。修改/etc/rc.d/rc.local文件开机自动挂载iscsi硬盘到/iscsi目录。
 
