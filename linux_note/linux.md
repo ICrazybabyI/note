@@ -580,6 +580,9 @@ server {
 再次输入:Pass-1234
 
 输入源密码:Pass-1234  
+
+`scp /etc/ssl/skills.jks linux4:/etc/ssl/`  
+
 > [!tip]
 > `keytool` `-importkeystore` (密钥库) `-srckeystore` 源密钥的路径`-destkeystore` 导出的密钥路径 `-deststoretype` 指定的类型
 
