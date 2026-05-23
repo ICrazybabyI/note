@@ -72,7 +72,7 @@
 > [keepalived服务](26样题.md#keepalived服务) --[视频]()  
 > [iscsi服务](26样题.md#iscsi服务) --[视频]()  
 > [redis服务](26样题.md#redis服务) --[视频]()  
-> [ftp服务](26样题.md#ftp服务) --[视频]()  
+> [邮件服务](26样题.md#邮件服务) --[视频]()  
 > [iscsi服务](26样题.md#iscsi服务) --[视频]()  
 > [mysql服务](26样题.md#mysql服务) --[视频]()  
 > [mariadb服务](26样题.md#mariadb服务) --[视频]()  
