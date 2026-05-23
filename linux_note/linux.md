@@ -566,6 +566,13 @@ server {
 
 
 ## （3）配置linux3和linux4为tomcat服务器，网站默认首页内容分别为“tomcatA”和“tomcatB”，仅使用域名访问80端口http和443端口https；证书路径均为/etc/ssl/skills.jks。
+
+**linux1:**  
+
+`scp /etc/ssl/skills.pfx linux3:/etc/ssl/`  
+
+**linux3:**  
+
 `keytool -importkeystore -srckeystore /etc/pki/tls/skills.pfx -destkeystore /etc/pki/tls/skills.jks -deststoretype JKS`
 
 密码:Pass-1234
