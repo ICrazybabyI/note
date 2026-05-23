@@ -61,7 +61,7 @@
 > [mariadb服务](linux.md#mariadb服务) --[视频]()  
 > [shell脚本](linux.md#shell脚本) --[视频]()  
 
-> **26样题:**
+> **26样题:**  
 > [NTP服务](26样题.md#ntp服务)  --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/chrony%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)_先做**DNS**服务和**SSH**服务再做该服务_ 1↩︎  
 > [SSH服务](26样题.md#ssh服务) --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/SSH%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)_先做**DNS**服务,做的过程中生成公钥_    <--(The second!!!)  
 > [DNS服务](26样题.md#dns服务) --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/DNS%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)   <-- (The first!!!)   
@@ -69,7 +69,7 @@
 > [ansible服务](26样题.md#ansible服务) --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/ansible%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads) <-- 做了ssh密钥前提  
 > [apache服务](26样题.md#apache服务) --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/apache%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
 > [tomcat服务](26样题.md#tomcat服务) --[视频]()  
-> [samba服务](26样题.md#samba服务) --[视频]()  
+> [keepalived服务](26样题.md#keepalived服务) --[视频]()  
 > [nfs服务端](26样题.md#nfs服务端) --[视频]()  
 > [nfs客户端](26样题.md#nfs客户端) --[视频]()  
 > [ftp服务](26样题.md#ftp服务) --[视频]()  
