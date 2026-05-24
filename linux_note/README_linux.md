@@ -67,7 +67,6 @@
 > [DNS服务](26样题.md#dns服务) --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/DNS%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)   <-- (The first!!!)   
 > [CA服务](26样题.md#ca服务) --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/CA%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
 > [ansible服务](26样题.md#ansible服务) --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/ansible%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads) <-- 做了ssh密钥前提  
-> [apache服务](26样题.md#apache服务) --[视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/apache%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
 > [tomcat服务](26样题.md#tomcat服务) --[视频]()  
 > [keepalived服务](26样题.md#keepalived服务) --[视频]()  
 > [iscsi服务](26样题.md#iscsi服务) --[视频]()  
