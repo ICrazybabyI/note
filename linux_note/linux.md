@@ -41,11 +41,11 @@
 esc退出到主菜单  
 ![](images/linux_nmtui_4.png)选择第二项  
 
-![](images/Pasted%20image%2020260424112007.png)回车两次刷新配置  
+![](images/linux_nmtui_5.png)回车两次刷新配置  
 
-![](images/Pasted%20image%2020260424112032.png)选择第三项设置系统名称  
+![](images/linux_nmtui_6.png)选择第三项设置系统名称  
 
-![374](images/Pasted%20image%2020260424112118.png)回车确认  
+![374](images/linux_nmtui_7.png)回车确认  
 
 以上步骤都使用该方法配置其他的主机名与ip   
 配置完ip后编辑本地仓库源    
