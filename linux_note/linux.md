@@ -32,7 +32,7 @@
 `nmtui`  
 ![222](images/linux_nmtui_1.png)回车选择第一项  
 
-![](images/linux_nmtui_2png)回车选择网卡编辑  
+![](images/linux_nmtui_2.png)回车选择网卡编辑  
 
 ![406](images/linux_nmtui_3.png)配置完成
 按下pagedown到OK
@@ -45,7 +45,7 @@ esc退出到主菜单
 
 ![](images/linux_nmtui_6.png)选择第三项设置系统名称  
 
-![374](images/linux_nmtui_7.png)回车确认  
+![](images/linux_nmtui_7.png)回车确认  
 
 以上步骤都使用该方法配置其他的主机名与ip   
 配置完ip后编辑本地仓库源    
