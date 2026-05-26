@@ -26,7 +26,7 @@
 这里要边看边练,不懂的问ai直接贴个报错和问题  
 
 例:  
-<img src="images/Pasted%20image%2020260420210613.png" width="400">  
+<img src="images/readme_ai.png" width="400">  
 
 > [!TIP]
 > 问了AI之后要在虚拟机里做实验加深记忆   

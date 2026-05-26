@@ -30,7 +30,7 @@
 
 先配置ip  
 `nmtui`  
-![222](images/Pasted%20image%2020260424111527.png)回车选择第一项  
+![222](images/linux_nmtui_1.png)回车选择第一项  
 
 ![](images/Pasted%20image%2020260424111552.png)回车选择网卡编辑  
 
