@@ -32,14 +32,14 @@
 `nmtui`  
 ![222](images/linux_nmtui_1.png)回车选择第一项  
 
-![](images/Pasted%20image%2020260424111552.png)回车选择网卡编辑  
+![](images/linux_nmtui_2png)回车选择网卡编辑  
 
-![406](images/Pasted%20image%2020260424111758.png)配置完成
+![406](images/linux_nmtui_3.png)配置完成
 按下pagedown到OK
 回车(保存)
 
 esc退出到主菜单  
-![](images/Pasted%20image%2020260424111921.png)选择第二项  
+![](images/linux_nmtui_4.png)选择第二项  
 
 ![](images/Pasted%20image%2020260424112007.png)回车两次刷新配置  
 
