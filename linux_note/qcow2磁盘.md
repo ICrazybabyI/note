@@ -46,6 +46,6 @@ root@dell-PowerEdge-R740xd /v/l/l/images# `virt-sparsify --compress kylin-test.q
 [ 968.3] Sparsify operation completed with no errors.  
 virt-sparsify: Before deleting the old disk, carefully check that the   
 target disk boots and works correctly.  
-![](images/Snipaste_2026-05-26_18-41-38.png)    
+![](images/qcow2_lsblk.png)    
 瘦身完也是有60G的空间的  
 后面选择桥接网卡后,就可以使用克隆来新建其他主机  
