@@ -379,6 +379,8 @@ y
 > [!NOTE]
 > [CA视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/CA%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)
 
+---
+
 # ansible服务  
 [⬆️top⬆️](#导航)  
 ## 3.ansible服务  
@@ -403,6 +405,8 @@ y
 > [!note]  
 > [ansible视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/ansible%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
 
+---
+
 # apache服务  
 [⬆️top⬆️](#导航)  
 ## 4.apache2服务  
@@ -415,7 +419,7 @@ y
 
 `vim 1.conf`
 
-```bash
+```c
 <virtualhost *:80>
 servername www.skills.lan
 serveralias *.skills.lan
@@ -464,7 +468,7 @@ deny from all
 ## （2）把/etc/ssl/skills.crt证书文件和/etc/ssl/skills.key私钥文件转换成含有证书和私钥的/etc/ssl/skills.pfx文件；然后把/etc/ssl/skills.pfx转换为含有证书和私钥的/etc/ssl/skills.pem文件，再从/etc/ssl/skills.pem文件中提取证书和私钥分别到/etc/ssl/apache.crt和/etc/ssl/apache.key。
 cd  /etc/ssl/  
 `openssl pkcs12 -export -in skills.crt -inkey skills.key -out skills.pfx`  
-设置密码 Pass-1234    # 后面要用  
+设置密码 Key-1122    # 后面要用  
 `openssl  pkcs12 -nodes  -in skills.pfx -out skills.pem`  
 无需密码  
 `openssl rsa -in skills.pem -out apache.key`  
@@ -481,6 +485,8 @@ cd  /etc/ssl/
 
 > [!note]  
 > [apache视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/apache%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
+
+---
 
 # tomcat服务  
 [⬆️top⬆️](#导航)  
@@ -501,12 +507,12 @@ cd  /etc/ssl/
  43 #        root         /usr/share/nginx/html;
  44 
  45         # Load configuration files for the default server block.
- 46     #    include /etc/nginx/default.d/*.conf;
+ 46         include /etc/nginx/default.d/*.conf;
  47 
- 48    #     error_page 404 /404.html;
- 49   #      location = /404.html {
- 50  #       }
- 51 #
+ 48         error_page 404 /404.html;
+ 49         location = /404.html {
+ 50         }
+ 51 
  52         error_page 500 502 503 504 /50x.html;
  53         location = /50x.html {
  54         }
@@ -536,6 +542,10 @@ cd  /etc/ssl/
  68 #        ssl_session_timeout  10m;
 ```
 
+`firewall-cmd --add-port={80,443}/tcp --permanent`  
+
+`firewall-cmd --reload`  
+
 ## （2）利用nginx反向代理，实现linux3和linux4的tomcat负载均衡，通过https://tomcat.skills.lan 加密访问Tomcat，http访问通过301自动跳转到https。
 `vi /etc/nginx/conf.d/1.conf`
 
@@ -550,7 +560,7 @@ server{
         return 301 https://tomcat.skills.lan;
 }
 server {
-        listen 443 ssl;
+        listen 443 ssl http2;
         server_name tomcat.skills.lan;
         ssl_certificate "/etc/ssl/skills.crt";
         ssl_certificate_key "/etc/ssl/skills.key";
@@ -562,7 +572,7 @@ server {
 
 `setsebool -P httpd_can_network_connect on`
 
-`systemctl restart nginx && systemctl enable nginx`
+`systemctl enable nginx --now`
 
 
 ## （3）配置linux3和linux4为tomcat服务器，网站默认首页内容分别为“tomcatA”和“tomcatB”，仅使用域名访问80端口http和443端口https；证书路径均为/etc/ssl/skills.jks。
@@ -573,13 +583,13 @@ server {
 
 **linux3:**  
 
-`keytool -importkeystore -srckeystore /etc/pki/tls/skills.pfx -destkeystore /etc/pki/tls/skills.jks -deststoretype JKS`
+`keytool -importkeystore -srckeystore /etc/ssl/skills.pfx -destkeystore /etc/ssl/skills.jks -deststoretype JKS`
 
-密码:Pass-1234
+密码:Key-1122
 
-再次输入:Pass-1234
+再次输入:Key-1122
 
-输入源密码:Pass-1234  
+输入源密码:Key-1122  
 
 `scp /etc/ssl/skills.jks linux4:/etc/ssl/`  
 
@@ -612,7 +622,7 @@ User=root									#改这里
  87                maxThreads="150" SSLEnabled="true">
  88         <SSLHostConfig>
  89                 <Certificate certificateKeystoreFile="/etc/ssl/skills.jks"
- 90                              certificateKeystorePassword="Pass-1234"
+ 90                              certificateKeystorePassword="Key-1122"
  91                          type="RSA" />
  92         </SSLHostConfig>
 
@@ -623,16 +633,38 @@ User=root									#改这里
 152      </Host>
 
 167      <Host name="192.168.31.213"  appBase="ipapps"
-168            unpackWARs="false" autoDeploy="false">
+168            unpackWARs="true" autoDeploy="true">
 169      </Host>
 170    </Engine>
 ```
 
-  
-`#改完直接scp /etc/tomcat/server.xml到linux4,再改对应主机名和IP`  
-//`ss -tunlup`查看端口是否开启  
-`linux3/4:`  
-`systemctl restart tomcat && systemctl enable tomcat`
+`echo "tomcatA" > /usr/share/tomcat/webapps/ROOT/index.html`  
+
+`scp /etc/tomcat/server.xml linux4:/etc/tomcat/`  
+
+`vi /etc/tomcat/server.xml`  
+```bash
+130    <Engine name="Catalina" defaultHost="linux4.skills.lan">
+
+150      <Host name="linux4.skills.lan"  appBase="webapps"
+151            unpackWARs="true" autoDeploy="true">
+152      </Host>
+
+167      <Host name="192.168.31.214"  appBase="ipapps"
+168            unpackWARs="true" autoDeploy="true">
+169      </Host>
+170    </Engine>
+```
+
+`ss -tunlup`//查看端口是否开启  
+
+`linux3/4:`    
+
+`firewall-cmd --add-port={443}/tcp --per`    
+
+`firewall-cmd --reload`  
+
+`systemctl enable tomcat --now`  
 
 ---
 
@@ -675,8 +707,6 @@ usermod -aG dev user03
 
 `chmod 777 /srv/sharesmb`			//设置目录的u g o 均为777   
 
-`smbpasswd -a user00 – user03`	//新建user00到user03  
-
 `chmod o+t  /srv/sharesmb`		//再给o一个粘滞位
 
 `vi /etc/samba/smb.conf`
@@ -693,17 +723,22 @@ usermod -aG dev user03
         create mask = 1744
 ```
 
-smbclient //10.93.123.33/sharesmb -U user00
+`systemctl enable --now smb`  
+
+`firewall-cmd --add-port={139,445}/tcp --permanent`
+
+`smbclient //10.93.123.33/sharesmb -U user03`
 
 //随便put一个文件上去测试写入  
 
-put .bash_history 			--失败
+put .bash_history 			//没有写的权限--失败
 
 NT_STATUS_ACCESS_DENIED opening remote file \.bash_history
 
-                                 
 
-put .cshrc 				--成功
+ `smbclient //10.93.123.33/sharesmb -U user00`
+
+`put .cshrc` 				//有写的权限--成功
 
 putting file .cshrc as \.cshrc (48.8 kb/s) (average 48.8 kb/s)
 
@@ -711,24 +746,25 @@ exit
 
 //测试粘滞位有没有作用,登录别的用户删除刚put的文件
 
-smbclient //10.93.123.33/sharesmb -U user01
+`smbclient //10.93.123.33/sharesmb -U user01`
 
-smb: \> rm .lesshst 		--起作用了
+smb: \> `rm .lesshst` 		//同组用户不能修改同组用户的文件--粘滞位起作用了
 
 NT_STATUS_ACCESS_DENIED deleting remote file \.lesshst
 
 ## （3）在linux4修改/etc/fstab,使用用户user00实现自动挂载linux3的sharesmb共享到/sharesmb。
 
-`dnf install samba-cl* cifs-utils-7.0-1.el9.x86_64 -y`
+`dnf install samba-cl* -y`
 
-`vi /etc/fstab``
+`vi /etc/fstab`
 
 ```bash
 //192.168.31.233/sharesmb /sharesmb cifs username=user00 ,password=Key-1122	0 0
 ```
 
-`systemctl daemon-reload`
-`mount -a`
+`systemctl daemon-reload`  
+
+`mount -a`  
 
 ---
 
@@ -794,15 +830,18 @@ kadmin.local:  `exit`
 
 ## （2）在linux3上，创建用户，用户名为xiao，uid=222，gid=222，家目录为/home/xiaodir。
 
-
-  
+ **linux3:**   
+ 
 `groupadd -g 222 xiao`  
+
 `useradd -u 222 -g 222 -d /home/xiaodir xiao`
 
 
 ## （3）配置linux3为nfs服务器，目录/srv/sharenfs的共享要求为：linux服务器所在网络用户有读写权限，所有用户映射为xiao，kdc加密方式为krb5p。
 `--{111,20048,2049}/tcp/udp`  
- linux3:  
+
+ **linux3:  **  
+ 
 `dnf install krb5-work* nfs-ut* -y`  
 `kadmin`  
 `ktadd nfs/linux3.skills.lan@SKILLS.LAN`
@@ -828,7 +867,9 @@ kadmin.local:  `exit`
 ## （4）配置linux4为nfs客户端，利用autofs按需挂载linux3上的/srv/sharenfs到/sharenfs目录，挂载成功后在该目录创建test目录。
 ``--{111,20048,2049}/tcp/udp``
 
-`dnf install krb5-wo* autofs nfsv4-cl* <font style="background-color:rgba(255, 255, 255, 0.05);">nfs-utils</font> -y`
+**linux4:**  
+
+`dnf install krb5-wo* autofs nfsv4-cl* nfs-utils -y`
 
 `kinit -kt /etc/krb5.keytab nfs/linux4.skills.lan@SKILLS.LAN`
 
