@@ -1,86 +1,86 @@
-AC Èý²ã½»»»»ú+ÎÞÏß¹¦ÄÜ£¨¶ÔAPµÄÒ»¸ö¼¯Èº¹ÜÀí£©  
-AP  ÆóÒµ¼¶ÎÞÏßÂ·ÓÉÆ÷ Ê×ÏÈ·ÖÄ£Ê½1¡¢ÅÖÄ£Ê½£¨fat£©¡¢2¡¢ÊÝÄ£Ê½£¨fit£©     -ÏëÒª±»AC¹ÜÀí£¨fit£©
+AC ï¿½ï¿½ï¿½ã½»ï¿½ï¿½ï¿½ï¿½+ï¿½ï¿½ï¿½ß¹ï¿½ï¿½Ü£ï¿½ï¿½ï¿½APï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Èºï¿½ï¿½ï¿½ï¿½  
+AP  ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½È·ï¿½Ä£Ê½1ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½fatï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½fitï¿½ï¿½     -ï¿½ï¿½Òªï¿½ï¿½ACï¿½ï¿½ï¿½ï¿½fitï¿½ï¿½
 
 
 
-1. ¹ÜÀíµØÖ·  
-AP¹ÜÀíµØÖ·£º
-1£©¡¢¾²Ì¬µØÖ·£º192.168.1.10 
-2£©¡¢DHCP»ñÈ¡£º»ñÈ¡µ½ÓÅÏÈ¼¶»á¸ßÓÚ¾²Ì¬
-***Í¨¹ýtelnet½øÈëAPºó¿ÉÒÔÍ¨¹ý#get system detail   //²é¿´APµÄÏêÏ¸ÐÅÏ¢
-***                                           #get management detail  //²é¿´APµÄÏêÏ¸µØÖ·
-AC¹ÜÀíµØÖ·
- 1£©wirelessÄ£Ê½ÏÂµÄ¹ÜÀíµØÖ·¡£
-£¨¿ªÆôÎÞÏß¹¦ÄÜenable£©
-   Ñ¡È¡µÄµØÖ·£º»á¸ù¾ÝÉè±¸µÄ½Ó¿ÚµØÖ·×÷ÎªÑ¡¾Ù£¬1¡¢ÓÅÏÈÑ¡È¡loopback½Ó¿ÚIDÐ¡µÄµØÖ· 2¡¢Èý²ã½Ó¿ÚUPµÄµØÖ·¡£
-   ¾²Ì¬µÄµØÖ·£º¹Ì¶¨µØÖ·¡£×Ô¼ºÉè¶¨¡£ÍÆ¼öµÄÒ»¸ö·½Ê½¡£²¢¹Øµô×Ô¶¯Ñ¡È¡¹¦ÄÜ¡£
+1. ï¿½ï¿½ï¿½ï¿½ï¿½Ö·  
+APï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½
+1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¬ï¿½ï¿½Ö·ï¿½ï¿½192.168.1.10 
+2ï¿½ï¿½ï¿½ï¿½DHCPï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ï¿½ï¿½ï¿½ï¿½Ú¾ï¿½Ì¬
+***Í¨ï¿½ï¿½telnetï¿½ï¿½ï¿½ï¿½APï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½#get system detail   //ï¿½é¿´APï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢
+***                                           #get management detail  //ï¿½é¿´APï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ö·
+ACï¿½ï¿½ï¿½ï¿½ï¿½Ö·
+ 1ï¿½ï¿½wirelessÄ£Ê½ï¿½ÂµÄ¹ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¹ï¿½ï¿½ï¿½enableï¿½ï¿½
+   Ñ¡È¡ï¿½Äµï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½è±¸ï¿½Ä½Ó¿Úµï¿½Ö·ï¿½ï¿½ÎªÑ¡ï¿½Ù£ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡È¡loopbackï¿½Ó¿ï¿½IDÐ¡ï¿½Äµï¿½Ö· 2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¿ï¿½UPï¿½Äµï¿½Ö·ï¿½ï¿½
+   ï¿½ï¿½Ì¬ï¿½Äµï¿½Ö·ï¿½ï¿½ï¿½Ì¶ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½è¶¨ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½Ô¶ï¿½Ñ¡È¡ï¿½ï¿½ï¿½Ü¡ï¿½
 DCWS-6028(config-wireless)#static-ip 172.17.100.1
 DCWS-6028(config-wireless)#no auto-ip-assign
 
-2¡¢Á´Â·¿É´ï £¨ACµÄÎÞÏß¹ÜÀíµØÖ· ÒªÓë APµÄ¹ÜÀíµØÖ· ¿ÉÒÔÍ¨ÐÅ¡££©
+2ï¿½ï¿½ï¿½ï¿½Â·ï¿½É´ï¿½ ï¿½ï¿½ACï¿½ï¿½ï¿½ï¿½ï¿½ß¹ï¿½ï¿½ï¿½ï¿½Ö· Òªï¿½ï¿½ APï¿½Ä¹ï¿½ï¿½ï¿½ï¿½Ö· ï¿½ï¿½ï¿½ï¿½Í¨ï¿½Å¡ï¿½ï¿½ï¿½
 
-3¡¢ÉÏÏßµÄ·½Ê½ 
-   1£©¡¢¶þ²ã  £ºÍ¬¸öÍø¶Î¡¡ACºÍAP´¦ÓÚÖ±Á¬Íø¶Î¡£¡¡²ÉÓÃÖ¸¶¨·¢ÏÖvlan
+3ï¿½ï¿½ï¿½ï¿½ï¿½ßµÄ·ï¿½Ê½ 
+   1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½Î¡ï¿½ACï¿½ï¿½APï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½Î¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½vlan
 DCWS-6028(config-wireless)#discovery  vlan-list  1
-   2£©¡¢Èý²ã £º ²»Í¬¸öÍø¶Î¡£  ACºÍAP²»´¦ÓÚÖ±Á¬Íø¶Î¡£ Ö¸¶¨·¢ÏÖip   discovery  ip-list  x.x.x.x
-   3£©¡¢Èý²ã£¨option43 Ñ¡Ïî£©  ÔÚDHCPµØÖ·³ØÖÐÏÂ·¢ACµÄ¹ÜÀíµØÖ·¡£ ²ÉÓÃ43Ñ¡Ïî¡¢hexÊ®Áù½øÖÆµÄ·½Ê½£¬
-0104´ú±íµÄÉñÂëµÄÓ²¼þ±àºÅ£¬ipµØÖ·×ª»»³ÉÊ®Áù½øÖÆ
+   2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½Î¡ï¿½  ACï¿½ï¿½APï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½Î¡ï¿½ Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ip   discovery  ip-list  x.x.x.x
+   3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã£¨option43 Ñ¡ï¿½î£©  ï¿½ï¿½DHCPï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ACï¿½Ä¹ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½43Ñ¡ï¿½î¡¢hexÊ®ï¿½ï¿½ï¿½ï¿½ï¿½ÆµÄ·ï¿½Ê½ï¿½ï¿½
+0104ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ï¿½ï¿½Å£ï¿½ipï¿½ï¿½Ö·×ªï¿½ï¿½ï¿½ï¿½Ê®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 DCWS-6028(dhcp-ws-config)#option  43  hex  0104AC116401
 
-4¡¢APÉÏÏßµÄÈÏÖ¤·½Ê½ Ä¬ÈÏ²ÉÓÃmacµØÖ··½Ê½  
-	DCWS-6028(config-wireless)#ap authentication £¨ÈÏÖ¤·½Ê½£©
-  1£©¡¢mac            
-	DCWS-6028(config-wireless)#ap database  00-00-00-00-00-00  ÎÞÏßÄ£Ê½ÏÂ
-  2£©¡¢none ²»ÈÏÖ¤
-  3£©¡¢pass-phrase ÃÜÂëÈÏÖ¤¡£
-	ÐèÒªÁ½¶Ë¶¼ÒªÓÐÒ»¸öÃÜÂëÈ¥Ð­ÉÌ
-	1)AC¶ËµÄÉèÖÃ¡£
+4ï¿½ï¿½APï¿½ï¿½ï¿½ßµï¿½ï¿½ï¿½Ö¤ï¿½ï¿½Ê½ Ä¬ï¿½Ï²ï¿½ï¿½ï¿½macï¿½ï¿½Ö·ï¿½ï¿½Ê½  
+	DCWS-6028(config-wireless)#ap authentication ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½Ê½ï¿½ï¿½
+  1ï¿½ï¿½ï¿½ï¿½mac            
+	DCWS-6028(config-wireless)#ap database  00-00-00-00-00-00  ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½
+  2ï¿½ï¿½ï¿½ï¿½none ï¿½ï¿½ï¿½ï¿½Ö¤
+  3ï¿½ï¿½ï¿½ï¿½pass-phrase ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½
+	ï¿½ï¿½Òªï¿½ï¿½ï¿½Ë¶ï¿½Òªï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¥Ð­ï¿½ï¿½
+	1)ACï¿½Ëµï¿½ï¿½ï¿½ï¿½Ã¡ï¿½
 	DCWS-6028(config-wireless)#ap database  00-10-11-11-11-11  
 	DCWS-6028(config-ap)#password  plain  12345678
-	2£©AP¶ËµÄÉèÖÃ¡£
+	2ï¿½ï¿½APï¿½Ëµï¿½ï¿½ï¿½ï¿½Ã¡ï¿½
 	DCN-WLAN-AP# set managed-ap pass-phrase  12345678
-  4£©¡¢serial-num  £¨Òþ²ØµÄÐòÁÐºÅÈÏÖ¤¹¦ÄÜ£©
+  4ï¿½ï¿½ï¿½ï¿½serial-num  ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½Ðºï¿½ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½Ü£ï¿½
 	DCWS-6028(config-wireless)#ap database  00-10-11-11-11-11 
-	DCWS-6028(config-ap)#serial-num wl123£¨ÐòÁÐºÅ£©
+	DCWS-6028(config-ap)#serial-num wl123ï¿½ï¿½ï¿½ï¿½ï¿½ÐºÅ£ï¿½
 
-5¡¢ÎÞÏß»ù±¾ÅäÖÃ¡£ ÅäÖÃÎÞÏßwifi¹ã²¥µÄssid ÃÜÂë°²È«ÐÔµÈÉèÖÃ¡££¨Âú×ãÒÔÉÏËÄ¸öÌõ¼þ£¬»ù±¾¿ÉÒÔ¹ÜÀíµ½AP£©
+5ï¿½ï¿½ï¿½ï¿½ï¿½ß»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¡ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½wifiï¿½ã²¥ï¿½ï¿½ssid ï¿½ï¿½ï¿½ë°²È«ï¿½Ôµï¿½ï¿½ï¿½ï¿½Ã¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¹ï¿½ï¿½ï¿½APï¿½ï¿½
 
 
 
 
 * 
-¹ÜÀíÍø¶Î £ºACµÄÎÞÏßµØÖ· APµÄÎÞÏßµØÖ·  
-ÒµÎñÍø¶Î £ºÊÖ»úÖÕ¶ËµÈµÄµØÖ·              
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ACï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½Ö· APï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½Ö·  
+Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö»ï¿½ï¿½Õ¶ËµÈµÄµï¿½Ö·              
 netwrok 1 
-  vlan 1   //ÕâÀï¹ØÁªÒµÎñÍø¶Î
-  ssid  //ÅäÖÃwifiÃû³Æ
-  security mode wpa-personal   //wap¸öÈË°æ
-  wpa key dcn123456   //wifiÃÜÂë
-  *Ä¬ÈÏÊÇ¹ØÁª¹ÜÀíÍø¶Î£¨Èç¹ûÏëÈÃÊÖ»úÖÕ¶ËµÈ»ñÈ¡µÄµØÖ·¸ú¹Ü
-   ÀíÍø¶ÎÏàÍ¬ÍøÂç£¬¾Í²»Òª¹ØÁªvlan£¬Ä¬ÈÏ¿Õ×Å¾Í¿ÉÒÔ£©
-  *ÉäÆµ·ÖÎªradio1ºÍradio2·Ö±ðÎª2.4GºÍ5.0G£»vpa0¶ÔÓ¦µÄÊÇnetwork1£¬vpa1¶ÔÓ¦µÄÊÇnetwork2ÒÔ´ÓÀàÍÆ£»ËùÒÔÔÚnetwork1µÄËùÓÐÅäÖÃ¶¼¿ÉÒÔ¹ØÁªµ½profile1£»
+  vlan 1   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  ssid  //ï¿½ï¿½ï¿½ï¿½wifiï¿½ï¿½ï¿½ï¿½
+  security mode wpa-personal   //wapï¿½ï¿½ï¿½Ë°ï¿½
+  wpa key dcn123456   //wifiï¿½ï¿½ï¿½ï¿½
+  *Ä¬ï¿½ï¿½ï¿½Ç¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½Õ¶ËµÈ»ï¿½È¡ï¿½Äµï¿½Ö·ï¿½ï¿½ï¿½ï¿½
+   ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ç£¬ï¿½Í²ï¿½Òªï¿½ï¿½ï¿½ï¿½vlanï¿½ï¿½Ä¬ï¿½Ï¿ï¿½ï¿½Å¾Í¿ï¿½ï¿½Ô£ï¿½
+  *ï¿½ï¿½Æµï¿½ï¿½Îªradio1ï¿½ï¿½radio2ï¿½Ö±ï¿½Îª2.4Gï¿½ï¿½5.0Gï¿½ï¿½vpa0ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½network1ï¿½ï¿½vpa1ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½network2ï¿½Ô´ï¿½ï¿½ï¿½ï¿½Æ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½network1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½Ô¹ï¿½ï¿½ï¿½ï¿½ï¿½profile1ï¿½ï¿½
 
 
-6¡¢Ö±½ÓÏÂ·¢ÎÞÏßÅäÖÃÎÄ¼þ¡£
-
-
-
-DCWS-6028#wireless  ap  profile  apply  1   ÏÂ·¢µ±Ç°×´Ì¬×îÐÂµÄÅäÖÃ¡£ÌØÈ¨Ä£Ê½ÏÂ
-show wireless  ap status ²é¿´ÎÞÏßAP²é¿´µÄ×´Ì¬
- 	 Managed Success 	¹ÜÀí³É¹¦µÄ×´Ì¬
-	 Managed In Progress    ÕýÔÚÏÂ·¢µÄ×´Ì¬
-show wireless  ap failure  status     ²é¿´ÎÞÏßAPÊ§°ÜµÄ×´Ì¬¡£
-WLAN-AP# get system detail//»ñÈ¡ÏµÍ³ÏêÏ¸ÐÅÏ¢
-#show vendor   			//²é¿´ACµÄÖ§³ÖÓ²¼þµÄÀàÐÍÒÔ¼°×ÔÉí
-(config-wireless)#ap profile 1               //½øÈëAPÎÄ¼þ
-(config-ap-profile)#hwtype 59             //Ö¸¶¨Ó²¼þÀàÐÍºÅID
+6ï¿½ï¿½Ö±ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
 
 
 
-»Ö¸´³ö³§ÉèÖÃ
+DCWS-6028#wireless  ap  profile  apply  1   ï¿½Â·ï¿½ï¿½ï¿½Ç°×´Ì¬ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½Ã¡ï¿½ï¿½ï¿½È¨Ä£Ê½ï¿½ï¿½
+show wireless  ap status ï¿½é¿´ï¿½ï¿½ï¿½ï¿½APï¿½é¿´ï¿½ï¿½×´Ì¬
+ 	 Managed Success 	ï¿½ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½×´Ì¬
+	 Managed In Progress    ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½×´Ì¬
+show wireless  ap failure  status     ï¿½é¿´ï¿½ï¿½ï¿½ï¿½APÊ§ï¿½Üµï¿½×´Ì¬ï¿½ï¿½
+WLAN-AP# get system detail//ï¿½ï¿½È¡ÏµÍ³ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢
+#show vendor   			//ï¿½é¿´ACï¿½ï¿½Ö§ï¿½ï¿½Ó²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½
+(config-wireless)#ap profile 1               //ï¿½ï¿½ï¿½ï¿½APï¿½Ä¼ï¿½
+(config-ap-profile)#hwtype 59             //Ö¸ï¿½ï¿½Ó²ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ID
 
-1¡¢É¾³ýÅäÖÃÎÄ¼þ£¨×¢Òâµã£©
-2¡¢
+
+
+ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+1ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½×¢ï¿½ï¿½ã£©
+2ï¿½ï¿½
 set default 
 y 
 write
@@ -89,32 +89,32 @@ y
 
 
 
-AC6028#show ip interface brief £¨²é¿´Ñ¡ÔñloopbackÉÏÒÑÅäÖÃµÄÈý²ã½Ó¿Ú£©
-AC6028#show mac-address-table£¨²é¿´MACµØÖ·±í£©
-AC6028#show arp£¨²é¿´arp±í£©
-AC6028#show  vendor£¨²é¿´Ó²¼þ°æ±¾£©
-AC6028#show version£¨²é¿´°æ±¾£©
-AC6028#sh run current-mode£¨²é¿´µ±Ç°ÅäÖÃ£©
+AC6028#show ip interface brief ï¿½ï¿½ï¿½é¿´Ñ¡ï¿½ï¿½loopbackï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½Ó¿Ú£ï¿½
+AC6028#show mac-address-tableï¿½ï¿½ï¿½é¿´MACï¿½ï¿½Ö·ï¿½ï¿½
+AC6028#show arpï¿½ï¿½ï¿½é¿´arpï¿½ï¿½
+AC6028#show  vendorï¿½ï¿½ï¿½é¿´Ó²ï¿½ï¿½ï¿½æ±¾ï¿½ï¿½
+AC6028#show versionï¿½ï¿½ï¿½é¿´ï¿½æ±¾ï¿½ï¿½
+AC6028#sh run current-modeï¿½ï¿½ï¿½é¿´ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Ã£ï¿½
 
 
 
 
-AC-APÈý²ã·¢ÏÖ
-Èý²ã½»»»»ú6200ÅäÖÃ£º
-(config)#vlan 110;120;130   //´´½¨vlan110£»120£»130
-(config)#service dhcp   //ÆôÓÃDHCP·þÎñ
-(config)#ip dhcp pool ap   //´´½¨DHCPµØÖ·³Øap
-(dhcp-ap-config)#network-address 192.168.20.0 24   //µØÖ·Íø¶ÎÎª192.168.20.0
-(dhcp-ap-config)#default-router 192.168.20.254    //ÉèÖÃÍø¹ØÎª192.168.20.254
-(dhcp-ap-config)#dns-server 8.8.8.8    //ÉèÖÃdnsÎª8.8.8.8
-(dhcp-ap-config)#lease 1 0 0    //±£Áô1Ìì0Ð¡Ê±0·ÖÖÓ
-(config-if-ethernet1/0/2)#switchport mode trunk£¨AP½Ó¿Ú£©   //ÉèÖÃ½»»»»ú¶Ë¿ÚÄ£Ê½ÖÐ¼Ì
-(config-if-ethernet1/0/2)#switchport trunk native vlan 120   //ÉèÖÃPVIDÖµÎª120
-(config-if-ethernet1/0/2)#show run current-mode   //ÏÔÊ¾µ±Ç°ÅäÖÃ
+AC-APï¿½ï¿½ï¿½ã·¢ï¿½ï¿½
+ï¿½ï¿½ï¿½ã½»ï¿½ï¿½ï¿½ï¿½6200ï¿½ï¿½ï¿½Ã£ï¿½
+(config)#vlan 110;120;130   //ï¿½ï¿½ï¿½ï¿½vlan110ï¿½ï¿½120ï¿½ï¿½130
+(config)#service dhcp   //ï¿½ï¿½ï¿½ï¿½DHCPï¿½ï¿½ï¿½ï¿½
+(config)#ip dhcp pool ap   //ï¿½ï¿½ï¿½ï¿½DHCPï¿½ï¿½Ö·ï¿½ï¿½ap
+(dhcp-ap-config)#network-address 192.168.20.0 24   //ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½Îª192.168.20.0
+(dhcp-ap-config)#default-router 192.168.20.254    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª192.168.20.254
+(dhcp-ap-config)#dns-server 8.8.8.8    //ï¿½ï¿½ï¿½ï¿½dnsÎª8.8.8.8
+(dhcp-ap-config)#lease 1 0 0    //ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½0Ð¡Ê±0ï¿½ï¿½ï¿½ï¿½
+(config-if-ethernet1/0/2)#switchport mode trunkï¿½ï¿½APï¿½Ó¿Ú£ï¿½   //ï¿½ï¿½ï¿½Ã½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¿ï¿½Ä£Ê½ï¿½Ð¼ï¿½
+(config-if-ethernet1/0/2)#switchport trunk native vlan 120   //ï¿½ï¿½ï¿½ï¿½PVIDÖµÎª120
+(config-if-ethernet1/0/2)#show run current-mode   //ï¿½ï¿½Ê¾ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½
 (config-vlan120)name ap 
 (config-if-vlan120)#ip address 192.168.20.254 255.255.255.0
 (config-if-vlan120)#no shutdown
-(config)#sho ip dhcp binding   //ÏÔÊ¾ip dhcp°ó¶¨£¨²é¿´AP»ñÈ¡×´Ì¬£©
+(config)#sho ip dhcp binding   //ï¿½ï¿½Ê¾ip dhcpï¿½ó¶¨£ï¿½ï¿½é¿´APï¿½ï¿½È¡×´Ì¬ï¿½ï¿½
 
 (config-if-vlan130)#ip address 192.168.30.2 255.255.255.0
 (config-if-vlan130)#no shutdown 
@@ -129,27 +129,27 @@ AC-APÈý²ã·¢ÏÖ
 (dhcp-user-config)#dns-server 8.8.8.8
 (dhcp-user-config)#lease 1 0 0
 
-ACÅäÖÃ£º
+ACï¿½ï¿½ï¿½Ã£ï¿½
 (config-if-vlan130)#ip address 192.168.30.1 255.255.255.0
 (config-if-vlan130)#no shutdown
 (config-if-ethernet1/0/2)#switchport access vlan 130
-#show ip interface brief   //ÏÔÊ¾ip½Ó¿ÚÐÅÏ¢
+#show ip interface brief   //ï¿½ï¿½Ê¾ipï¿½Ó¿ï¿½ï¿½ï¿½Ï¢
 
 (config-wireless)#enable 
 (config-wireless)#static-ip 192.168.30.1
 (config-wireless)#no auto-ip-assign 
 (config-wireless)#show wireless 
-#show ip route£¨²é¿´Â·ÓÉÍø¶Î£©
-(config)#ip route 0.0.0.0/0 192.168.30.2£¨×öÈ±Ê¡È¥´òÍ¨¶Ô¶Ë£¬²¢ºÍAP»¥Í¨£©
+#show ip routeï¿½ï¿½ï¿½é¿´Â·ï¿½ï¿½ï¿½ï¿½ï¿½Î£ï¿½
+(config)#ip route 0.0.0.0/0 192.168.30.2ï¿½ï¿½ï¿½ï¿½È±Ê¡È¥ï¿½ï¿½Í¨ï¿½Ô¶Ë£ï¿½ï¿½ï¿½ï¿½ï¿½APï¿½ï¿½Í¨ï¿½ï¿½
 
-(config-wireless)#discovery ip-list 192.168.20.1£¨APµÄ¹ÜÀíµØÖ·£©
+(config-wireless)#discovery ip-list 192.168.20.1ï¿½ï¿½APï¿½Ä¹ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½
 (config-wireless)#ap authentication none
 
 (config-wireless)#network 1
 (config-network)#ssid test_dcn_1
-(config-network)#vlan 110£¨»ñÈ¡vlan10µÄÍø¶Î£©
+(config-network)#vlan 110ï¿½ï¿½ï¿½ï¿½È¡vlan10ï¿½ï¿½ï¿½ï¿½ï¿½Î£ï¿½
 (config-wireless)#network 2
-(config-network)#ssid test_dcn_2£¨²»È¥×ö¹ØÁªvlan£¬ÈÃ¿Í»§¶ËÁ¬½ÓºóÈ¥»ñÈ¡APÍ¬Ò»¸öµØÖ·³ØÍø¶Î£©
+(config-network)#ssid test_dcn_2ï¿½ï¿½ï¿½ï¿½È¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½vlanï¿½ï¿½ï¿½Ã¿Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óºï¿½È¥ï¿½ï¿½È¡APÍ¬Ò»ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½Î£ï¿½
 
 (config-wireless)#network 300
 (config-network)#vlan 110
@@ -166,30 +166,30 @@ ACÅäÖÃ£º
 
 
 
-AC-APÈý²ãoption43
-Èý²ã½»»»»ú6200ÅäÖÃ£º£¨´´½¨vlan110£»120£»130£©
-#show interface ethernet status   //ÏÔÊ¾½Ó¿ÚÒÔÌ«Íø×´Ì¬
-(config)#int ethernet 1/0/1    //½Ó¿ÚÒÔÌ«Íø1/0/1
-(config-if-ethernet1/0/1)#switchport mode trunk   //½»»»»ú¶Ë¿ÚÄ£Ê½ÖÐ¼Ì
+AC-APï¿½ï¿½ï¿½ï¿½option43
+ï¿½ï¿½ï¿½ã½»ï¿½ï¿½ï¿½ï¿½6200ï¿½ï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½vlan110ï¿½ï¿½120ï¿½ï¿½130ï¿½ï¿½
+#show interface ethernet status   //ï¿½ï¿½Ê¾ï¿½Ó¿ï¿½ï¿½ï¿½Ì«ï¿½ï¿½×´Ì¬
+(config)#int ethernet 1/0/1    //ï¿½Ó¿ï¿½ï¿½ï¿½Ì«ï¿½ï¿½1/0/1
+(config-if-ethernet1/0/1)#switchport mode trunk   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¿ï¿½Ä£Ê½ï¿½Ð¼ï¿½
 (config-if-ethernet1/0/1)#show running-config current-mode
-#show running-config interface ethernet 1/0/1   //ÏÔÊ¾ÕýÔÚÔËÐÐµÄÅäÖÃ½Ó¿ÚÒÔÌ«Íø1/0/1
+#show running-config interface ethernet 1/0/1   //ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½Ã½Ó¿ï¿½ï¿½ï¿½Ì«ï¿½ï¿½1/0/1
 
 (config)#vlan 120
 (config-vlan120)#name ap-manage
 (config-if-vlan120)#ip address 192.168.120.254 255.255.255.0 
 
-(config-if-vlan120)#show ip dhcp binding   //ÏÔÊ¾ip dhcp°ó¶¨
-(config)#service dhcp   //Ê¹ÄÜ·þÎñdhcp
-(config)#ip dhcp pool ap   //ip dhcp³Øap
-(dhcp-ap-config)#network-address 192.168.120.0 24   //ÍøÂçµØÖ·Íø¶Î192.168.120.0 24
-(dhcp-ap-config)#default-router 192.168.120.254   //Ä¬ÈÏÂ·ÓÉÆ÷Íø¹ØµØÖ·192.168.120.254
-(dhcp-ap-config)#dns-server 8.8.8.8    //dns·þÎñÆ÷µØÖ·8.8.8.8
-(dhcp-ap-config)#lease 1 0 0    //±£Áô1Ìì0Ð¡Ê±0·ÖÖÓ
-(dhcp-ap-config)#option 43 hex 0104c0a81e01£¨0104ÉñÂëÓ²¼þ±àºÅ£¬ºóÃæ½Ó×ÅAC¹ÜÀíµÄÊ®Áù½øÖÆµØÖ·192.168.30.1£©
-(dhcp-ap-config)#show running-config current-mode   //ÏÔÊ¾ÔËÐÐÅäÖÃµ±Ç°Ä£Ê½
-(config-if-ethernet1/0/1)#show interface ethernet 1/0/1   //ÏÔÊ¾½Ó¿ÚÒÔÌ«Íø1/0/1£¨²é¿´PVID£©
-(config-if-ethernet1/0/1)#switchport trunk native vlan 120   //½»»»»ú¶Ë¿ÚÖÐ¼Ì±¾»úvlan 120
-#show ip dhcp binding   //ÏÔÊ¾ip dhcp°ó¶¨£¨²é¿´APÓÐÃ»ÓÐÄÃµ½µØÖ·£©
+(config-if-vlan120)#show ip dhcp binding   //ï¿½ï¿½Ê¾ip dhcpï¿½ï¿½
+(config)#service dhcp   //Ê¹ï¿½Ü·ï¿½ï¿½ï¿½dhcp
+(config)#ip dhcp pool ap   //ip dhcpï¿½ï¿½ap
+(dhcp-ap-config)#network-address 192.168.120.0 24   //ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½192.168.120.0 24
+(dhcp-ap-config)#default-router 192.168.120.254   //Ä¬ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½Ö·192.168.120.254
+(dhcp-ap-config)#dns-server 8.8.8.8    //dnsï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·8.8.8.8
+(dhcp-ap-config)#lease 1 0 0    //ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½0Ð¡Ê±0ï¿½ï¿½ï¿½ï¿½
+(dhcp-ap-config)#option 43 hex 0104c0a81e01ï¿½ï¿½0104ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ï¿½ï¿½Å£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ACï¿½ï¿½ï¿½ï¿½ï¿½Ê®ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½Ö·192.168.30.1ï¿½ï¿½
+(dhcp-ap-config)#show running-config current-mode   //ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½Ç°Ä£Ê½
+(config-if-ethernet1/0/1)#show interface ethernet 1/0/1   //ï¿½ï¿½Ê¾ï¿½Ó¿ï¿½ï¿½ï¿½Ì«ï¿½ï¿½1/0/1ï¿½ï¿½ï¿½é¿´PVIDï¿½ï¿½
+(config-if-ethernet1/0/1)#switchport trunk native vlan 120   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¿ï¿½ï¿½Ð¼Ì±ï¿½ï¿½ï¿½vlan 120
+#show ip dhcp binding   //ï¿½ï¿½Ê¾ip dhcpï¿½ó¶¨£ï¿½ï¿½é¿´APï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½Ö·ï¿½ï¿½
 
 (config-vlan130)#switchport interface ethernet 1/0/2
 (config-if-vlan130)#ip address 192.168.130.254 255.255.255.0
@@ -208,22 +208,22 @@ AC-APÈý²ãoption43
 (config)#show ip interface brief
 (config)#show vlan
 
-ACÅäÖÃ£º
+ACï¿½ï¿½ï¿½Ã£ï¿½
 (config-vlan130)#switchport interface ethernet 1/0/2
 (config-if-vlan130)#ip address 192.168.130.1 255.255.255.0
 (config-if-vlan130)#no shutdown  
 (config-if-vlan130)#show running-config current-mode
 (config)#show ip interface brief
 
-#ping 192.168.120.1£¨²»Í¨£©
+#ping 192.168.120.1ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½
 #show ip route 
-(config)#ip route 0.0.0.0/0 192.168.130.254£¨×öÈ±Ê¡Â·ÓÉ¸ø¶Ô¶Ë£¬²¢ºÍAPÆ´Í¨£©
-#ping 192.168.120.1£¨ÒÑÍ¨£©
+(config)#ip route 0.0.0.0/0 192.168.130.254ï¿½ï¿½ï¿½ï¿½È±Ê¡Â·ï¿½É¸ï¿½ï¿½Ô¶Ë£ï¿½ï¿½ï¿½ï¿½ï¿½APÆ´Í¨ï¿½ï¿½
+#ping 192.168.120.1ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½
 (config-wireless)#static-ip 192.168.130.1 
 
 (config-wireless)#show wireless
-WLAN-AP# get system detail£¨»ñÈ¡ÐòÁÐºÅ£©
-(config-wireless)#show arp£¨»ñÈ¡MAC£©
+WLAN-AP# get system detailï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ÐºÅ£ï¿½
+(config-wireless)#show arpï¿½ï¿½ï¿½ï¿½È¡MACï¿½ï¿½
 (config-wireless)#ap authentication serial-num
 (config-wireless)#show wireless 
 (config-wireless)#ap database 00-03-0F-8B-54-90
@@ -255,15 +255,15 @@ WLAN-AP# get system detail£¨»ñÈ¡ÐòÁÐºÅ£©
 (config-ap-profile-vap)#network 300
 #wireless ap profile apply 1
 #show wireless ap status 
-£¨WLAN-AP# factory-reset //»Ö¸´Ä¬ÈÏÉèÖÃ£©
+ï¿½ï¿½WLAN-AP# factory-reset //ï¿½Ö¸ï¿½Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½
 ----------------------------------------------------
 
 ----------------------------------------------------
 
 ----------------------------------------------------
 ----------------------------------------------------
-DCN-WLAN-AP# set management static-ip 192.168.1.100 static-mask 255.255.255.0  ¾²Ì¬µØÖ·µÄÉèÖÃ
-DCN-WLAN-AP# set static-ip-route gateway 192.168.1.1                           Íø¹ØµÄÉèÖÃ
+DCN-WLAN-AP# set management static-ip 192.168.1.100 static-mask 255.255.255.0  ï¿½ï¿½Ì¬ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+DCN-WLAN-AP# set static-ip-route gateway 192.168.1.1                           ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½
 
 DCN-WLAN-AP# get system detail
 Property                      Value
@@ -321,7 +321,7 @@ DCN-WLAN-AP#
 
 
 
-DCWS-6028#show vendor   			//²é¿´ACµÄÖ§³ÖÓ²¼þµÄÀàÐÍÒÔ¼°×ÔÉí¡£
+DCWS-6028#show vendor   			//ï¿½é¿´ACï¿½ï¿½Ö§ï¿½ï¿½Ó²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½
 NAME            LEN          VALUE
 ------------    -----        ------------------------------
 SwitchName      9            DCWS-6028
@@ -363,40 +363,4 @@ SupportAPs      2919
                            7 DCWL-7962AP      R4    DCWL-7962AP(R4), Indoor Dual Radio a/n, b/g/n
                            8 DCWL-7942AP-E    R1    DCWL-7942AP-E, Indoor Single Radio b/g/n
                            9 DCWL-7962AP-E    R1    DCWL-7962AP-E, Indoor Dual Radio a/n, b/g/n
-                          10 DCWL-7962OT      R1    DCWL-7962OT, Outdoor Dual Radio a/n, b/g/n
-                          11 DCWL-7942AP-W    R1    DCWL-7942AP-W, Indoor Single Radio b/g/n
-                          12 DCWL-7942AP-WH   R1    DCWL-7942AP-WH, Indoor Single Radio b/g/n
-                          13 DCWL-7942OT      R3    DCWL-7942OT(R3), Outdoor Single Radio b/g/n
-                          14 DCWL-7962OT      R4    DCWL-7962OT(R4), Outdoor Dual Radio a/n, b/g/n
-                          15 DCWL-7942OT      R4    DCWL-7942OT(R4), Outdoor Single Radio b/g/n
-                          21 DCWL-7942AP      R5    DCWL-7942AP(R5), Indoor Single Radio b/g/n
-                          22 DCWL-7962AP      R5    DCWL-7962AP(R5), Indoor Dual Radio a/n, b/g/n
-                          23 DCWL-7962OT      R5    DCWL-7962OT(R5), Outdoor Dual Radio a/n, b/g/n
-                          26 DCWL-1000WAP     R1    DCWL-1000WAP, Indoor Single Radio b/g/n
-                          27 DCWL-2000WAP     R1    DCWL-2000WAP(R1), Indoor Single Radio b/g/n
-                          16 DCWL-7942AP      R4.5  DCWL-7942AP(R4.5), Indoor Single Radio b/g/n
-                          17 DCWL-7962AP      R4.5  DCWL-7962AP(R4.5), Indoor Dual Radio a/n, b/g/n
-                          24 DCWL-7942AP      R5.1  DCWL-7942AP(R5.1), Indoor Single Radio b/g/n
-                          25 DCWL-7962AP      R5.1  DCWL-7962AP(R5.1), Indoor Dual Radio a/n, b/g/n
-                          28 DCWL-1000WAP     R1.1  DCWL-1000WAP(R1.1), Indoor Single Radio b/g/n
-                          29 WL8200-I2        R1    WL8200-I2, Indoor Dual Radio a/n/ac, b/g/n
-                          30 WL8200-I3        R1    WL8200-I3, Indoor Dual Radio a/n/ac, b/g/n
-                          36 DCWL-7962AP-D    R1    DCWL-7962AP-D, Indoor Dual Radio a/n, b/g/n
-                          31 DCWL-2000WAP(L)  R1    DCWL-2000WAP(L), Indoor Single Radio b/g/n
-                          32 EAP280-L         R1    EAP280-L, Indoor Single Radio b/g/n
-                          33 WL8200-W2        R1    WL8200-W2, Indoor Dual Radio a/n/ac, b/g/n
-                          40 WL8200-T3        R1    WL8200-T3, Outdoor Dual Radio a/n/ac, b/g/n
-                          39 WL8200-T2        R1    WL8200-T2, Outdoor Dual Radio a/n/ac, b/g/n
-                          38 DCWL-7962OT      R6    DCWL-7962OT(R6), Outdoor Single Radio b/g/n
-                          41 WL8200-WL2       R1    WL8200-WL2, Indoor Dual Radio a/n/ac, b/g/n
-                          42 WL8200-IT2       R1    WL8200-IT2, Outdoor Dual Radio a/n/ac, b/g/n
-                          58 DCWL-2000WAP(R2) R2    DCWL-2000WAP(R2), Indoor Single Radio b/g/n
-                          59 WL8200-I2(R2)    R2    WL8200-I2(R2), Indoor Dual Radio a/n/ac, b/g/n
-DCWS-6028#     
-
-
-
-
-
-
-DCN-WLAN-AP# factory-reset                 »Ö¸´³ö³§ÉèÖÃ
+                          10 DCWL-7962OT      R1    DCWL-7962OT,

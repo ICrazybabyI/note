@@ -666,6 +666,9 @@ User=root									#改这里
 
 `systemctl enable tomcat --now`  
 
+> [!NOTE]  
+> [视频](http://192.168.31.245:8989/wlyw/linux_video/-/blob/main/23%E5%9B%BD%E8%B5%9B/tomcat%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)
+
 ---
 
 # samba服务
@@ -765,6 +768,9 @@ NT_STATUS_ACCESS_DENIED deleting remote file \.lesshst
 `systemctl daemon-reload`  
 
 `mount -a`  
+
+> [!NOTE]
+> [视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/samba%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)
 
 ---
 

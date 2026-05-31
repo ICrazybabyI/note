@@ -5,7 +5,7 @@
 
 # 初次学习
 首次学习linux,推荐先阅读[菜鸟教程(外网)](https://www.runoob.com/linux/linux-tutorial.html)[(内网)](http://192.168.31.245:8083/linux-tutorial.html),了解linux的作用 用法 要用linux的原因.  
-然后看一看[linux的目录结构(外网)](https://www.runoob.com/linux/linux-system-contents.html)[(内网)](http://192.168.31.245:8083/linux-system-contents.html)linux是由哪几个结构组成的,明白linux一切皆文件的道理.  
+然后看一看[linux的目录结构(外网)](https://www.runoob.com/linux/linux-system-contents.html)[(内网)](http://192.168.31.245:8083/linux-system-contents.html)linux是由哪几个结构组成的,明白linux一切皆文件的道理,  
 最后看[文件权限(外网)](https://www.runoob.com/linux/linux-file-attr-permission.html)[(内网)](http://192.168.31.245:8083/linux-file-attr-permission.html)和[目录相关(外网)](https://www.runoob.com/linux/linux-file-content-manage.html)[(内网)](http://192.168.31.245:8083/linux-file-content-manage.html)的.  
 
 
@@ -26,7 +26,7 @@
 这里要边看边练,不懂的问ai直接贴个报错和问题  
 
 例:  
-<img src="images/readme_ai.png" width="400">  
+<img src="images/Pasted%20image%2020260420210613.png" width="400">  
 
 > [!TIP]
 > 问了AI之后要在虚拟机里做实验加深记忆   
@@ -37,7 +37,7 @@
 > [!TIP]
 > 掌握做题的方法,试着自己解决各种报错,可以使用`systemctl status 服务名`  
 > 或者`journalctl -u 服务名 --no-pager -n 50` 查看服务的状态 知道哪里错误再去修改最后重启服务,实在不会就贴报错给ai看  
-> 例: ![](images/readme_tip_systemctl.png)  
+> 例: ![](images/Pasted%20image%2020260518105703.png)  
 > 这里19th line出现错误,在花括号结束前缺失分号,我们需要编辑配置文件  
 > 修改完毕使用 `systemctl restart named`重启服务载入配置
 
@@ -85,9 +85,7 @@
 > [!note]  
 > **拓展知识:**  
 >    如何使用[git](git.md)  
->    如何使用[vim](vim.md)  
-> 如何创建[预安装系统qcow2磁盘](qcow2磁盘.md)  
-
+>    如何使用[vim](vim.md)
 # 学习过程:  
 ```mermaid
 graph TB
