@@ -113,8 +113,8 @@ graph TB
     end
 ```
 
-<img src="images/spongeBob.gif" width="120" style="display: block;" />
-<img src="images/spongeBob.gif" width="120" style="display: block;" />
-<img src="images/spongeBob.gif" width="120" style="display: block;" />
-<img src="images/spongeBob.gif" width="120" style="display: block;" />
-<img src="images/spongeBob.gif" width="120" style="display: block;" />
+<img src="images/spongeBob.gif" width="120"/>
+<img src="images/spongeBob.gif" width="120"/>
+<img src="images/spongeBob.gif" width="120"/>
+<img src="images/spongeBob.gif" width="120"/>
+<img src="images/spongeBob.gif" width="120"/>
