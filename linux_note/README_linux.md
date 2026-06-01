@@ -113,8 +113,10 @@ graph TB
     end
 ```
 
+<div style="img {display: block}">
 <img src="images/spongeBob.gif" width="120"/>
 <img src="images/spongeBob.gif" width="120"/>
 <img src="images/spongeBob.gif" width="120"/>
 <img src="images/spongeBob.gif" width="120"/>
 <img src="images/spongeBob.gif" width="120"/>
+</div>
