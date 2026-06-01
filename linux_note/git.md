@@ -25,7 +25,7 @@ Git 与 SVN 区别点：
 - **4、Git 没有一个全局的版本号，而 SVN 有：** 目前为止这是跟 SVN 相比 Git 缺少的最大的一个特征。  
     
 - **5、Git 的内容完整性要优于 SVN：** Git 的内容存储使用的是 SHA-1 哈希算法。这能确保代码内容的完整性，确保在遇到磁盘故障和网络问题时降低对版本库的破坏。  
-![](images/Pasted%20image%2020260508094225.png)  
+![](images/git_vs_svn.png)  
 # Git 工作区、暂存区和版本库
 
 ---
@@ -40,7 +40,7 @@ Git 与 SVN 区别点：
 
 下面这个图展示了工作区、版本库中的暂存区和版本库之间的关系：
 
-![](images/Pasted%20image%2020260508150641.png)
+![](images/git_workspace.png)
 
 - 图中左侧为工作区，右侧为版本库。在版本库中标记为 "index" 的区域是暂存区（stage/index），标记为 "master" 的是 master 分支所代表的目录树。
     
