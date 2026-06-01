@@ -122,4 +122,3 @@ graph TB
 <img src="images/spongeBob.gif" width="120"/>
 <img src="images/spongeBob.gif" width="120"/>
 <img src="images/spongeBob.gif" width="120"/>
-<img src="images/spongeBob.gif" width="120"/>
