@@ -826,13 +826,18 @@ SKILLS.LAN = {
 //开机自启服务  
 `systemctl enable krb5kdc kadmin --now`  
 `kadmin.local`        //管理数据库  
-kadmin.local:addprinc `root/admin` //输入密码 Key-1122  
+kadmin.local:`addprinc root/admin` //输入密码 Key-1122  
 kadmin.local: `addprinc -randkey	nfs/linux3.skills.lan` //-randkey 随机创建密码   
 kadmin.local: `addprinc -randkey	nfs/linux4.skills.lan`  
 kadmin.local: `listprincs` //列出创建的数据
 
 kadmin.local:  `exit`
 
+`firewall-cmd --add-port={88,464,749}/tcp --per`  
+
+`firewall-cmd --add-port={88,464,749}/udp --per`  
+
+`firewall-cmd --reload`  
 
 ## （2）在linux3上，创建用户，用户名为xiao，uid=222，gid=222，家目录为/home/xiaodir。
 
@@ -849,7 +854,9 @@ kadmin.local:  `exit`
  **linux3:  **  
  
 `dnf install krb5-work* nfs-ut* -y`  
+
 `kadmin`  
+
 `ktadd nfs/linux3.skills.lan@SKILLS.LAN`
 
 `exit`
@@ -865,6 +872,12 @@ kadmin.local:  `exit`
 ```
 
 `exportfs -arv`
+
+`firewall-cmd --add-port={111,20048,2049}/tcp --per`  
+
+`firewall-cmd --add-port={111,20048,2049}/udp --per`  
+
+`firewall-cmd --reload`
 
 ---
 
