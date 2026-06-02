@@ -6,10 +6,10 @@
 > [CA服务](linux.md#ca服务) --[视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/CA%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
 > [ansible服务](linux.md#ansible服务) --[视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/ansible%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads) <-- 做了ssh密钥前提  
 > [apache服务](linux.md#apache服务) --[视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/apache%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
-> [tomcat服务](linux.md#tomcat服务) --[视频]()    
-> [samba服务](linux.md#samba服务) --[视频]()  
-> [nfs服务端](linux.md#nfs服务端) --[视频]()  
-> [nfs客户端](linux.md#nfs客户端) --[视频]()  
+> [tomcat服务](linux.md#tomcat服务) --[视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/tomcat%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)    
+> [samba服务](linux.md#samba服务) --[视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/samba%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
+> [nfs服务端](linux.md#nfs服务端) --[视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/nfs%E6%9C%8D%E5%8A%A1%E7%AB%AF+%E5%AE%A2%E6%88%B7%E7%AB%AF.mp4?ref_type=heads)
+> [nfs客户端](linux.md#nfs客户端) --[视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/nfs%E6%9C%8D%E5%8A%A1%E7%AB%AF+%E5%AE%A2%E6%88%B7%E7%AB%AF.mp4?ref_type=heads)
 > [ftp服务](linux.md#ftp服务) --[视频]()  
 > [iscsi服务](linux.md#iscsi服务) --[视频]()  
 > [mysql服务](linux.md#mysql服务) --[视频]()  
@@ -781,9 +781,13 @@ NT_STATUS_ACCESS_DENIED deleting remote file \.lesshst
 （1）配置linux2为kdc服务器，负责linux3和linux4的验证。
 --{88,464,749}/tcp/udp
 
+> [!tip]
+> 这里krb5p要先做好了chrony服务,或是把时间调成误差不能超过5分钟(300秒)
+
 **linux2:**
 
 `dnf install krb5-* -y`		  
+
 `vi /etc/krb5.conf`
 
 ```bash
@@ -857,7 +861,7 @@ kadmin.local:  `exit`
 
 `kadmin`  
 
-`ktadd nfs/linux3.skills.lan@SKILLS.LAN`
+`ktadd nfs/linux3.skills.lan`
 
 `exit`
 
@@ -873,11 +877,16 @@ kadmin.local:  `exit`
 
 `exportfs -arv`
 
+`systemctl enable --now nfs-server.service`
+
 `firewall-cmd --add-port={111,20048,2049}/tcp --per`  
 
 `firewall-cmd --add-port={111,20048,2049}/udp --per`  
 
 `firewall-cmd --reload`
+
+> [!note]
+> [视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/nfs%E6%9C%8D%E5%8A%A1%E7%AB%AF+%E5%AE%A2%E6%88%B7%E7%AB%AF.mp4?ref_type=heads)
 
 ---
 
@@ -890,13 +899,22 @@ kadmin.local:  `exit`
 
 `dnf install krb5-wo* autofs nfsv4-cl* nfs-utils -y`
 
-`kinit -kt /etc/krb5.keytab nfs/linux4.skills.lan@SKILLS.LAN`
+`kinit root/admin`  
+
+`kadmin`
+
+Authenticating as principal root/admin@SKILLS.LAN with password.
+Password for root/admin@SKILLS.LAN:  `Key-1122`  
+
+`kadmin:  ktadd nfs/linux4.skills.lan`  
+
+`klist`   //查看有没有拿到凭证  
 
 [root@linux4 sharenfs]# `kvno nfs/linux3.skills.lan@SKILLS.LAN` //测试是否打通Kerberos认证链路
 
 nfs/linux3.skills.lan@SKILLS.LAN: kvno = 2
 
-`systemctl enable autofs <font style="background-color:rgba(255, 255, 255, 0.05);">rpc-gssd</font> --now`!!!
+`systemctl restart rpc-gssd.service`  <-- !!!一定要打  
 
 `vi /etc/auto.master` //添加
 
@@ -910,11 +928,18 @@ nfs/linux3.skills.lan@SKILLS.LAN: kvno = 2
 /sharenfs 	-fstype=nfs,rw,sec=krb5p   linux3.skills.lan:/srv/sharenfs		#顺序不要错
 ```
 
+`systemctl enable autofs --now`    
+
+`mkdir /sharenfs`
+
 `cd /sharenfs`
 
 `df`
 
 `mkdir test`
+
+> [!note]
+> [视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/nfs%E6%9C%8D%E5%8A%A1%E7%AB%AF+%E5%AE%A2%E6%88%B7%E7%AB%AF.mp4?ref_type=heads)
 
 ---
 

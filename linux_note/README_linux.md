@@ -51,8 +51,8 @@
 > [CA服务](linux.md#ca服务) --[视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/CA%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
 > [ansible服务](linux.md#ansible服务) --[视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/ansible%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads) <-- 做了ssh密钥前提  
 > [apache服务](linux.md#apache服务) --[视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/apache%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
-> [tomcat服务](linux.md#tomcat服务) --[视频]()  
-> [samba服务](linux.md#samba服务) --[视频]()  
+> [tomcat服务](linux.md#tomcat服务) --[视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/tomcat%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)    
+> [samba服务](linux.md#samba服务) --[视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/samba%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
 > [nfs服务端](linux.md#nfs服务端) --[视频]()  
 > [nfs客户端](linux.md#nfs客户端) --[视频]()  
 > [ftp服务](linux.md#ftp服务) --[视频]()  

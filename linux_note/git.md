@@ -8,6 +8,7 @@
 > 第一次使用git看这个 -->[模拟参加git项目](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/%E6%A8%A1%E6%8B%9F%E4%BD%BF%E7%94%A8git%E9%A1%B9%E7%9B%AE.mp4?ref_type=heads)  //右下角下载视频或使用火狐内核浏览器  
 > 学习日常使用git   ----->>[git使用](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/git%E4%BD%BF%E7%94%A8.mp4?ref_type=heads) //因为第一次推送没有pull到本地合并,所以用-ff强制覆盖
 
+
 ## Git 与 SVN 区别
 
 Git 不仅仅是个版本控制系统，它也是个内容管理系统(CMS)，工作管理系统等。
