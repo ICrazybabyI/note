@@ -8,9 +8,9 @@
 > [apache服务](linux.md#apache服务) --[视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/apache%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
 > [tomcat服务](linux.md#tomcat服务) --[视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/tomcat%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)    
 > [samba服务](linux.md#samba服务) --[视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/samba%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
-> [nfs服务端](linux.md#nfs服务端) --[视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/nfs%E6%9C%8D%E5%8A%A1%E7%AB%AF+%E5%AE%A2%E6%88%B7%E7%AB%AF.mp4?ref_type=heads)
-> [nfs客户端](linux.md#nfs客户端) --[视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/nfs%E6%9C%8D%E5%8A%A1%E7%AB%AF+%E5%AE%A2%E6%88%B7%E7%AB%AF.mp4?ref_type=heads)
-> [ftp服务](linux.md#ftp服务) --[视频]()  
+> [nfs服务端](linux.md#nfs服务端) --[视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/nfs%E6%9C%8D%E5%8A%A1%E7%AB%AF+%E5%AE%A2%E6%88%B7%E7%AB%AF.mp4?ref_type=heads)  
+> [nfs客户端](linux.md#nfs客户端) --[视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/nfs%E6%9C%8D%E5%8A%A1%E7%AB%AF+%E5%AE%A2%E6%88%B7%E7%AB%AF.mp4?ref_type=heads)   
+> [ftp服务](linux.md#ftp服务) --[视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/ftp%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
 > [iscsi服务](linux.md#iscsi服务) --[视频]()  
 > [mysql服务](linux.md#mysql服务) --[视频]()  
 > [mariadb服务](linux.md#mariadb服务) --[视频]()  
@@ -960,7 +960,7 @@ New password:
 BAD PASSWORD: The password is shorter than 8 characters  
 Retype new password:   
 passwd: all authentication tokens updated successfully.  
-[root@linux2 ~]# `chmod 777 /var/ftp/pub/ -R `
+[root@linux2 ~]# `chmod 777 /var/ftp/pub/ `
 
 [root@linux2 ~]# `vim /etc/vsftpd/vsftpd.conf`  //编辑配置文件  
 
@@ -973,35 +973,35 @@ allow_writeable_chroot=YES	// 所有访问将被限制在该目录下，用 户�
 ## （2）配置ftp虚拟用户认证模式，虚拟用户ftp1和ftp2映射为ftp，ftp1登录ftp后的目录为/var/ftp/vdir/ftp1，可以上传下载,禁止上传后缀名为.docx的文件；ftp2登录ftp后的目录为/var/ftp/vdir/ftp2，仅有下载权限。
 创建虚拟用户数据库文件
 
-[root@linux2 ~]# cd /etc/vsftpd/
+[root@linux2 ~]# `cd /etc/vsftpd/`
 
 [root@linux2 vsftpd]# `vim vuser`
 
 ```bash
 ftp1
-123
+Key-1122
 ftp2
-123
+Key-1122
 ```
 
-[root@linux2 vsftpd]# `db_load -T -t hash -f vuser vuser.db`  
-[root@linux2 vsftpd]# `chmod 600  vuser.db` 
+[root@linux2 vsftpd]# `db_load -T -t hash -f vuser vuser.db`   
 
-建立支持虚拟用户的 PAM 认证文件
+[root@linux2 vsftpd]# `chmod 600  vuser.db` 
 
 [root@linux2 ~]# `vim /etc/pam.d/vsftpd` 
 
-全都注释，只留这两行 ；sufficient 表示充分条件，可以让 vsftpd 同时支持虚拟用户和本地用户
+// 建立支持虚拟用户的 PAM 认证文件
+//全都注释，只留这两行  
+// sufficient 表示充分条件，可以让 vsftpd 同时支持虚拟用户和本地用户    
 
 ```bash
 auth sufficient pam_userdb.so db=/etc/vsftpd/vuser
 account sufficient pam_userdb.so db=/etc/vsftpd/vuser
 ```
 
-编辑配置文件
 
 [root@linux2 ~]# `vim /etc/vsftpd/vsftpd.conf` 
-
+//编辑配置文件  
 ```bash
 47 anon_upload_enable=YES	       # 解除注释
 32 anon_mkdir_write_enable=YES    # 解除注释
@@ -1010,10 +1010,11 @@ user_config_dir=/etc/vsftpd/vuser_profile
 file_open_mode=0755
 ```
 
-修改虚拟目录权限
 
-[root@linux2 ~]# `mkdir /etc/vsftpd/vuser_profile`  
+[root@linux2 ~]# `mkdir /etc/vsftpd/vuser_profile`   
+
 [root@linux2 ~]# `vim /etc/vsftpd/vuser_profile/ftp1`
+// 修改虚拟目录权限  
 
 ```bash
 guest_enable=YES
@@ -1038,16 +1039,23 @@ anon_other_write_enable=NO
 local_root=/var/ftp/vdir/ftp2
 ```
 
-创建根目录及虚拟用户映射的系统用户
 
-[root@linux2 ~]# `mkdir /var/ftp/vdir`  
-[root@linux2 ~]# `usermod -d /var/ftp/vdir ftp`
+[root@linux2 ~]# `mkdir /var/ftp/vdir`   
+//创建根目录及虚拟用户映射的系统用户  
 
-创建虚拟 ftp 用户
+[root@linux2 ~]# `usermod -d /var/ftp/vdir ftp`  
+//修改ftp用户的主目录    
 
-[root@linux2 ~]# `mkdir /var/ftp/vdir/{ftp1,ftp2}`  
+[root@linux2 ~]# `mkdir /var/ftp/vdir/{ftp1,ftp2}`    
+//创建虚拟 ftp 用户  
+
 [root@linux2 ~]# `chown ftp:ftp /var/ftp/vdir/ -R`  
-[root@linux2 ~]# `systemctl restart vsftpd`
+
+[root@linux2 ~]# `systemctl enable --now vsftpd`  
+
+`firewall-cmd --add-port=21/tcp --per`  
+
+`firewall-cmd --reload`
 
 ## （3）使用ftp命令在本机验证。
 `cd  /var/ftp/vdir/ftp1`

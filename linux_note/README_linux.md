@@ -29,14 +29,13 @@
 <img src="images/readme_ai.png" width="400">  
 
 > [!TIP]
-> 问了AI之后要在虚拟机里做实验加深记忆   
+> 问了AI之后要在虚拟机里做实验加深记忆 ,做题尽量理解写的配置的意思,多了解这方面的英语词汇,以便遇到新型题都能看手册来做题 ; 把每条配置都了解由什么词汇构成,这样很容易把配置记在脑子里,做题时一看题目就能蹦出来 
 
-打好基础后,跟着[linux](linux.md)这篇笔记做赛题熟悉做题流程;  
-这篇是23年国赛题,算是简单的题目  
+打好基础后,跟着[linux](linux.md)这篇笔记做赛题熟悉做题流程;  //这篇是23年国赛题,算是简单的题目    
 
 > [!TIP]
 > 掌握做题的方法,试着自己解决各种报错,可以使用`systemctl status 服务名`  
-> 或者`journalctl -u 服务名 --no-pager -n 50` 查看服务的状态 知道哪里错误再去修改最后重启服务,实在不会就贴报错给ai看  
+> 或者`journalctl -u 服务名 -n 30` 查看服务的状态 知道哪里错误再去修改最后重启服务,实在不会就贴报错给ai看  
 > 例: ![](images/readme_tip_systemctl.png)  
 > 这里19th line出现错误,在花括号结束前缺失分号,我们需要编辑配置文件  
 > 修改完毕使用 `systemctl restart named`重启服务载入配置
@@ -53,9 +52,9 @@
 > [apache服务](linux.md#apache服务) --[视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/apache%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
 > [tomcat服务](linux.md#tomcat服务) --[视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/tomcat%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)    
 > [samba服务](linux.md#samba服务) --[视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/samba%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
-> [nfs服务端](linux.md#nfs服务端) --[视频]()  
-> [nfs客户端](linux.md#nfs客户端) --[视频]()  
-> [ftp服务](linux.md#ftp服务) --[视频]()  
+> [nfs服务端](linux.md#nfs服务端) --[视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/nfs%E6%9C%8D%E5%8A%A1%E7%AB%AF+%E5%AE%A2%E6%88%B7%E7%AB%AF.mp4?ref_type=heads)  
+> [nfs客户端](linux.md#nfs客户端) --[视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/nfs%E6%9C%8D%E5%8A%A1%E7%AB%AF+%E5%AE%A2%E6%88%B7%E7%AB%AF.mp4?ref_type=heads)  
+> [ftp服务](linux.md#ftp服务) --[视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/ftp%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
 > [iscsi服务](linux.md#iscsi服务) --[视频]()  
 > [mysql服务](linux.md#mysql服务) --[视频]()  
 > [mariadb服务](linux.md#mariadb服务) --[视频]()  
