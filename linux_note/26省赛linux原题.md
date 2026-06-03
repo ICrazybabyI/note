@@ -88,6 +88,85 @@
 
 ## 1.在ls2上使用dd命令在/opt目录下创建两个大小为5G，名称为file1和file2的文件，并将其以/dev/loop10、/dev/loop11设备进行挂载，利用lvm2创建lvm，卷组名称为vg1，逻辑卷名称为lv1，容量为全部，格式化为ext4格式。使用/dev/vg1/lv1配置为iscsi目标服务器。
 
+[root@ls1 ~]# `dd if=/dev/zero of=/opt/file2 bs=1M count=2048`
+
+记录了2048+0 的读入
+
+记录了2048+0 的写出
+
+2147483648字节（2.1 GB，2.0 GiB）已复制，2.14969 s，999 MB/s
+
+[root@ls1 ~]# `dd if=/dev/zero of=/opt/file1 bs=1M count=2048`
+
+记录了2048+0 的读入
+
+记录了2048+0 的写出
+
+2147483648字节（2.1 GB，2.0 GiB）已复制，2.13048 s，1.0 GB/s
+
+[root@ls1 ~]# `losetup /dev/loop10 /opt/file1`
+
+[root@ls1 ~]# `losetup /dev/loop11 /opt/file2`
+
+[root@ls1 ~]# `lsblk`
+
+NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+
+loop0         7:0    0  8.8G  0 loop /mnt/1
+
+loop10        7:10   0    2G  0 loop
+
+loop11        7:11   0    2G  0 loop
+
+sda           8:0    0   20G  0 disk
+
+├─sda1        8:1    0    1G  0 part /boot
+
+└─sda2        8:2    0   19G  0 part
+
+  ├─rl-root 253:0    0   17G  0 lvm  /
+
+  └─rl-swap 253:1    0    2G  0 lvm  [SWAP]
+
+[root@ls1 ~]# `pvcreate /dev/loop10`
+
+  Physical volume "/dev/loop10" successfully created.
+
+[root@ls1 ~]# `pvcreate /dev/loop11`
+
+  Physical volume "/dev/loop11" successfully created.
+
+[root@ls1 ~]# `vgcreate vg1 /dev/loop{10..11}`
+
+  Volume group "vg1" successfully created
+
+[root@ls1 ~]# `lvcreate -l 100%free -n lv1 vg1`
+
+  Logical volume "lv1" created.
+
+[root@ls1 ~]# `mkfs.ext4 /dev/vg1/lv1`
+
+mke2fs 1.46.5 (30-Dec-2021)
+
+丢弃设备块： 完成
+
+创建含有 1046528 个块（每块 4k）和 261632 个inode的文件系统
+
+文件系统UUID：cf543ec3-9697-41b4-9c7f-e55ca9a7ded4
+
+超级块的备份存储于下列块：
+
+        32768, 98304, 163840, 229376, 294912, 819200, 884736
+
+
+
+正在分配组表： 完成
+
+正在写入inode表： 完成
+
+创建日志（16384 个块）完成
+
+写入超级块和文件系统账户统计信息： 已完成
 
 
 ## 2.iscsi目标端的wwn为iqn.2026-03.cn.gdskills:server, iscsi发起端的wwn为iqn.2026-03.cn.gdskills:client。

@@ -1109,11 +1109,22 @@ drwx------    2 14    50            6 Mar 05 10:03 新文件夹
 
  `dnf install lvm2 targetcli-2.1.53-7.el9.noarch -y`
 
- `lsblk`
+[root@linux5 ~]# `lsblk`   
+NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS  
+loop0         7:0    0  8.8G  0 loop /mnt/1  
+vda         252:0    0   20G  0 disk   
+├─vda1      252:1    0    1G  0 part /boot  
+└─vda2      252:2    0   19G  0 part   
+  ├─rl-root 253:0    0   17G  0 lvm  /  
+  └─rl-swap 253:1    0    2G  0 lvm  [SWAP]  
+vdb         252:16   0    4G  0 disk   
+vdc         252:32   0    4G  0 disk   
+vdd         252:48   0    4G  0 disk   
+vde         252:64   0    4G  0 disk   
 
- `pvcreate /dev/vd{a..d}`
+ `pvcreate /dev/vd{b..e}`
 
- `vgcreate vg1 /dev/vd{a..e}`
+ `vgcreate vg1 /dev/vd{b..e}`
 
  `lvcreate -l 100%free -n lv1 vg1`
 
@@ -1129,11 +1140,11 @@ drwx------    2 14    50            6 Mar 05 10:03 新文件夹
 
 /backstores/block> `cd /iscsi`
 
-/iscsi> `create iqn.2026-03.com.skills:server`
+/iscsi> `create iqn.2023-08.lan.skills:server`
 
-/iscsi> `cd iqn.2026-03.com.skills:server/tpg1/acls`
+/iscsi> `cd iqn.2023-08.lan.skills:server/tpg1/acls`
 
-/iscsi/iqn.20...ver/tpg1/acls> `create iqn.2026-03.com.skills:client`
+/iscsi/iqn.20...ver/tpg1/acls> `create iqn.2023-08.lan.skills:client`
 
 /iscsi/iqn.20...ver/tpg1/acls> `cd ../luns`
 
@@ -1143,30 +1154,61 @@ drwx------    2 14    50            6 Mar 05 10:03 新文件夹
 
 /iscsi> `set discovery_auth enable=1 userid=IncomingUser password=IncomingPass mutual_userid=OutgoingUser mutual_password=OutgoingPass`
 
-/iscsi> `cd iqn.2026-03.com.skills:server/tpg1/acls/iqn.2026-03.com.skills:client/`
+/iscsi> `cd iqn.2023-08.lan.skills:server/tpg1/acls/iqn.2023-08.lan.skills:client/`
 
 /iscsi/iqn.20...skills:client> `set auth userid=IncomingUser password=IncomingPass mutual_userid=OutgoingUser mutual_password=OutgoingPass`
 
- `firewall-cmd --add-port=3260/tcp --permanent`
+/iscsi/iqn.20...skills:client> `exit`
 
- `firewall-cmd --reload`
+`firewall-cmd --add-port=3260/tcp --permanent`
+
+`firewall-cmd --reload`
 
 
- `dnf install iscsi* -y`
+ 
 
- `vi /etc/iscsi/iscsid.conf`
+### （2）配置linux9为iSCSI客户端，实现discovery chap和session chap双向认证，Target认证用户名为IncomingUser，密码为IncomingPass；Initiator认证用户名为OutgoingUser，密码为OutgoingPass。修改/etc/rc.d/rc.local文件开机自动挂载iscsi硬盘到/iscsi目录。
 
- `vi /etc/iscsi/initiatorname.iscsi`
+**linux9:**  
 
- `systemctl enable iscsid --now`
+`dnf install iscsi* -y`
 
- `iscsiadm --mode discovery --portal 192.168.31.212 --type sendtargets`
+`systemctl enable iscsid --now`  
 
- `iscsiadm --modenode --portal192.168.31.212:3260 --login`
+`vi /etc/iscsi/iscsid.conf`
+```bash
+ 58 node.session.auth.authmethod = CHAP 
+ 
+ 69 node.session.auth.username = IncomingUser
+ 70 node.session.auth.password = IncomingPass
 
- `mkdir /shareiscsi`
+ 74 node.session.auth.username_in = OutgoingUser
+ 75 node.session.auth.password_in = OutgoingPass
 
- `lsblk`
+ 79 discovery.sendtargets.auth.authmethod = CHAP
+ 
+ 83 discovery.sendtargets.auth.username = IncomingUser
+ 84 discovery.sendtargets.auth.password = IncomingPass
+ 
+ 88 discovery.sendtargets.auth.username_in = OutgoingUser
+ 89 discovery.sendtargets.auth.password_in = OutgoingPass
+```
+
+`vi /etc/iscsi/initiatorname.iscsi`  
+
+```bash
+InitiatorName=iqn.2023-08.lan.skills:client
+```
+
+`systemctl restart iscsid`  
+
+`iscsiadm --mode discovery --portal 192.168.31.212 --type sendtargets`
+
+`iscsiadm --mode node --portal 192.168.31.212:3260 --login`
+
+`mkdir /shareiscsi`
+
+`lsblk`
 
 NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
 
@@ -1184,17 +1226,15 @@ sda 8:0 0 20G 0 disk
 
 **sdb 8:16 0 16G 0 disk**
 
- `echo "mount /dev/sdb /shareiscsi" >> /etc/rc.d/rc.local`
+`echo "mount /dev/sdb /shareiscsi" >> /etc/rc.d/rc.local`
 
- `chmod +x /etc/rc.d/rc.local`
+`chmod +x /etc/rc.d/rc.local`
 
- `systemctl daemon-reload`
+`systemctl daemon-reload`
 
- `mount /dev/sdb /shareiscsi/`
+`mount /dev/sdb /shareiscsi/`
 
- `df`
-
-### （2）配置linux9为iSCSI客户端，实现discovery chap和session chap双向认证，Target认证用户名为IncomingUser，密码为IncomingPass；Initiator认证用户名为OutgoingUser，密码为OutgoingPass。修改/etc/rc.d/rc.local文件开机自动挂载iscsi硬盘到/iscsi目录。
+`df`
 
 ---
 
@@ -1395,7 +1435,7 @@ MariaDB [(userdb)]> `load data local infile '/var/mariadb/studeninfo.txt' into t
 ## (4).将表studentinfo中的记录导出，并存放到/var/mariadb/sinfo.sql，字段之间用',分隔。利用cron为root用户创建计划任务(day用数字表示)，每周六凌晨1:00备份数据库studentdb(不含创建数据库命令)到/var/mariadb/sdb_bak.sql。(为便于测试，手动备份一次。)
 
 
-MariaDB [userdb]> `select * from studentinfo into outfile'/var/mariadb/userinfo.sql' <font style="background-color:rgba(255, 255, 255, 0.05);">fields terminated by ',' lines terminated by '\n'</font>;`
+MariaDB [userdb]> `select * from studentinfo into outfile'/var/mariadb/userinfo.sql' fields terminated by ',' lines terminated by '\n';`
 
 `setenforce 0`
 

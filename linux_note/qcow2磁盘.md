@@ -52,3 +52,10 @@ target disk boots and works correctly.
 
 瘦身完也是有60G的空间的  
 后面选择桥接网卡后,就可以使用克隆来新建其他主机  
+
+## 如何新建一个空的qcow2磁盘:
+使用物理机新建  
+切换的要放置的路径  
+`qemu-img create iscsi1 4g`  
+
+挂载磁盘在虚拟机控制台操作:  
