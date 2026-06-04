@@ -55,8 +55,8 @@
 > [nfs服务端](linux.md#nfs服务端) --[视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/nfs%E6%9C%8D%E5%8A%A1%E7%AB%AF+%E5%AE%A2%E6%88%B7%E7%AB%AF.mp4?ref_type=heads)  
 > [nfs客户端](linux.md#nfs客户端) --[视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/nfs%E6%9C%8D%E5%8A%A1%E7%AB%AF+%E5%AE%A2%E6%88%B7%E7%AB%AF.mp4?ref_type=heads)  
 > [ftp服务](linux.md#ftp服务) --[视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/ftp%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
-> [iscsi服务](linux.md#iscsi服务) --[视频]()  
-> [mysql服务](linux.md#mysql服务) --[视频]()  
+> [iscsi服务](linux.md#iscsi服务) --[视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/iscsi%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
+> [mysql服务](linux.md#mysql服务) --[视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/mysql%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
 > [mariadb服务](linux.md#mariadb服务) --[视频]()  
 > [shell脚本](linux.md#shell脚本) --[视频]()  
 
