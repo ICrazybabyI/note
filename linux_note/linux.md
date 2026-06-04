@@ -1244,7 +1244,9 @@ sda 8:0 0 20G 0 disk
 ### -- 3360/tcp
 ## 任务描述：请安装mysql服务，建立数据表。
 ## （1）配置linux2为mysql服务器，创建数据库用户xiao，在任意机器上对所有数据库有完全权限。
-`systemctl enable mysql* --now`
+
+
+`dnf install mysql* -y`
 
 `systemctl enable --now mysqld`  
 
@@ -1309,7 +1311,11 @@ mysql> `update userinfo set height = 1.62 where name = 'user2';`
 ##### 9,user9,1.69,1999-07-09,女,user9
 //报错  ERROR 3948 (42000): Loading local data is disabled; this must be enabled on both the client and server sides  
 
-`mkdir /var/mysqlbak`  
+mysql> `exit`  
+
+`mkdir /var/mysqlbak`    
+
+`chown mysql:mysql /var/mysqlbak/`  
 
 **添加这段文字到userinfo.txt里**  
 
@@ -1330,10 +1336,12 @@ echo "3,user3,1.63,1999-07-03,女,user3
 ```bash
 [mysqld]
 local-infile=1					#允许本地文件导入
-secure-file-priv="/var/mysqldbak/"				#允许导出到路径
+secure-file-priv="/var/mysqlbak/"				#允许导出到路径
 ```
 
 `systemctl restart mysqld`
+
+`setenforce 0`
 
 `mysql`  
 
@@ -1341,20 +1349,18 @@ mysql> `use userdb;`
 
 MariaDB [(userdb)]> `load data local infile '/var/mysqlbak/userinfo.txt' into table userinfo fields terminated by ',' lines terminated by '\n' (id,name,height,birthday,sex,@password)set password=MD5(@Password);`
 
-## （6）将表userinfo的记录导出，存放到/var/databak/mysql.sql，字段之间用','分隔。
-`systemctl restart mysqld`
+## （6）将表userinfo的记录导出，存放到/var/mysqlbak/mysql.sql，字段之间用','分隔。
 
-`setenforce 0`
 
 mysql>`select * from userinfo into outfile '/var/databak/mysql.sql' fields terminated by ',' lines terminated by '\n';`
 
 
 
-## （7）每周五凌晨1:00以root用户身份备份数据库userdb到/var/databak/userdb.sql(含创建数据库命令)。
+## （7）每周五凌晨1:00以root用户身份备份数据库userdb到/var/mysqlbak/userdb.sql(含创建数据库命令)。
 `cronrab -e`
 
 ```bash
-01 ** 5 mysqldump -u root -pKey-1122 --databases userdb > /var/mariadb/userdb.sql
+0 1 * * 5 mysqldump -u root --databases userdb > /var/mysqlbak/userdb.sql
 ```
 
 //这里要含创建数据的的命令是要加上 `--databases`的
@@ -1371,6 +1377,8 @@ mysql>`select * from userinfo into outfile '/var/databak/mysql.sql' fields termi
 (1).配置rocky5为mariadb服务器，创建数据库用户teacher，在任意机器上对所有数据库有完全控制权限，允许从任意地方登录数据库。
 --3306/tcp
 
+`dnf install mariadb* -y`
+
 `systemctl restart mariadb`
 
 `systemctl enable mariadb --now`
@@ -1381,7 +1389,7 @@ Enter password:
 
 MariaDB [(none)]> `create user teacher identified by 'Key-1122';`
 
-MariaDB [(none)]> `grant all on *_.* _to teacher;`
+MariaDB [(none)]> `grant all on *.* to teacher;`
 
 //查看是否创建成功  select user,host from mysql.user;
 
@@ -1421,6 +1429,7 @@ MariaDB [(userdb)]>`create table studentinfo(sid int primary key auto_increment 
 **7,cmh,1.67,2009-01-18,M,cmh**  
 **8,xzh,1.78,2004-05-18,M,xzh**  
 **9,xmm,1.69,2000-07-09,F,xmm**  
+
 MariaDB [(userdb)]>`insert into studentinfo values ('1','xmy','1.65','2001-02-06'，'M',MD5('xmy')),('2','zhp','1.71','2001-10-21','M',MD5('zhp'));`
 
 //查看表记录 `select * from studentinfo;`
