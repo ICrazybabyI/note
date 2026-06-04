@@ -1248,11 +1248,15 @@ sda 8:0 0 20G 0 disk
 
 `systemctl enable --now mysqld`  
 
-`mysql`
+`firewall-cmd --add-port=3360/tcp --per`  
 
-mysql>`create user xiao identified by 'Key-1122';`
+`firewall-cmd --reload`  
 
-mysql>`grant all on *.* to xiao;`
+`mysql`  
+
+mysql>`create user xiao identified by 'Key-1122';`  
+
+mysql>`grant all on *.* to xiao;`  
 
 //查看是否创建成功  select user,host from mysql.user;
 
