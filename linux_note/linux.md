@@ -1244,13 +1244,15 @@ sda 8:0 0 20G 0 disk
 ### -- 3360/tcp
 ## 任务描述：请安装mysql服务，建立数据表。
 ## （1）配置linux2为mysql服务器，创建数据库用户xiao，在任意机器上对所有数据库有完全权限。
-`systemctl enable mysqld --now`
+`systemctl enable mysql* --now`
+
+`systemctl enable --now mysqld`  
 
 `mysql`
 
 mysql>`create user xiao identified by 'Key-1122';`
 
-mysql>`grant all on *_.* _to xiao;`
+mysql>`grant all on *.* to xiao;`
 
 //查看是否创建成功  select user,host from mysql.user;
 
@@ -1283,11 +1285,11 @@ mysql>`insert into userinfo values('1','user1','1999-07-01','男',MD5('user1')),
 //查看表记录 select * from userinfo;
 
 ## （4）修改表userinfo的结构，在name字段后添加新字段height(数据类型为float)，更新user1和user2的height字段内容为1.61和1.62。
-`mysql> alter table userinfo add column height float after name;`
+mysql> `alter table userinfo add column height float after name;`
 
-`update userinfo set height = 1.61 where name = 'user1';`
+mysql> `update userinfo set height = 1.61 where name = 'user1';`
 
-`update userinfo set height = 1.62 where name = 'user2';`
+mysql> `update userinfo set height = 1.62 where name = 'user2';`
 
 //验证表结构 desc userinfo;
 
@@ -1301,17 +1303,37 @@ mysql>`insert into userinfo values('1','user1','1999-07-01','男',MD5('user1')),
 ##### 7,user7,1.67,1999-07-07,女,user7
 ##### 8,user8,1.68,1999-07-08,男,user8
 ##### 9,user9,1.69,1999-07-09,女,user9
-//报错  ERROR 3948 (42000): Loading local data is disabled; this must be enabled on both the client and server sides
+//报错  ERROR 3948 (42000): Loading local data is disabled; this must be enabled on both the client and server sides  
+
+`mkdir /var/mysqlbak`  
+
+**添加这段文字到userinfo.txt里**  
+
+```
+echo "3,user3,1.63,1999-07-03,女,user3
+4,user4,1.64,1999-07-04,男,user4
+5,user5,1.65,1999-07-05,男,user5
+6,user6,1.66,1999-07-06,女,user6
+7,user7,1.67,1999-07-07,女,user7
+8,user8,1.68,1999-07-08,男,user8
+9,user9,1.69,1999-07-09,女,user9" > /var/mysqlbak/userinfo.txt
+```
+
+
 
   `vi /etc/my.cnf` //添加字条
 
 ```bash
 [mysqld]
 local-infile=1					#允许本地文件导入
-secure-file-priv="/var/mysqld/"				#允许导出到路径
+secure-file-priv="/var/mysqldbak/"				#允许导出到路径
 ```
 
 `systemctl restart mysqld`
+
+`mysql`  
+
+mysql> `use userdb;`
 
 MariaDB [(userdb)]> `load data local infile '/var/mysqlbak/userinfo.txt' into table userinfo fields terminated by ',' lines terminated by '\n' (id,name,height,birthday,sex,@password)set password=MD5(@Password);`
 
