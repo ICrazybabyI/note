@@ -1373,19 +1373,17 @@ mysql>`select * from userinfo into outfile '/var/databak/mysql.sql' fields termi
 
 # mariadb服务  
 
+[⬆️top⬆️](#导航)  
+
 ## 11.mariadb  
 (1).配置rocky5为mariadb服务器，创建数据库用户teacher，在任意机器上对所有数据库有完全控制权限，允许从任意地方登录数据库。
 --3306/tcp
 
 `dnf install mariadb* -y`
 
-`systemctl restart mariadb`
-
 `systemctl enable mariadb --now`
 
-`mysql -u root -p`
-
-Enter password: 
+`mysql -u root`
 
 MariaDB [(none)]> `create user teacher identified by 'Key-1122';`
 
@@ -1462,7 +1460,7 @@ MariaDB [(userdb)]> `exit`
 
 `mysql`
 
-MariaDB [(none)]> `use userdb;`
+MariaDB [(none)]> `use studentdb;`
 
 MariaDB [(userdb)]> `load data local infile '/var/mariadb/studeninfo.txt' into table studentinfo fields terminated by ',' lines terminated by '\n' (sid,sname,sheight,sbirthday,ssex,@password)set password=MD5(@Password);`
 
@@ -1470,19 +1468,26 @@ MariaDB [(userdb)]> `load data local infile '/var/mariadb/studeninfo.txt' into t
 ## (4).将表studentinfo中的记录导出，并存放到/var/mariadb/sinfo.sql，字段之间用',分隔。利用cron为root用户创建计划任务(day用数字表示)，每周六凌晨1:00备份数据库studentdb(不含创建数据库命令)到/var/mariadb/sdb_bak.sql。(为便于测试，手动备份一次。)
 
 
-MariaDB [userdb]> `select * from studentinfo into outfile'/var/mariadb/userinfo.sql' fields terminated by ',' lines terminated by '\n';`
+MariaDB [userdb]> `select * from studentinfo into outfile '/var/mariadb/sinfo.sql' fields terminated by ',' lines terminated by '\n';`
 
-`setenforce 0`
+`setenforce 1`
 
 `cronrab -e`
 
 ```bash
 0 1 * * 6 mysqldump -u teacher -pKey-1122 studentdb > /var/mariadb/sdb_bak.sql
 ```
-
   
 //这里不含create database的是这个,含create database的话
-> mysqldump -u teacher -pKey-1122 --databases studentdb > /var/mariadb/sdb_bak.sql
+> mysqldump -u teacher -pKey-1122 --databases studentdb > /var/mariadb/sdb_bak.sql  
+
+`crontab -l`  
+//复制后面的命令执行  
+
+`mysqldump -u teacher -pKey-1122 studentdb > /var/mariadb/sdb_bak.sql`
+
+`cat sdb_bak.sql`
+//检查是否正确
 
 ---
 
