@@ -14,8 +14,8 @@
 ## 虚拟机:  
 这里可以使用cockpit自带的[web虚拟机控制台](https://192.168.31.245:9090/=192.168.31.245/machines);   
 这里推荐使用戴尔服务器的[IDRC](https://192.168.31.246/)在里面使用kvm管理器  //新建虚拟机和编辑虚拟机的参数,因为这样可以更改更具体的配置    
-使用IDRC创建虚拟机教程: [KVM-manager创建虚拟机](images/bandicam%202026-04-20%2021-39-21-641.mp4)  
-使用cockpit创建虚拟机教程: [cockpit创建虚拟机](images/bandicam%202026-04-20%2021-42-21-893.mp4)  
+使用IDRC创建虚拟机教程: [KVM-manager创建虚拟机](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/%E4%BD%BF%E7%94%A8kvm%E6%96%B0%E5%BB%BA%E8%99%9A%E6%8B%9F%E6%9C%BA.mp4?ref_type=heads)  
+使用cockpit创建虚拟机教程: [cockpit创建虚拟机](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/%E4%BD%BF%E7%94%A8cockpit%E6%96%B0%E5%BB%BA%E8%99%9A%E6%8B%9F%E6%9C%BA.mp4?ref_type=heads)  
 
 ---
 # 正式学习  
