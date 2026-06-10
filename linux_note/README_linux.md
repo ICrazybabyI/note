@@ -85,7 +85,7 @@
 > **拓展知识:**  
 >    如何使用[git](git.md)  
 >    如何使用[vim](vim.md)  
-> 如何创建[qcow2磁盘](qcow2磁盘.md)  
+> 如何创建[qcow2系统磁盘](qcow2磁盘.md)  
 
 # 学习过程:  
 ```mermaid
