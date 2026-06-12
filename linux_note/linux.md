@@ -92,7 +92,7 @@ linux1-6:
 
 `dnf install bash* vim -y`  
 > [!note]
-> [做题准备视频](http://192.168.31.245:8989/wlyw/linux_video/-/blob/main/23%E5%9B%BD%E8%B5%9B/%E5%81%9A%E9%A2%98%E5%87%86%E5%A4%87.mp4?ref_type=heads)  
+> [做题准备视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/%E5%81%9A%E9%A2%98%E5%87%86%E5%A4%87.mp4?ref_type=heads)  
 
 ---
 
@@ -156,7 +156,7 @@ local stratum 10		#取消注释
 `for i  in {3..9};do scp /etc/chrony.conf 192.168.31.23$i:/etc/ ;done`  
 
 > [!note]
-> [chrony视频](http://192.168.31.245:8989/wlyw/linux_video/-/blob/main/23%E5%9B%BD%E8%B5%9B/chrony%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
+> [chrony视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/chrony%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
 
 ---
 # ssh服务
@@ -179,7 +179,7 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
 ```
 
 > [!note]
-> [SSH视频](http://192.168.31.245:8989/wlyw/linux_video/-/blob/main/23%E5%9B%BD%E8%B5%9B/DNS%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)
+> [SSH视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/DNS%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)
 
 ---
 # dns服务
@@ -286,7 +286,7 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
 `systemctl enable named --now`     
 
 > [!note]
-> [DNS视频](http://192.168.31.245:8989/wlyw/linux_video/-/blob/main/23%E5%9B%BD%E8%B5%9B/DNS%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
+> [DNS视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/DNS%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
 
 ---
 
@@ -377,7 +377,7 @@ y
 `cp skills.crt skills.key /etc/ssl/`    
 
 > [!NOTE]
-> [CA视频](http://192.168.31.245:8989/wlyw/linux_video/-/blob/main/23%E5%9B%BD%E8%B5%9B/CA%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)
+> [CA视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/CA%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)
 
 ---
 
@@ -403,7 +403,7 @@ y
 `localectl set-locale LANG="en_US.UTF-8"`
 
 > [!note]  
-> [ansible视频](http://192.168.31.245:8989/wlyw/linux_video/-/blob/main/23%E5%9B%BD%E8%B5%9B/ansible%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
+> [ansible视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/ansible%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
 
 ---
 
@@ -484,7 +484,7 @@ cd  /etc/ssl/
 `curl --cert /etc/ssl/apache.crt --key /etc/ssl/apache.key http://web.skills.lan -L`
 
 > [!note]  
-> [apache视频](http://192.168.31.245:8989/wlyw/linux_video/-/blob/main/23%E5%9B%BD%E8%B5%9B/apache%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
+> [apache视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/apache%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)  
 
 ---
 
@@ -667,7 +667,7 @@ User=root									#改这里
 `systemctl enable tomcat --now`  
 
 > [!NOTE]  
-> [视频](http://192.168.31.245:8989/wlyw/linux_video/-/blob/main/23%E5%9B%BD%E8%B5%9B/tomcat%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)
+> [视频](http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/23%E5%9B%BD%E8%B5%9B/tomcat%E6%9C%8D%E5%8A%A1.mp4?ref_type=heads)
 
 ---
 
