@@ -92,7 +92,7 @@ linux1-6:
 
 `dnf install bash* vim -y`  
 > [!note]
-> [做题准备视频](http://192.168.31.245:8989/crazybaby/linux_video/-/raw/main/%E5%81%9A%E9%A2%98%E5%87%86%E5%A4%87.mp4?ref_type=heads)  
+> [做题准备视频](http://192.168.31.245:8989/wlyw/linux_video/-/blob/main/23%E5%9B%BD%E8%B5%9B/%E5%81%9A%E9%A2%98%E5%87%86%E5%A4%87.mp4?ref_type=heads)  
 
 ---
 
