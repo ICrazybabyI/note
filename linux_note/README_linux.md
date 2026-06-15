@@ -14,8 +14,10 @@ title:   初学者学习路径
 ---
 graph LR
 	git("<a href="git.md">11</a>")
-	biji["11"] -->|点击进入| gitmd
-	click biji "git.md" _self
+
+
+
+	
 
 ```
 
