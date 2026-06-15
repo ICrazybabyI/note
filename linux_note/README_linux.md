@@ -21,12 +21,6 @@ graph LR
 1
 ```
 
-```mermaid
-flowchart TD
-    A@{ shape: stadium, label: "终点" }
-```
-
-
 
 ---
 
