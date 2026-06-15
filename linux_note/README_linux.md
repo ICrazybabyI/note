@@ -8,6 +8,23 @@
 然后看一看[linux的目录结构(外网)](https://www.runoob.com/linux/linux-system-contents.html)[(内网)](http://192.168.31.245:8083/linux-system-contents.html)linux是由哪几个结构组成的,明白linux一切皆文件的道理,  
 最后看[文件权限(外网)](https://www.runoob.com/linux/linux-file-attr-permission.html)[(内网)](http://192.168.31.245:8083/linux-file-attr-permission.html)和[目录相关(外网)](https://www.runoob.com/linux/linux-file-content-manage.html)[(内网)](http://192.168.31.245:8083/linux-file-content-manage.html)的.  
 
+```mermaid
+---
+title:   初学者学习路径
+---
+graph LR
+	git("<a href="git.md">11</a>")
+	biji["11"] -->|点击进入| gitmd
+	click biji "git.md" _self
+
+```
+
+```mermaid
+flowchart TD
+    A@{ shape: stadium, label: "终点" }
+```
+
+
 
 ---
 
@@ -31,7 +48,10 @@
 > [!TIP]
 > 问了AI之后要在虚拟机里做实验加深记忆 ,做题尽量理解写的配置的意思,多了解这方面的英语词汇,以便遇到新型题都能看手册来做题 ; 把每条配置都了解由什么词汇构成,这样很容易把配置记在脑子里,做题时一看题目就能蹦出来 
 
-打好基础后,跟着[linux](linux.md)这篇笔记做赛题熟悉做题流程;  //这篇是23年国赛题,算是简单的题目    
+打好基础后,跟着[linux](linux.md)这篇笔记做赛题熟悉做题流程;  
+
+//linux 大小写严格,要看好输入字母的大小写  
+//这篇是23年国赛题,算是简单的题目    
 
 > [!TIP]
 > 掌握做题的方法,试着自己解决各种报错,可以使用`systemctl status 服务名`  
