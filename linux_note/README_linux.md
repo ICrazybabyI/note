@@ -4,34 +4,20 @@
 > [服务的笔记](#服务的笔记)  
 
 # 初次学习
-首次学习linux,推荐先阅读[菜鸟教程(外网)](https://www.runoob.com/linux/linux-tutorial.html)[(内网)](http://192.168.31.245:8083/linux-tutorial.html),了解linux的作用 用法 要用linux的原因.  
-然后看一看[linux的目录结构(外网)](https://www.runoob.com/linux/linux-system-contents.html)[(内网)](http://192.168.31.245:8083/linux-system-contents.html)linux是由哪几个结构组成的,明白linux一切皆文件的道理,  
-最后看[文件权限(外网)](https://www.runoob.com/linux/linux-file-attr-permission.html)[(内网)](http://192.168.31.245:8083/linux-file-attr-permission.html)和[目录相关(外网)](https://www.runoob.com/linux/linux-file-content-manage.html)[(内网)](http://192.168.31.245:8083/linux-file-content-manage.html)的.  
+首次学习linux,推荐先阅读[菜鸟教程(外网)](https://www.runoob.com/linux/linux-tutorial.html) [(内网)](http://192.168.31.245:8083/linux-tutorial.html),了解linux的作用 用法 要用linux的原因.  
+然后看一看[linux的目录结构(外网)](https://www.runoob.com/linux/linux-system-contents.html) [(内网)](http://192.168.31.245:8083/linux-system-contents.html)linux是由哪几个结构组成的,明白linux一切皆文件的道理,  
+最后看[文件权限(外网)](https://www.runoob.com/linux/linux-file-attr-permission.html) [(内网)](http://192.168.31.245:8083/linux-file-attr-permission.html)和[目录相关(外网)](https://www.runoob.com/linux/linux-file-content-manage.html) [(内网)](http://192.168.31.245:8083/linux-file-content-manage.html)的.  
 
 ```mermaid
----
-title:   初学者学习路径
----
+%%{init: {"flowchart": {"curve": "elbow"}} }%%
 graph LR
-	git("<a href="git.md">11</a>")
-123("1")
-125("31")
+    A["阅读 git.md<br/>加入 note 项目<br/>并 pull 到本地"]
+    B["安装 Obsidian<br/>导入 note 项目"]
+    C["学习 Linux 基础<br/>（参考菜鸟教程）"]
+    
+    A --> B --> C 
 
-123("1123")
-1234("1123")
-	
-1
-123("1")
-12asd("1")
-1gfd3("1")
-1asd3("1")
-12g3("1")
-12asd3d("1")
-1df23("1")
-ASF
-1sd23("1")
-sf
-1231s3
+	click A href "http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/git%E4%BD%BF%E7%94%A8.mp4?ref_type=heads" "在新标签中打开" _blank
 ```
 
 
