@@ -9,15 +9,32 @@
 最后看[文件权限(外网)](https://www.runoob.com/linux/linux-file-attr-permission.html) [(内网)](http://192.168.31.245:8083/linux-file-attr-permission.html)和[目录相关(外网)](https://www.runoob.com/linux/linux-file-content-manage.html) [(内网)](http://192.168.31.245:8083/linux-file-content-manage.html)的.  
 
 ```mermaid
-%%{init: {"flowchart": {"curve": "elbow"}} }%%
+%%{init: {'flowchart': {'padding': 10}, 'theme': 'default'}}%%
 graph LR
-    A["阅读 git.md<br/>加入 note 项目<br/>并 pull 到本地"]
-    B["安装 Obsidian<br/>导入 note 项目"]
-    C["学习 Linux 基础<br/>（参考菜鸟教程）"]
-    
-    A --> B --> C 
+    subgraph Row1 [ ]
+        direction LR
+        A["阅读 **git.md**..."]
+        B["安装 **Obsidian**..."]
+        C["学习 **Linux 基础**..."]
+        D["学习 **安装虚拟机**..."]
+    end
 
-	click A href "http://192.168.31.245:8989/wlyw/linux_video/-/raw/main/git%E4%BD%BF%E7%94%A8.mp4?ref_type=heads" "在新标签中打开" _blank
+    subgraph Row2 [ ]
+        direction LR
+        E["123"]
+    end
+
+    A --> B --> C --> D
+    D --> E
+
+    %% 隐藏子图边框和标题
+    style Row1 fill:none,stroke:none;
+    style Row2 fill:none,stroke:none;
+
+click A href "http://192.168.31.245:8989/wlyw/note/-/blob/main/linux_note/git.md" _blank
+click C href "http://192.168.31.245:8083/" _blank
+
+
 ```
 
 
