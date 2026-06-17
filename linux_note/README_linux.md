@@ -11,12 +11,13 @@
 ```mermaid
 %%{init: {'flowchart': {'width': 100,'padding':10},'theme':'default'}}%%
 
+
 graph LR
-    A["`阅读 **git.md**<br/>加入 note 项目<br/>并 pull 到本地`"]
-    B["`安装 **Obsidian**<br/>导入 note 项目`"]
-    C["`学习 **Linux 基础**<br/>（参考菜鸟教程）`"]
-    D["`学习 **安装虚拟机**<br/> (⬇️在下一节⬇️)`"]
-	E["`123`"]
+    A["阅读 git.md<br/>加入 note 项目<br/>并 pull 到本地"]
+    B["安装 Obsidian<br/>导入 note 项目"]
+    C["学习 Linux 基础<br/>（参考菜鸟教程）"]
+    D["学习 安装虚拟机<br/> (⬇️在下一节⬇️)"]
+	E["123"]
     A --> B --> C --> D
 	E
 click A href "http://192.168.31.245:8989/wlyw/note/-/blob/main/linux_note/git.md" _blank
