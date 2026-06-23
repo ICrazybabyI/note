@@ -5,17 +5,21 @@
 > [DNS服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#dns服务) --[视频]()   <-- (The first!!!)   
 > [CA服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#ca服务) --[视频]()  
 > [ansible服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#ansible服务) --[视频]() <-- 做了ssh密钥前提  
-> [keepalived+tomcat服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#keepalived_tomcat服务) --[视频]()  
-> [samba服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#samba服务) --[视频]()  
-> [nfs服务端](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#nfs服务端) --[视频]()  
-> [nfs客户端](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#nfs客户端) --[视频]()   
-> [ftp服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#ftp服务) --[视频]()  
-> [iscsi服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#iscsi服务) --[视频]()  
-> [mysql服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#mysql服务) --[视频]()  
-> [mariadb服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#mariadb服务) --[视频]()  
-> [shell脚本](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#shell脚本) --[视频]()  
+> [keepalived+tomcat+haproxy服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#keepalived_tomcat_haproxy服务) --[视频]()    
+> [samba服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#samba服务) --[视频]()    
+> [iscsi服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#iscsi服务) --[视频]()    
+> [postfix服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#postfix服务)  
+> [mariadb服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#mariadb服务) --[视频]()    
+> [dhcp服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#dhcp服务)  
+> [k8s服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#k8s服务)
+> [audit脚本](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#audit服务) --[视频]()    
+>[开发服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#开发服务)  
+>[备份服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#备份服务)  
 
 ---
+
+# 做题准备:
+[⬆️top⬆️](#导航)
 
 **（一）检查实例环境**
 
@@ -45,9 +49,6 @@
 任务描述：创建dns服务器，实现企业域名访问。
 
 ## 1.配置所有rocky主机和kylin主机的IP地址和主机名称。  
-
-# 做题准备:
-[⬆️top⬆️](#导航)
 
 
 先配置ip  
@@ -227,11 +228,7 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
 
 ---
 
-**（三）高可用服务**
-
-任务描述：利用高可用架构，搭建Tomcat动态网站。
-
-# keepalived_tomcat服务  
+# keepalived_tomcat_haproxy服务  
 [⬆️top⬆️](#导航)  
 
 ## 1.配置ls3和ls4为tomcat服务器，网站默认首页内容分别为“TomcatA”和“TomcatB”，Tomcat采用修改配置文件以HTTP 80端口的方式运行。
@@ -249,11 +246,9 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
 ## 5.对外仅允许tomcat.gdskills.cn域名访问，配置HTTP到HTTPS的永久重定向。当ls1或ls2任一节点故障时，VIP（172.16.20. 200/24）及负载均衡服务能自动切换至另一正常节点，保证服务连续性。
 
 
-
-**（四）iSCSI服务**
-
-任务描述：请采用iSCSI，实现集中管理存储。
-
+----
+# iscsi服务
+[⬆️top⬆️](#导航)
 ## 1.在ls2上使用dd命令在/opt目录下创建两个大小为5G，名称为file1和file2的文件，并将其以/dev/loop10、/dev/loop11设备进行挂载，利用lvm2创建lvm，卷组名称为vg1，逻辑卷名称为lv1，容量为全部，格式化为ext4格式。使用/dev/vg1/lv1配置为iscsi目标服务器。
 
 [root@ls1 ~]# `dd if=/dev/zero of=/opt/file2 bs=1M count=2048`
@@ -343,21 +338,18 @@ mke2fs 1.46.5 (30-Dec-2021)
 
 ## 3.ls6连接ls2上的iscsi磁盘，修改/etc/rc.d/rc.local文件，实现开机自动挂载ls2上的iscsi磁盘到/shareiscsi目录。
 
+----
 
-
-**（五）邮件服务**
-
-任务描述：请采用postfix邮件服务器，实现安全的邮件服务。
-
+# postfix服务
+[⬆️top⬆️](#导航)
 ## 1.配置ls3为邮件服务器，安装postfix和dovecot。仅允许smtps和pop3s连接。向 all@gdskills.cn发送邮件时，mail1和mail2用户都会收到。
 
 ## 2.使用本机测试。
 
+----
 
-
-**（六）****Mariadb****服务**
-
-任务描述：请采用Mariadb数据库，实现数据的高效存储与处理。
+# mariadb服务
+[⬆️top⬆️](#导航)
 
 ## 1.配置ls5和ls6为mariadb主从服务器，创建数据库用户xiao，只允许对userdb数据库拥有完全权限。设置ls5服务器ID为1，ls6为2。
 
@@ -403,13 +395,16 @@ mke2fs 1.46.5 (30-Dec-2021)
 
 ## 5.为root用户创建计划任务（day使用数字表示），每周五凌晨2:00，备份数据库 userdb（含创建数据库命令）到 /var/mariadb/userdb.sql。（提示：为便于测试，请手动备份一次。）**（七）DHCP服务**
 
-任务描述：请采用DHCP服务器，实现ip地址及其他网络参数动态分配。
+---
 
+# dhcp服务
+[⬆️top⬆️](#导航)
 ## 1.在ls2上安装DHCP服务，地址范围为172.16.20.10-172.16.20.19，网关为172.16.20.1，dns为ls1和ls2，域名为gdskills.cn。
 
-**（八）****Kubernetes****服务**
+---
 
-任务描述：请采用kubernetes和containerd，管理容器。
+# k8s服务
+[⬆️top⬆️](#导航)
 
 ## 1.在ls3-ls5上安装containerd和kubernetes（提示，若ls5无法安装，请先安装kylin_extra中的软件包），ls3作为masternode，ls4和ls5作为worknode；containerd的namespace为k8s.io。
 
@@ -425,7 +420,9 @@ mke2fs 1.46.5 (30-Dec-2021)
 
 ## 4.导入rockylinux9和ubuntu24.04镜像；使用NodeSelector将rockylinux9和ubuntu24.04分别调度到kylin和rocky节点上，副本数为2。
 
-
+----
+# audit服务
+[⬆️top⬆️](#导航)
 
 **（九）审计服务**
 
@@ -434,6 +431,10 @@ mke2fs 1.46.5 (30-Dec-2021)
 ## 1.在ls4上安装audit。配置审计日志路径为 /var/log/audit/audit.log；最大日志文件大小为10M；保留10个副本。
 
 
+----
+
+# 开发服务
+[⬆️top⬆️](#导航)
 
 **（十）开发服务**
 
@@ -441,8 +442,10 @@ mke2fs 1.46.5 (30-Dec-2021)
 
 ## 1.在ls3上安装gcc、rust、golang，在/root/soft目录中将提供的main.c、main.rust、main.go依次编译为info_c、info_r、info_g二进制文件并将其存放至/usr/sbin目录中（提示：为便于测试，请分别手动执行一次）。
 
+---
 
-
+# 备份服务
+[⬆️top⬆️](#导航)
 **（十一）备份服务**
 
 任务描述：请采用rsync备份工具，实现数据备份与增量备份。
