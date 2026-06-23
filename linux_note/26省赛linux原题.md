@@ -1,3 +1,21 @@
+# 导航:  
+> [做题准备](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#做题准备)  --[视频]()    
+> [NTP服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#ntp服务)  --[视频]()_先做**DNS**服务和**SSH**服务再做该服务_ 1↩︎  
+> [SSH服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#ssh服务) --[视频]()_先做**DNS**服务,做的过程中生成公钥_    <--(The second!!!)  
+> [DNS服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#dns服务) --[视频]()   <-- (The first!!!)   
+> [CA服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#ca服务) --[视频]()  
+> [ansible服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#ansible服务) --[视频]() <-- 做了ssh密钥前提  
+> [keepalived+tomcat服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#keepalived_tomcat服务) --[视频]()  
+> [samba服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#samba服务) --[视频]()  
+> [nfs服务端](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#nfs服务端) --[视频]()  
+> [nfs客户端](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#nfs客户端) --[视频]()   
+> [ftp服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#ftp服务) --[视频]()  
+> [iscsi服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#iscsi服务) --[视频]()  
+> [mysql服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#mysql服务) --[视频]()  
+> [mariadb服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#mariadb服务) --[视频]()  
+> [shell脚本](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#shell脚本) --[视频]()  
+
+---
 
 **（一）检查实例环境**
 
@@ -26,45 +44,195 @@
 
 任务描述：创建dns服务器，实现企业域名访问。
 
-## 1.配置所有rocky主机和kylin主机的IP地址和主机名称。
+## 1.配置所有rocky主机和kylin主机的IP地址和主机名称。  
+
+# 做题准备:
+[⬆️top⬆️](#导航)
+
+
+先配置ip  
+`nmtui`  
+![222](images/linux_nmtui_1.png)回车选择第一项  
+
+![](images/linux_nmtui_2.png)回车选择网卡编辑  
+
+![406](images/linux_nmtui_3.png)配置完成
+按下pagedown到OK
+回车(保存)
+
+esc退出到主菜单  
+![](images/linux_nmtui_4.png)选择第二项  
+
+![](images/linux_nmtui_5.png)回车两次刷新配置  
+
+![](images/linux_nmtui_6.png)选择第三项设置系统名称  
+
+![](images/linux_nmtui_7.png)回车确认  
+//这里的主机名为ls1.gdskills.cn  
+
+以上步骤都使用该方法配置其他的主机名与ip   
+配置完ip后编辑本地仓库源    
+`win + x  a`              //使用windows的ssh工具连接6台主机  
+
+ssh: `ssh -p 22 root@192.168.31.221`  
+
+**linux1-6:  **
+
+`rm -rf  /etc/yum.repos.d/*.repo`    //删除默认的网络源  
+
+**linux1:  **
+
+`vi /etc/yum.repos.d/1.repo`      //编写本地仓的配置 -- vim使用语法移步到[vim](vim.md)  
+
+```bash
+[1]
+name=1
+enable=1
+baseurl=file:///mnt/1/BaseOS
+gpgcheck=0
+[2]
+name=2
+enable=1
+baseurl=file:///mnt/1/AppStream
+gpgcheck=0
+```
+:wq      //退出保存  
+`cat /etc/yum.repos.d/1.repo`      //把输出的结果选中后复制到linux2-6  
+
+**linux2-6:  **
+
+`vi /etc/yum.repos.d/1.repo`  
+
+ctrl + v  
+
+:wq  
+
+**linux1-6:  **
+
+`mkdir /mnt/1`  
+
+`mount Rocky-9.2-x86_64-dvd.iso /mnt/1/`  
+
+`dnf install bash* vim -y`  
+
+`bash` //安装完bash补全包要重新进入终端  
+
+---
+
+## 2.所有Rocky(ls3-ls4除外)和Kylin(ls5除外)主机启用防火墙防火墙区域为public，在防火墙中放行对应服务端口。  
+
+全部默认开启防火墙无需理会
+
+---
+
+# ntp服务
+[⬆️top⬆️](#导航)
+
+## 3.利用chrony，配置ls1为其他linux主机提供ntp服务。  
+
+**<u>先做ssh 再做这个</u>**
+
+## linux1:
+[root@linux1 ~]#`vi /etc/chrony.conf`
+
+```bash
+# Use public servers from the pool.ntp.org project.
+# Please consider joining the pool (https://www.pool.ntp.org/join.html).
+#pool 2.rocky.pool.ntp.org iburst			#注释掉
+
+# Use NTP servers from DHCP.
+sourcedir /run/chrony-dhcp
+
+# Record the rate at which the system clock gains/losses time.
+driftfile /var/lib/chrony/drift
+
+# Allow the system clock to be stepped in the first three updates
+# if its offset is larger than 1 second.
+makestep 1.0 3
+
+# Enable kernel synchronization of the real-time clock (RTC).
+rtcsync
+
+# Enable hardware timestamping on all interfaces that support it.
+#hwtimestamp *
+
+# Increase the minimum number of selectable sources required to adjust
+# the system clock.
+#minsources 2
+
+# Allow NTP client access from local network.
+allow 192.168.31.0/24	#写所在的网段
+
+# Serve time even if not synchronized to a time source.
+local stratum 10		#取消注释
+```
+
+[root@ls1 ~]#`systemctl restart chronyd` //重启服务,应用配置
+
+## linux2-9:  
+`vi /etc/chrony.conf`  
+```bash
+3	 server 192.168.31.231 iburst
+```
+
+#### 发送chrony.conf到其余主机
+`for i  in {3..9};do scp /etc/chrony.conf 192.168.31.23$i:/etc/ ;done`  
+
+---
+
+# ssh服务
+[⬆️top⬆️](#导航)
+## 4.所有linux主机root用户使用完全合格域名免密码ssh登录到其他linux主机。  
+
+### linux1-9生成并发送ssh密钥：
+```bash
+ssh-keygen
+ssh-copy-id **.**.**.**9              #密钥全部发送给一台主机，这台主机也要发给自己
+scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
+```
+`vi /etc/ssh/sshd_config`    
+```bash
+42 PermitRootLogin yes
+45 PubkeyAuthentication yes
+#允许公钥登录
+65 PasswordAuthenticaation  no
+#允许密码登录
+```
+
+---
+# dns服务
+[⬆️top⬆️](#导航)
+## 5.利用bind和bind-utils，配置ls1为主dns根服务器，区域文件为/var/named/named.root，ls2为备用dns服务器。为所有linux主机提供冗余dns正反向解析服务。正向区域文件均为/var/named/named.gdskills，反向区域文件均为/var/named/named.20。  
 
 
 
-## 2.所有Rocky(ls3-ls4除外)和Kylin(ls5除外)主机启用防火墙防火墙区域为public，在防火墙中放行对应服务端口。
+## 6.创建DNS响应区域，区域名称为rpz.zone，响应区域文件名称为/var/named/rpz.zone。当客户端解析 /www.yellow.com /www.dubo.com /www.duping.com 时均返回NXDOMAIN。  
+
+---
+# ca服务
+[⬆️top⬆️](#导航)
+## 6.配置ls1为CA服务器,为linux主机颁发证书。证书颁发机构有效期10年，公用名为：“GDGlobalSignROOTCA”。申请并颁发一张供linux服务器使用的证书，证书信息：有效期=5年，公用名=gdskills.cn，国家=CN，省=Guangdong，城市=Guangzhou，组织=gdskills，组织单位=system，使用者可选名称=*.gdskills.cn和gdskills.cn。将证书skills.crt和私钥skills.key复制到需要证书的linux服务器/etc/pki/tls目录。浏览器访问https网站时，不出现证书警告信息。  
 
 
+---
 
-## 3.利用chrony，配置ls1为其他linux主机提供ntp服务。
-
-
-
-## 4.所有linux主机root用户使用完全合格域名免密码ssh登录到其他linux主机。
-
-
-
-## 5.利用bind和bind-utils，配置ls1为主dns根服务器，区域文件为/var/named/named.root，ls2为备用dns服务器。为所有linux主机提供冗余dns正反向解析服务。正向区域文件均为/var/named/named.gdskills，反向区域文件均为/var/named/named.20。
-
-
-
-## 6.创建DNS响应区域，区域名称为rpz.zone，响应区域文件名称为/var/named/rpz.zone。当客户端解析 /www.yellow.com /www.dubo.com /www.duping.com 时均返回NXDOMAIN。
-
-
-
-## 6.配置ls1为CA服务器,为linux主机颁发证书。证书颁发机构有效期10年，公用名为：“GDGlobalSignROOTCA”。申请并颁发一张供linux服务器使用的证书，证书信息：有效期=5年，公用名=gdskills.cn，国家=CN，省=Guangdong，城市=Guangzhou，组织=gdskills，组织单位=system，使用者可选名称=*.gdskills.cn和gdskills.cn。将证书skills.crt和私钥skills.key复制到需要证书的linux服务器/etc/pki/tls目录。浏览器访问https网站时，不出现证书警告信息。
-
-
-
-## 7.在ls1上安装系统自带的ansible-core，作为ansible的控制节点。ls2-ls6作为ansible的受控节点，受控节点组名称为web，设置ansible_python_interpreter为/usr/bin/python3。
+# ansible服务  
+[⬆️top⬆️](#导航)  
+## 7.在ls1上安装系统自带的ansible-core，作为ansible的控制节点。ls2-ls6作为ansible的受控节点，受控节点组名称为web，设置ansible_python_interpreter为/usr/bin/python3。  
 
 
 
 ## 8.在ls1编写/root/web-deploy.yml剧本（提示：可以使用ansible-doc命令查询相关模块），在所有受控主机上安装httpd服务，将监听端口修改为8081，启动并设置为开机自启；各主机站点首页内容统一为：Hello,thisis"hostname"site!!!（例如：Hello, thisis"ls2.gdskills.cn"site!!!）
 
 
+---
 
 **（三）高可用服务**
 
 任务描述：利用高可用架构，搭建Tomcat动态网站。
+
+# keepalived_tomcat服务  
+[⬆️top⬆️](#导航)  
 
 ## 1.配置ls3和ls4为tomcat服务器，网站默认首页内容分别为“TomcatA”和“TomcatB”，Tomcat采用修改配置文件以HTTP 80端口的方式运行。
 
