@@ -11,7 +11,7 @@
 > [postfix服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#postfix服务)  
 > [mariadb服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#mariadb服务) --[视频]()    
 > [dhcp服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#dhcp服务)  
-> [k8s服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#k8s服务)
+> [k8s服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#k8s服务)  
 > [audit脚本](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#audit服务) --[视频]()    
 >[开发服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#开发服务)  
 >[备份服务](26%E7%9C%81%E8%B5%9Blinux%E5%8E%9F%E9%A2%98.md#备份服务)  
