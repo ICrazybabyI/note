@@ -14,7 +14,7 @@ graph LR
     A["阅读 git.md<br/>加入 note 项目<br/>并 pull 到本地"]
     B["安装 Obsidian<br/>导入 note 项目"]
     C["学习 Linux 基础<br/>（使用菜鸟教程）<br/>(⬆️上面⬆️)"]
-    D["学习 安装虚拟机<br/> (⬇️在下一节⬇️)"]
+    D["学习 创建虚拟机<br/> (⬇️在下一节⬇️)"]
 	E["阅读 基础.md <br/> 使用虚拟机学习 <br/>怎么使用linux"]
 	F["阅读 linux.md <br/>开始正式做题"]
 	
