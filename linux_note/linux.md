@@ -1478,7 +1478,7 @@ MariaDB [(userdb)]> `exit`
 
 MariaDB [(none)]> `use studentdb;`
 
-MariaDB [(userdb)]> `load data local infile '/var/mariadb/studeninfo.txt' into table studentinfo fields terminated by ',' lines terminated by '\n' (sid,sname,sheight,sbirthday,ssex,@password)set password=MD5(@Password);`
+MariaDB [(userdb)]> `load data local infile '/var/mariadb/studentinfo.txt' into table studentinfo fields terminated by ',' lines terminated by '\n' (sid,sname,sheight,sbirthday,ssex,@password)set password=MD5(@Password);`
 
 
 ## (4).将表studentinfo中的记录导出，并存放到/var/mariadb/sinfo.sql，字段之间用',分隔。利用cron为root用户创建计划任务(day用数字表示)，每周六凌晨1:00备份数据库studentdb(不含创建数据库命令)到/var/mariadb/sdb_bak.sql。(为便于测试，手动备份一次。)
@@ -1488,7 +1488,7 @@ MariaDB [userdb]> `select * from studentinfo into outfile '/var/mariadb/sinfo.sq
 
 `setenforce 1`
 
-`cronrab -e`
+`crontab -e`
 
 ```bash
 0 1 * * 6 mysqldump -u teacher -pKey-1122 studentdb > /var/mariadb/sdb_bak.sql
@@ -1502,7 +1502,7 @@ MariaDB [userdb]> `select * from studentinfo into outfile '/var/mariadb/sinfo.sq
 
 `mysqldump -u teacher -pKey-1122 studentdb > /var/mariadb/sdb_bak.sql`
 
-`cat sdb_bak.sql`
+`cat /var/mariadb/sdb_bak.sql`
 //检查是否正确
 
 ---
