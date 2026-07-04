@@ -205,7 +205,158 @@ scp .ssh/authorized_keys **.**.**.**:/root/.ssh/ #分发给各个主机
 [⬆️top⬆️](#导航)
 ## 5.利用bind和bind-utils，配置ls1为主dns根服务器，区域文件为/var/named/named.root，ls2为备用dns服务器。为所有linux主机提供冗余dns正反向解析服务。正向区域文件均为/var/named/named.gdskills，反向区域文件均为/var/named/named.20。  
 
+**linux1: **
 
+`vi /etc/named.conf`  
+
+```bash
+options {
+        listen-on port 53 { any; };
+        listen-on-v6 port 53 { ::1; };
+        directory       "/var/named";
+        dump-file       "/var/named/data/cache_dump.db";
+        statistics-file "/var/named/data/named_stats.txt";
+        memstatistics-file "/var/named/data/named_mem_stats.txt";
+        secroots-file   "/var/named/data/named.secroots";
+        recursing-file  "/var/named/data/named.recursing";
+        allow-query     { localhost; 192.168.200.0/24; };
+
+        recursion yes;
+
+        dnssec-validation no;
+
+        managed-keys-directory "/var/named/dynamic";
+        geoip-directory "/usr/share/GeoIP";
+
+        pid-file "/run/named/named.pid";
+        session-keyfile "/run/named/session.key";
+
+        include "/etc/crypto-policies/back-ends/bind.config";
+        response-policy { zone "rpz.zone"; };
+        notify yes;
+        also-notify { 192.168.200.212;};
+};
+
+logging {
+        channel default_debug {
+                file "data/named.run";
+                severity dynamic;
+        };
+};
+
+
+zone "rpz.zone" IN {
+        type master;
+        file "rpz.zone";
+        allow-update { 192.168.200.212; };
+};
+
+zone "." IN {
+        type master;
+        file "named.root";
+        allow-update { 192.168.200.212; };
+};
+
+include "/etc/named.rfc1912.zones";
+include "/etc/named.root.key";
+
+```
+
+`vi /etc/named.rfc1912.zones`  
+
+```bash
+zone "gdskills.lan" IN {
+        type master;
+        file "named.gdskills";
+        allow-update { 192.168.200.212; };
+};
+
+zone "200.168.192.in-addr.arpa" IN {
+        type master;
+        file "named.200";
+        allow-update { 192.168.200.212; };
+};
+```
+
+`cd /var/named/`  
+
+`cp -p named.localhost named.gdskills`  
+
+`cp -p named.loopback named.200`  
+
+`cp -p named.empty named.root`  
+
+`cp -p named.empty rpz.zone`  
+
+`vi named.gdskills`
+
+```bash
+$TTL 1D
+@       IN SOA  @ rname.invalid. (
+                                        0       ; serial
+                                        1D      ; refresh
+                                        1H      ; retry
+                                        1W      ; expire
+                                        3H )    ; minimum
+        NS      @
+        A       127.0.0.1
+ls1     A       192.168.200.211
+ls2     A       192.168.200.212
+ls3     A       192.168.200.213
+ls4     A       192.168.200.214
+ls5     A       192.168.200.215
+ls6     A       192.168.200.216
+```
+
+`vi named.200`  
+
+```bash
+$TTL 1D
+@       IN SOA  @ rname.invalid. (
+                                        0       ; serial
+                                        1D      ; refresh
+                                        1H      ; retry
+                                        1W      ; expire
+                                        3H )    ; minimum
+        NS      @
+        A       127.0.0.1
+        PTR     localhost.
+211     PTR     ls1.gdskill.lan.
+212     PTR     ls2.gdskill.lan.
+213     PTR     ls3.gdskill.lan.
+214     PTR     ls4.gdskill.lan.
+```
+
+`vi named.root`  
+
+```bash
+$TTL 3H
+@       IN SOA  @ rname.invalid. (
+                                        0       ; serial
+                                        1D      ; refresh
+                                        1H      ; retry
+                                        1W      ; expire
+                                        3H )    ; minimum
+        NS      ls1.gdskills.lan.
+        NS      ls2.gdskills.lan.
+
+ls1.gdskills.lan.       A       192.168.200.211
+ls2.gdskills.lan.       A       192.168.200.212
+```
+
+`vi rpz.zone`  
+
+```bash
+
+```
+
+**linux2:**
+
+`vi /etc/named.conf`
+
+```bash
+
+```
 
 ## 6.创建DNS响应区域，区域名称为rpz.zone，响应区域文件名称为/var/named/rpz.zone。当客户端解析 /www.yellow.com /www.dubo.com /www.duping.com 时均返回NXDOMAIN。  
 
