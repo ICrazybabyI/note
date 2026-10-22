@@ -1,3 +1,10 @@
+# jump  
+## [26vllm样题](#26vllm样题)
+
+------
+
+# 26省赛ollama样题
+
 ## 1.基本配置
 ## 本任务需要使用root用户完成相关配置，已提供操作系统镜像及需要配置前置环境，所需软件安装包均在/root/目录下。命令中要求使用绝对路径，具体要求如下:
 ## 1. 在AI-SRV中将操作系统镜像挂载至/media/cdrom，并实现开机自启。
@@ -24,7 +31,7 @@ enable=1
 
 `bash`
 
-#用补全
+\#用补全
 
 `yum makecache`
 
@@ -107,7 +114,7 @@ docker image list
 
 `vi dify-0.14.2/docker-legacy/docker-compose.yaml`
 
-#寻找
+\#寻找
 
 /JOB
 
@@ -122,7 +129,7 @@ docker image list
 
 `docker-compose up -d`
 
-#如果遇到iptables failed 
+\#如果遇到iptables failed 
 
 docker-compose down
 
@@ -149,12 +156,69 @@ docker-compose up -d
 
 
 ## 4.语言翻译器构建
-## <font style="color:black;">本任务需要基于前置环境完成，选手</font><font style="color:black;">须先自行完成配置，具体要求如下：</font>
-## <font style="color:black;">1. </font><font style="color:black;">根据场景需要，创建空白应用</font><font style="color:black;"> “Translator”</font><font style="color:black;">。</font>
-## <font style="color:black;">2. </font><font style="color:black;">为用</font><font style="color:black;">户提供翻译功能，其中参数包含</font><font style="color:black;"> Query, Language </font><font style="color:black;">两项，要求支持</font><font style="color:black;">语言（中文、</font><font style="color:black;">English</font><font style="color:black;">），提示词自拟</font><font style="color:black;">。</font>
-## <font style="color:black;">3. </font><font style="color:black;">为确保结果准确性，需要为</font><font style="color:black;"> Web App </font><font style="color:black;">提供翻译结果多版本对照支</font><font style="color:black;">持。</font>
-## <font style="color:black;">4. 运行应用，翻译内容：“人工智能改变世界”，“AI has changed the world now.”，并为翻译内容创建候选。</font>
+## 本任务需要基于前置环境完成，选手须先自行完成配置，具体要求如下：
+## 1. 根据场景需要，创建空白应用 “Translator”。
+## 2. 为用户提供翻译功能，其中参数包含 Query, Language 两项，要求支持语言（中文、English），提示词自拟。
+## 3. 为确保结果准确性，需要为 Web App 提供翻译结果多版本对照支持。
+## 4. 运行应用，翻译内容：“人工智能改变世界”，“AI has changed the world now.”，并为翻译内容创建候选。
 
+----
+
+# 26vllm样题  
+
+[⬆️top⬆️](#jump)
+
+# (一）基础环境配置   
+# 本任务需要使用 root 用户完成相关配置，已提供操作系统镜像及需要配置前置环境，所需软件安装包均在/root/目录下。命令中要求使用绝对路径，具体要求如下:   
+
+## 1.在 AI-SRV 中将操作系统镜像挂载至/media/cdrom，并实现开机自启。  
+
+## 2.在 AI-SRV 中完成软件源配置文件的编写，禁用GPG 校验，并为源数据建立缓存。   
+
+
+# （二）环境搭建 
+# 本任务需要使用 root 用户完成相关配置，已提供transformers安装包及需要配置前置环境。 命令中要求使用绝对路径，具体要求如下:  
+
+## 1.在 AI-SRV 中解压对应的 Python pip 包，安装gcc、gcc-c++。使用 python 在/root 目录中创建虚拟环境venv-tokenizers。
+
+## 2.在 AI-SRV 中解压 test_tokenizers.tar.gz 至/opt 目录，编写 如下 test_tokenizer.py 脚本测试分词器是否正常运行：
+```py
+
+from transformers import AutoTokenizer 
+tokenizer
+AutoTokenizer.from_pretrained("/opt/test_tokenizers")
+instruct_str = "欢迎来到 2025-2026 年度网络建设与运维赛项！"
+ids = tokenizer.encode(instruct_str)
+text = tokenizer.decode(ids)
+print(f"字符串对应的 ID: {ids}")
+print(f"Token ID 对应的字符串: {text}")
+
+```
+# （三）Dify运行环境搭建 
+# 本任务需要使用 root 用户完成相关配置，已提供安装dify及需要配置前置环境。命令中要求使用绝对路径，具体要求如下:  
+## 1．在 AI-SRV 中完成 Docker 环境的安装，并查看Docker 版本信息。 
+
+## 2.在AlI-SRV中将文件 dify-v1.11.2.tar.gz解压至/opt路径中。  
+
+## 3.在 AI-SRV 中完成 dify 镜像的导入，相关文件位于dify-images目录中，完成后检查镜像列表。   
+
+## 4.在 AI-SRV 中完成 dify 的启动，并在客户机中访问AI-SRV中的 dify web 服务。   
+
+## 5. 在 客 户 机 中 访 问 dify ， 完成用户注册，邮箱为admin@gdskills.ai，用户名为 admin，密码为GDSkills2026，注册后登录 dify 管理页面。   
+
+## 6.在客户机中访问 dify，通过 dify 扩展包安装vLLM-openai扩展组件，完成对 vLLM 模型提供商的注册。  
+
+# （四）大模型部署与功能验证 本任务需要使用 root 用户完成相关配置，已提供安装vllm-cpu及需要配置前置环境。命令中要求使用绝对路径，具体要求如下:
+
+## 1.在 AI-SRV 中解压对应的 Python pip 包，安装gcc、gcc-c++。使用 python 创建虚拟环境 venv-vllm-cpu。  
+
+## 2.在/root 目录中存放一个 Yuezhi100M.tar.gz，该目录中提供了一个模型权重文件，解压模型文件至/opt 目录并复制任务三训练好的分词器存放在模型目录中。 
+
+## 3.使用 vLLM 部署 Yuezhi-100M 大模型，设置vLLM_CPU_KVCACHE为 4G，防止过多的 kv_cache 占用导致内存不足；设置服务模型名称为Yuezhi，apiKey 为 GDSkills2026!@#$，监听所有接口，API 服务监听端口为 16384，张量并行为 1，dtype 为 float32，最大模型序列长度为2048,最大请求序列为 8。 
+
+## 4.在 dify 中创建创建空白应用 YuezhiChat。为改善对话体验，须为助手配置初始问候语，内容为： “你好，我是智能助手，有什么能够帮助你？”，并添加以下常用问题 “现在几点了？”、“查询当前时间”。
+
+## 5.使用客服助手生成一个 shell 脚本，实现批量创建20 个文件file00 至 file19;每个文件的内容同文件名，如file00 文件的内容为“file00”。将 shell 脚本保存命名为 createfile.sh。  
 
 [root@localhost ~]# `tar xvf cpython-3.11.6+20231002-x86_64_v2-unknown-linux-gnu-install_only.tar.gz -C /opt/`
 
